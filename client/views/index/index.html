@@ -1,0 +1,29 @@
+<template name="index">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">TV & VC</h1>
+  {{/contentFor}}
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear pull-right">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-search'}}
+      {{else}}
+        {{> ionIcon icon='ios-search'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+    a
+    {{/ionContent}}
+  {{/ionView}}
+</template>

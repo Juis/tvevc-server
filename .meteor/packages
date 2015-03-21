@@ -8,3 +8,4 @@ meteor-platform
 autopublish
 insecure
 xcv58:collection-api
+iron:router
