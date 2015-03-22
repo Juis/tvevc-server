@@ -1,4 +1,3 @@
-
 > Pacotes para instalar depois de clonar:
 
 - meteor add accounts-base
@@ -7,6 +6,10 @@
 - meteor add iron:router
 - meteor add xcv58:collection-api
 - 
+
+> Arquivo de modelagem DER na pasta server/
+
+- Aberto com o sistema online: http://www.hufersil.com.br/hdatamodeler/
 
 > Bibliografia:
 
