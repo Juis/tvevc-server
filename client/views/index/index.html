@@ -1,29 +1,128 @@
 <template name="index">
-  {{#contentFor "headerButtonLeft"}}
-    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
-      {{#if isAndroid}}
-        {{> ionIcon icon='android-more-vertical'}}
-      {{else}}
-        {{> ionIcon icon='navicon'}}
-      {{/if}}
-    </button>
-  {{/contentFor}}
-  {{#contentFor "headerTitle"}}
-    <h1 class="title">TV & VC</h1>
-  {{/contentFor}}
-  {{#contentFor "headerButtonRight"}}
-    <button class="button button-clear pull-right">
-      {{#if isAndroid}}
-        {{> ionIcon icon='android-search'}}
-      {{else}}
-        {{> ionIcon icon='ios-search'}}
-      {{/if}}
-    </button>
-  {{/contentFor}}
 
-  {{#ionView}}
-    {{#ionContent}}
-    a
-    {{/ionContent}}
-  {{/ionView}}
+<div class="container">
+
+	<header class="top-container">
+		<h4>
+			Timeline
+		</h4>
+	</header>
+
+	<div class="content-container row">
+
+		<div class="timeline">
+
+			<div class="col s8">
+
+				<div class="collection">
+
+					<div class="collection-item avatar">
+
+					  <div class="item-inner">
+
+						  <img src="http://placehold.it/80x80/" alt="" class="circle">
+						  <strong class="title">Usuário</strong>
+						  <p class="date">Enviado há 20 minutos</p>
+						  <a href="#!" class="secondary-content actions-icons">
+						  	<i class="mdi-action-grade"></i>
+						  	<i class="mdi-navigation-check"></i>
+						  	<i class="mdi-navigation-close"></i>
+						  </a>
+
+					  </div>
+
+					  <!-- Item Mensagem -->
+					  <div class="collection-message card">
+				        <div class="card-image waves-effect waves-block waves-light">
+				          <img class="activator" src="http://placehold.it/300x250">
+				        </div>
+				        <div class="card-content">
+				          <span class="card-title activator grey-text">
+					          Usuário
+					          <i class="mdi-action-info right"></i>
+				          </span>
+				        </div>
+				        <div class="card-reveal">
+				          <span class="card-title grey-text">
+
+				          Usuário
+
+				          	<i class="mdi-navigation-close right"></i>
+
+				          </span>
+
+				          <p class="card-message">Here is some more information about this product that is only revealed once clicked on.</p>
+
+				        </div>
+				      </div>
+
+					</div>
+					<div class="collection-item avatar">
+
+					  <img src="http://placehold.it/80x80/" alt="" class="circle">
+					  <strong class="title">Usuário</strong>
+					  <p class="date">Enviado há 20 minutos</p>
+					  <a href="#!" class="secondary-content actions-icons">
+					  	<i class="mdi-action-grade"></i>
+					  	<i class="mdi-navigation-check"></i>
+					  	<i class="mdi-navigation-close"></i>
+					  </a>
+
+					</div>
+					<div class="collection-item avatar">
+
+					  <img src="http://placehold.it/80x80/" alt="" class="circle">
+					  <strong class="title">Usuário</strong>
+					  <p class="date">Enviado há 20 minutos</p>
+					  <a href="#!" class="secondary-content actions-icons">
+					  	<i class="mdi-action-grade"></i>
+					  	<i class="mdi-navigation-check"></i>
+					  	<i class="mdi-navigation-close"></i>
+					  </a>
+
+					</div>
+					<div class="collection-item avatar">
+
+					  <img src="http://placehold.it/80x80/" alt="" class="circle">
+					  <strong class="title">Usuário</strong>
+					  <p class="date">Enviado há 20 minutos</p>
+					  <a href="#!" class="secondary-content actions-icons">
+					  	<i class="mdi-action-grade"></i>
+					  	<i class="mdi-navigation-check"></i>
+					  	<i class="mdi-navigation-close"></i>
+					  </a>
+
+					</div>
+					<div class="collection-item avatar">
+
+					  <img src="http://placehold.it/80x80/" alt="" class="circle">
+					  <strong class="title">Usuário</strong>
+					  <p class="date">Enviado há 20 minutos</p>
+					  <a href="#!" class="secondary-content actions-icons">
+					  	<i class="mdi-action-grade"></i>
+					  	<i class="mdi-navigation-check"></i>
+					  	<i class="mdi-navigation-close"></i>
+					  </a>
+
+					</div>
+
+				</div>
+
+				<a class="waves-effect waves-light btn pull-right color-pattern">Carregar mais</a>
+
+			</div>
+
+
+			<div class="col s4">
+				Lateral
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+</div>
+
 </template>

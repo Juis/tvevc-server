@@ -1,0 +1,74 @@
+//
+//	Stylesheet Admin - TV & VC
+//	======================================= //
+//	Autor: Allan Alexandre
+
+
+//	Base
+//	====================== /
+
+body {
+	background:#f5f5f5;
+}
+
+#app-tvevc {
+
+	//	Reset
+	//	====================== /
+
+
+	//	Layout
+	//	====================== /
+
+
+		// Header Bar
+		.nav-wrapper {
+			background:#607d8b;
+		}
+
+		// Logo
+		.brand-logo {}
+
+		// Container
+		.top-container {
+			margin-top:30px;width:100%;
+		}
+
+
+	//	Components
+	//	====================== /
+
+	.timeline {
+		.collection {
+			.collection-item {
+				height:auto;cursor:pointer;
+				.item-inner {
+					padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid #e5e5e5;
+				}
+				.title {}
+				.date {font-size:14px;color:#999;}
+				.actions-icons {
+					i {
+						color:#999;
+						font-size:18px;
+					}
+				}
+			}
+			.collection-message {
+				.card-message {
+					margin-top:40px;
+				}
+			}
+		}
+	}
+
+
+	//	Helpers
+	//	====================== /
+
+	.color-pattern {
+		color:#607d8b;
+	}
+
+}
+
