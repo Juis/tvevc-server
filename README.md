@@ -2,7 +2,9 @@
 
 - meteor add xcv58:collection-api
 
-> Arquivo de modelagem ER na pasta server/, aberto com o sistema online: http://www.hufersil.com.br/hdatamodeler/
+> Arquivo de modelagem ER na pasta server/
+
+- Aberto com o sistema online: http://www.hufersil.com.br/hdatamodeler/
 
 > Bibliografia:
 
