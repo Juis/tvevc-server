@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<sql title="" gridSize="10,10" fk_template="%f" cascadeDeleteFk="true" openEditWindowAfterAddTable="false" displayFieldType="false" defaultTableColor="#FFFFFF" defaultRelationColor="#000000" databaseType="postgresql" dataTypes="[object Object]" defaultType="VARCHAR" showGrid="false" alignToGrid="false" svgNS="http://www.w3.org/2000/svg" drawLinesOnDrag="false" defaultFkUpdate="CASCADE" defaultFkDelete="CASCADE" fkActions="CASCADE,RESTRICT,NO ACTION" autoAlignGap="10" highlightTime="500" displayFkLines="true">
+  <table x="255" y="55" name="programa" color="#FFFFFF" relation-color="#000000">
+    <row null="0" autoincrement="1" name="_id">
+      <datatype>SERIAL</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="categoria_id">
+      <datatype>VARCHAR(100)</datatype>
+      <relation table="categoria" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
+    </row>
+    <row null="0" autoincrement="0" name="nome">
+      <datatype>VARCHAR(100)</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="ativo">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="usuario_cadastro">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="usuario_altera">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_cadastro">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_altera">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <key name="" type="PRIMARY">
+      <part>_id</part>
+    </key>
+  </table>
+  <table x="52" y="72" name="categoria" color="#FFFFFF" relation-color="#000000">
+    <row null="0" autoincrement="1" name="_id">
+      <datatype>SERIAL</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="nome">
+      <datatype>VARCHAR(100)</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="ativo">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="usuario_cadastro">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="usuario_altera">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_cadastro">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_altera">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <key name="" type="PRIMARY">
+      <part>_id</part>
+    </key>
+  </table>
+  <table x="695" y="40" name="usuario" color="#FFFFFF" relation-color="#000000">
+    <row null="0" autoincrement="1" name="_id">
+      <datatype>SERIAL</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="nome">
+      <datatype>VARCHAR(100)</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="email">
+      <datatype>VARCHAR(100)</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="senha">
+      <datatype>VARCHAR(100)</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="ativo">
+      <datatype>VARCHAR(100)</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="nivel">
+      <datatype>SMALLINT</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="usuario_cadastro">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="usuario_altera">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_cadastro">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_altera">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <key name="" type="PRIMARY">
+      <part>_id</part>
+    </key>
+  </table>
+  <table x="467" y="7" name="conteudo" color="#FFFFFF" relation-color="#000000">
+    <comment>Aqui ira poder salvar:
+&gt; texto
+&gt; imagem
+&gt; video
+ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
+    <row null="0" autoincrement="1" name="_id">
+      <datatype>SERIAL</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="programa_id">
+      <datatype>VARCHAR(100)</datatype>
+      <relation table="programa" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
+    </row>
+    <row null="0" autoincrement="0" name="usuario_id">
+      <datatype>VARCHAR(100)</datatype>
+      <relation table="usuario" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
+    </row>
+    <row null="0" autoincrement="0" name="conteudo">
+      <datatype>TEXT</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="ativo">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_cadastro">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <key name="" type="PRIMARY">
+      <part>_id</part>
+    </key>
+  </table>
+  <table x="461" y="184" name="enquete" color="#FFFFFF" relation-color="#000000">
+    <row null="0" autoincrement="1" name="_id">
+      <datatype>SERIAL</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="programa_id">
+      <datatype>VARCHAR(100)</datatype>
+      <relation table="programa" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
+    </row>
+    <row null="0" autoincrement="0" name="pergunta">
+      <datatype>VARCHAR(255)</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="resposta1">
+      <datatype>CHAR(1)</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="resposta2">
+      <datatype>CHAR(1)</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="resposta3">
+      <datatype>CHAR(1)</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="ativo">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="usuario_cadastro">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="usuario_altera">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_cadastro">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_altera">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <key name="" type="PRIMARY">
+      <part>_id</part>
+    </key>
+  </table>
+</sql>
