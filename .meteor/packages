@@ -13,3 +13,4 @@ autopublish
 accounts-base
 accounts-ui-unstyled
 accounts-password
+ostrio:iron-router-helpers

@@ -1,27 +1,16 @@
 <template name="navigation">
 
-<div class="">
-
-	<nav class="menu">
-		<ul class="no-style">
-			<li class="active">
-				<a href="" title="">
-					Timeline
-				</a>
-			</li>
-			<li>
-				<a href="" title="">
-					Programas
-				</a>
-			</li>
-			<li>
-				<a href="" title="">
-					Enquetes
-				</a>
-			</li>
-		</ul>
-	</nav>
-
+<div class="menu">
+	<ul class="right hide-on-med-and-down">
+	  <li class="{{ isActiveRoute 'index' }}"><a href="{{pathFor 'index' }}">Timeline</a></li>
+	  <li class="{{ isActiveRoute 'programs' }}"><a href="{{pathFor 'programs' }}">Programas</a></li>
+	  <li class="{{ isActiveRoute 'poll' }}"><a href="{{pathFor 'poll' }}">Enquetes</a></li>
+	</ul>
+	<ul class="side-nav" id="mobile-demo">
+	  <li class="{{ isActiveRoute 'index' }}"><a href="{{pathFor 'index' }}">Timeline</a></li>
+	  <li class="{{ isActiveRoute 'programs' }}"><a href="{{pathFor 'programs' }}">Programas</a></li>
+	  <li class="{{ isActiveRoute 'poll' }}"><a href="{{pathFor 'poll' }}">Enquetes</a></li>
+	</ul>
 </div>
 
 </template>
