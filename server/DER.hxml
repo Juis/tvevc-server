@@ -139,7 +139,7 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <part>_id</part>
     </key>
   </table>
-  <table x="461" y="184" name="enquete" color="#FFFFFF" relation-color="#000000">
+  <table x="444" y="219" name="enquete" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -147,20 +147,55 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>VARCHAR(100)</datatype>
       <relation table="programa" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
     </row>
-    <row null="0" autoincrement="0" name="pergunta">
+    <row null="0" autoincrement="0" name="descricao">
       <datatype>VARCHAR(255)</datatype>
     </row>
-    <row null="1" autoincrement="0" name="resposta1">
+    <row null="1" autoincrement="0" name="">
       <datatype>CHAR(1)</datatype>
       <default>0</default>
     </row>
-    <row null="1" autoincrement="0" name="resposta2">
+    <row null="1" autoincrement="0" name="">
       <datatype>CHAR(1)</datatype>
       <default>0</default>
     </row>
-    <row null="1" autoincrement="0" name="resposta3">
+    <row null="1" autoincrement="0" name="">
       <datatype>CHAR(1)</datatype>
       <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="ativo">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="usuario_cadastro">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="usuario_altera">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_cadastro">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="data_altera">
+      <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <key name="" type="PRIMARY">
+      <part>_id</part>
+    </key>
+  </table>
+  <table x="640" y="266" name="resposta" color="#FFFFFF" relation-color="#000000">
+    <row null="0" autoincrement="1" name="_id">
+      <datatype>SERIAL</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="enquete_id">
+      <datatype>VARCHAR(100)</datatype>
+      <relation table="enquete" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
+    </row>
+    <row null="0" autoincrement="0" name="descricao">
+      <datatype>VARCHAR(255)</datatype>
     </row>
     <row null="1" autoincrement="0" name="ativo">
       <datatype>BOOLEAN</datatype>
