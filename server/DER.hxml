@@ -8,6 +8,9 @@
       <datatype>VARCHAR(100)</datatype>
       <relation table="categoria" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
     </row>
+    <row null="0" autoincrement="0" name="logo">
+      <datatype>TEXT</datatype>
+    </row>
     <row null="0" autoincrement="0" name="nome">
       <datatype>VARCHAR(100)</datatype>
     </row>
