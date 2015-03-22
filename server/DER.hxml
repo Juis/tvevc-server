@@ -18,6 +18,10 @@
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
+    <row null="0" autoincrement="0" name="permission">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
     <row null="1" autoincrement="0" name="user_record">
       <datatype>VARCHAR(100)</datatype>
       <default>NULL</default>
@@ -46,6 +50,10 @@
       <datatype>VARCHAR(100)</datatype>
     </row>
     <row null="1" autoincrement="0" name="status">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
+    <row null="0" autoincrement="0" name="permission">
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
@@ -88,6 +96,10 @@
     </row>
     <row null="1" autoincrement="0" name="level">
       <datatype>SMALLINT</datatype>
+      <default>0</default>
+    </row>
+    <row null="0" autoincrement="0" name="permission">
+      <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
     <row null="1" autoincrement="0" name="user_record">
@@ -134,6 +146,10 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
+    <row null="0" autoincrement="0" name="permission">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
     <row null="1" autoincrement="0" name="date_record">
       <datatype>TIMESTAMP WITH TIME ZONE</datatype>
       <default>NULL</default>
@@ -169,6 +185,10 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
+    <row null="0" autoincrement="0" name="permission">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
     <row null="1" autoincrement="0" name="user_record">
       <datatype>VARCHAR(100)</datatype>
       <default>NULL</default>
@@ -201,6 +221,10 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>VARCHAR(255)</datatype>
     </row>
     <row null="1" autoincrement="0" name="status">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
+    <row null="0" autoincrement="0" name="permission">
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
@@ -243,6 +267,10 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>TEXT</datatype>
     </row>
     <row null="1" autoincrement="0" name="status">
+      <datatype>BOOLEAN</datatype>
+      <default>0</default>
+    </row>
+    <row null="0" autoincrement="0" name="permission">
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
