@@ -1,13 +1,13 @@
-<template name="programNew">
+<template name="pollNew">
 
 <div class="container">
 
 	<header class="top-container">
 		<h4>
-			<i class="mdi-content-add"></i> Novo Programa
+			<i class="mdi-content-add"></i> Nova Enquete
 		</h4>
 
-		<a href="{{pathFor 'programs' }}" class="waves-effect waves-light btn btn-model">
+		<a href="{{pathFor 'poll' }}" class="waves-effect waves-light btn btn-model">
 			<i class="mdi-hardware-keyboard-backspace left"></i>
 			Voltar
 		</a>
@@ -16,40 +16,47 @@
 
 	<div class="content-container row">
 
-		<div class="programs">
+		<div class="poll">
 		
 			<div class="row">
 
 			  <form class="col s12">
 
-			    <div class="col s12">
-			    	 <label>Categoria</label>
-					  <select>
-					    <option value="" disabled selected>Escolha a categoria</option>
-					    <option value="1">Domingo Aventura</option>
-					  </select>
-			    </div>
-
 			      <div class="input-field col s12">
 			      	<i class="mdi-action-account-circle prefix"></i>
-			        <input id="program_name" type="text" class="validate">
-			        <label for="program_name">Nome</label>
+			        <input id="poll_name" type="text" class="validate">
+			        <label for="poll_name">Nome da Enquete</label>
 			      </div>
 
 			      <div class="input-field col s12">
 			        <i class="mdi-editor-mode-edit prefix"></i>
-			        <textarea id="program_description" class="materialize-textarea validate"></textarea>
-			        <label for="program_description">Descrição</label>
+			        <textarea id="poll_ask" class="materialize-textarea validate"></textarea>
+			        <label for="poll_ask">Pergunta</label>
 			      </div>
 
 			      <div class="col s12">
 				      <div class="file-field input-field">
 					      <input class="file-path validate" type="text"/>
-					      <div class="btn color-pattern">
+					      <div class="btn">
 					        <span>IMG</span>
 					        <input type="file" />
 					      </div>
 					    </div>
+			      </div>
+
+			      <div class="col s12">
+				      <div class="section">
+				      	
+				      	<a href="#" class="add-answer">
+				      		<i class="mdi-content-add"></i>
+				      		<span>Adicionar Resposta</span>
+				      	</a>
+				      	<div class="input-field col s12">
+						    <input id="poll_answer-1" type="text" class="validate">
+				        	<label for="poll_answer-1">Resposta</label>
+			        	</div>
+
+				  	  </div>
 			      </div>
 
 			      <div class="btn-new col s12">

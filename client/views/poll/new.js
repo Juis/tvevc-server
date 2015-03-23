@@ -1,0 +1,4 @@
+Template.pollNew.rendered = function(){
+
+
+}
