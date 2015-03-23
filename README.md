@@ -4,8 +4,8 @@
 - meteor add accounts-password
 - meteor add accounts-ui-unstyled
 - meteor add iron:router
+- ostrio:iron-router-helpers
 - meteor add xcv58:collection-api
-- 
 
 > Arquivo de modelagem DER na pasta server/
 
