@@ -9,7 +9,6 @@ insecure
 xcv58:collection-api
 iron:router
 fourseven:scss
-autopublish
 accounts-base
 accounts-ui-unstyled
 accounts-password
