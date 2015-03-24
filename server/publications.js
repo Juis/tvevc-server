@@ -1,10 +1,6 @@
-/*Meteor.publish('listarTudo', function() {
-  return Usuario.find({status:1},{fields:{status:0, permission:0}});
+Meteor.publish('listarTudo', function() {
+  return Program.find({status:1},{fields:{status:0, permission:0}});
 });
-
-Meteor.publish('listarUsuario', function(name) {
-  return Usuario.find({name:name});
-});*/
 
 var tables = [Category, Program, Content, User, Publicity, Poll, Answer];
 for(var i in tables){
