@@ -1,6 +1,6 @@
-var tables = [Category, Program, Content, User, Publicity, Poll, Answer];
-for(var i in tables){
-  tables[i].allow({
+var collections = [Category, Program, Content, User, Publicity, Poll, Answer];
+for(var i in collections){
+  collections[i].allow({
     insert: function(userId, form){
       //var key = ((1 + Math.floor(1e15)) + new Date().getSeconds(7)).toString(36).toUpperCase();
       //return (form.permission === key)? true : false;
