@@ -42,3 +42,7 @@ Template.fileUpload.events({
 	}
   }
 });
+
+Template.fileUpload.imgBase64 = function() {
+  return Session.get('imgBase64');
+};
