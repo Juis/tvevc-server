@@ -4,8 +4,6 @@ Template.programNew.rendered = function () {
 
 Template.programNew.events({
 	'click a[program]': function(form){
-		console.log(form.target.ownerDocument.all);
-		console.log(Session.get('imgBase64'));
 		if(form.target.ownerDocument.all.program[1].value === '' || form.target.ownerDocument.all.program[2].value === '' || Session.get('imgBase64') === 'undefined'){
 			toast('Necessário preencher os campos obrigatórios!', 4000);
 		}else{
@@ -40,9 +38,12 @@ Template.fileUpload.events({
 	    };
 	    fileReader.readAsDataURL(file);
 	}
+	
   }
 });
 
-Template.fileUpload.imgBase64 = function() {
-  return Session.get('imgBase64');
-};
+Template.fileUpload.helpers ({
+	'imgBase64': function(){
+		return Session.get('imgBase64');
+	}
+});
