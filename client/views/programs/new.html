@@ -23,7 +23,7 @@
 			  <form id="program" class="col s12">
 
 			    <div class="col s12">
-			    	 <label>Categoria</label>
+			    	 <label>Categoria *</label>
 					  <select>
 					    <option value="" disabled selected>Escolha a categoria</option>
 					    <option value="1">Domingo Aventura</option>
@@ -33,7 +33,7 @@
 			      <div class="input-field col s12">
 			      	<i class="mdi-action-account-circle prefix"></i>
 			        <input id="program_name" type="text" class="validate">
-			        <label for="program_name">Nome</label>
+			        <label for="program_name">Nome *</label>
 			      </div>
 
 			      <div class="input-field col s12">
@@ -69,8 +69,9 @@
 	<div class="file-field input-field">
 		<input class="file-path validate" type="text"/>
 		<div class="btn color-pattern">
-	        <span>LOGO</span>
+	        <span>LOGO *</span>
 	        <input type="file" name="imageFile" />
 	  	</div>
+  		<img src="{{imgBase64}}" width="200" height="200">
   	</div>
 </template>
