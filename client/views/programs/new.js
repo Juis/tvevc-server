@@ -3,6 +3,7 @@ Router.onBeforeAction(function(){
 	Session.set('getup__i', this.params.query.i);
 });
 
+// PROGRAM NEW PAGE
 Template.programNew.rendered = function () {
 	$('select').material_select();
 	if(Session.get('getup__i') !== 'undefined'){
@@ -51,6 +52,14 @@ Template.programNew.events({
 	}
 });
 
+// SELECT
+Template.programSelect.helpers({
+  "options": function(){
+  	return Category.find({status: 1});
+  }
+});
+
+// FILE UPLOAD
 Template.fileUpload.events({
   "change input[type='file']":function(event,template){
     var files=event.target.files;

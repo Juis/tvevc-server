@@ -1,12 +1,8 @@
 if (Meteor.isClient) {
-
-	Meteor.subscribe('programListarTudoAtivo');
-
-
-	var throwError = function(message) {
-  		Errors.insert({message: message})
-	};
-
+	Meteor.subscribe('programListAllActive');
+	Meteor.subscribe('programListAllDisabled');
+	Meteor.subscribe('categoryListAllActive');
+	Meteor.subscribe('categoryListAllDisabled');
 }
 
 if (Meteor.isServer) { Meteor.startup(function () {}); }

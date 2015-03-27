@@ -2404,7 +2404,7 @@ $(document).ready(function(){
     // Select Plugin
     $.fn.material_select = function (callback) {
       $(this).each(function(){
-        $select = $(this);
+        $select = $(this); 
 
         if ( $select.hasClass('browser-default') || $select.hasClass('initialized')) {
           return; // Continue to next (return false breaks out of entire loop)
