@@ -22,21 +22,8 @@
 				{{> programList}}
 			</div>
 
-			 <!-- Modal Structure -->
-			<div id="programRemove" class="modal modalRemove">
-				<div class="modal-content">
-				  <h4>Deletar program</h4>
-
-				  <p>Tem certeza disso? Se fizer isso não vamos poder reverter</p>
-				  
-				</div>
-				<div class="modal-footer">
-					<a class="waves-effect waves-light btn green">Confirmar</a>
-					<a class="waves-effect waves-light btn red">Cancelar</a>
-				</div>
-			</div>
-
-
+			{{> programDelete}}
+			
 		</div>
 
 	</div>
@@ -58,7 +45,8 @@
 				  	<a href="{{pathFor 'programNew' }}/?i={{_id}}">
 				  		<i class="mdi-image-edit"></i>
 				  	</a>
-				  	<a href="#programRemove" class="modal-trigger">
+				  	<a href="#" class="modal-trigger" delete="delete">
+				  		<input type="text" value="{{_id}}" id="programDelete" readonly="readonly" />
 				  		<i class="mdi-navigation-close"></i>
 				  	</a>
 			  	</div>
@@ -71,4 +59,20 @@
 
         </div>
     {{/each }}
+</template>
+
+<template name="programDelete">
+	<!-- Modal Structure -->
+	<div id="programRemove" class="modal modalRemove">
+		<div class="modal-content">
+		<h4>Deletar program</h4>
+
+		<p>Tem certeza disso? Se fizer isso não vamos poder reverter</p>
+		  
+		</div>
+		<div class="modal-footer">
+			<a class="waves-effect waves-light btn green">Confirmar</a>
+			<a class="waves-effect waves-light btn red">Cancelar</a>
+		</div>
+	</div>
 </template>

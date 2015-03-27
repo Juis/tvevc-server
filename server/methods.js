@@ -34,5 +34,11 @@ Meteor.methods({
     }else{
       //erro aqui
     }
+  },
+
+  'deleteProgram': function(data){
+    if(data[0] === 333){
+      Program.remove({_id:data[1]});
+    }
   }
 });

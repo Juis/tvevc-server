@@ -1,7 +1,6 @@
 Router.onBeforeAction(function(){
 	this.next();
 	Session.set('getup__i', this.params.query.i);
-
 });
 
 Template.programNew.rendered = function () {
