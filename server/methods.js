@@ -13,7 +13,7 @@ Meteor.methods({
   },
 
   'validateProgram': function(data){
-    if(data[1] === '' || data[2] === '' || data[4] === 'undefined'){
+    if(data[2] === '' || data[3] === '' || data[5] === 'undefined'){
       return false;//Meteor.throwError('Preencha os campos obrigatórios.');
     }else{
       return true;
@@ -22,7 +22,15 @@ Meteor.methods({
 
   'insertProgram': function(data){
     if(data[0] === 111 && Meteor.call('validateProgram', data)){
-        Program.insert({status:1, category_id:data[1], name:data[2], description:data[3], logo:data[4], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
+        Program.insert({status:1, category_id:data[2], name:data[3], description:data[4], logo:data[5], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
+    }else{
+      //erro aqui
+    }
+  },
+
+  'updateProgram': function(data){
+    if(data[0] === 222 && Meteor.call('validateProgram', data)){
+        Program.update({_id:data[1]},{$set: {category_id:data[2], name:data[3], description:data[4], logo:data[5], user_change:1, date_change:Meteor.call('dateNow')}});
     }else{
       //erro aqui
     }

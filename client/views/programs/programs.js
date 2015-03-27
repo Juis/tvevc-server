@@ -1,10 +1,8 @@
- Template.programs.rendered = function(){
+Template.programs.rendered = function(){
 
  $('.modal-trigger').leanModal();
 
- }
-
-Meteor.subscribe('programListarTudoAtivo');
+}
 
 Template.programList.helpers({
 	'programs': function(){

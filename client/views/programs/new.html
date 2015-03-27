@@ -4,7 +4,7 @@
 
 	<header class="top-container">
 		<h4>
-			<i class="mdi-content-add"></i> Novo Programa
+			<i class="mdi-content-add"></i>{{title}}
 		</h4>
 
 		<a href="{{pathFor 'programs' }}" class="waves-effect waves-light btn btn-model">
@@ -22,9 +22,11 @@
 
 			  <form id="program" class="col s12">
 
+		        <input id="program_id" type="text" readonly="readonly">
+
 			    <div class="col s12">
 			    	 <label>Categoria *</label>
-					  <select>
+					  <select id="program_category">
 					    <option value="" disabled selected>Escolha a categoria</option>
 					    <option value="1">Domingo Aventura</option>
 					  </select>
@@ -65,13 +67,17 @@
 
 </template>
 
+<template name="title">
+
+</template>
+
 <template name="fileUpload">
 	<div class="file-field input-field">
 		<input class="file-path validate" type="text"/>
 		<div class="btn color-pattern">
 	        <span>LOGO *</span>
-	        <input type="file" name="imageFile" />
+	        <input type="file" id="program_upload" name="imageFile" />
 	  	</div>
-  		<img src="{{imgBase64}}" width="200" height="200">
+  		<img src="{{imgBase64}}" id="program_imgBase64" width="200" height="200">
   	</div>
 </template>
