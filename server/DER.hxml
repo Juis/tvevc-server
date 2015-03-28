@@ -18,9 +18,8 @@
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
-    <row null="0" autoincrement="0" name="permission">
-      <datatype>BOOLEAN</datatype>
-      <default>0</default>
+    <row null="1" autoincrement="0" name="description">
+      <datatype>TEXT</datatype>
     </row>
     <row null="1" autoincrement="0" name="user_record">
       <datatype>VARCHAR(100)</datatype>
@@ -53,9 +52,8 @@
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
-    <row null="0" autoincrement="0" name="permission">
+    <row null="1" autoincrement="0" name="">
       <datatype>BOOLEAN</datatype>
-      <default>0</default>
     </row>
     <row null="1" autoincrement="0" name="user_record">
       <datatype>VARCHAR(100)</datatype>
@@ -98,9 +96,8 @@
       <datatype>SMALLINT</datatype>
       <default>0</default>
     </row>
-    <row null="0" autoincrement="0" name="permission">
+    <row null="1" autoincrement="0" name="">
       <datatype>BOOLEAN</datatype>
-      <default>0</default>
     </row>
     <row null="1" autoincrement="0" name="user_record">
       <datatype>VARCHAR(100)</datatype>
@@ -146,9 +143,8 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
-    <row null="0" autoincrement="0" name="permission">
+    <row null="1" autoincrement="0" name="">
       <datatype>BOOLEAN</datatype>
-      <default>0</default>
     </row>
     <row null="1" autoincrement="0" name="date_record">
       <datatype>TIMESTAMP WITH TIME ZONE</datatype>
@@ -166,7 +162,7 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>INTEGER</datatype>
       <relation table="program" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
     </row>
-    <row null="0" autoincrement="0" name="description">
+    <row null="1" autoincrement="0" name="">
       <datatype>VARCHAR(255)</datatype>
     </row>
     <row null="1" autoincrement="0" name="">
@@ -185,9 +181,8 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
-    <row null="0" autoincrement="0" name="permission">
-      <datatype>BOOLEAN</datatype>
-      <default>0</default>
+    <row null="0" autoincrement="0" name="description">
+      <datatype>TEXT</datatype>
     </row>
     <row null="1" autoincrement="0" name="user_record">
       <datatype>VARCHAR(100)</datatype>
@@ -217,16 +212,15 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>INTEGER</datatype>
       <relation table="poll" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
     </row>
-    <row null="0" autoincrement="0" name="description">
+    <row null="1" autoincrement="0" name="">
       <datatype>VARCHAR(255)</datatype>
     </row>
     <row null="1" autoincrement="0" name="status">
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
-    <row null="0" autoincrement="0" name="permission">
-      <datatype>BOOLEAN</datatype>
-      <default>0</default>
+    <row null="0" autoincrement="0" name="description">
+      <datatype>TEXT</datatype>
     </row>
     <row null="1" autoincrement="0" name="user_record">
       <datatype>VARCHAR(100)</datatype>
@@ -270,9 +264,8 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>BOOLEAN</datatype>
       <default>0</default>
     </row>
-    <row null="0" autoincrement="0" name="permission">
+    <row null="1" autoincrement="0" name="">
       <datatype>BOOLEAN</datatype>
-      <default>0</default>
     </row>
     <row null="1" autoincrement="0" name="user_record">
       <datatype>VARCHAR(100)</datatype>
