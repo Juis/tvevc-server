@@ -1,3 +1,0 @@
-Template.programShow.rendered = function () {
-	
-};

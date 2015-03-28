@@ -19,10 +19,46 @@
 		<div class="programs">
 
 			<div class="col s12 no-padding">
-				{{> programList}}
+			    {{#each programs}}
+					<div class="col s4">
+					
+						<div class="program card">
+				            <div class="card-image">
+				              <img src="{{img}}" width="100%" height="120">
+
+				             <div class="secondary-content actions-icons">
+							  	<a href="{{pathFor 'programUpdate' _id=this._id}}">
+							  		<i class="mdi-image-edit"></i>
+							  	</a>
+							  	<a href="#" class="modal-trigger" id="btnDelete">
+							  		<input type="text" value="{{_id}}" id="programDelete" readonly="readonly" style="display:none;" />
+							  		<i class="mdi-navigation-close"></i>
+							  	</a>
+						  	</div>
+
+				            </div>
+				            <div class="card-content">
+				              	<strong class="card-title">{{name}}</strong>
+				            </div>
+			            </div>
+
+			        </div>
+			    {{/each }}
 			</div>
 
-			{{> programDelete}}
+			<!-- Modal Structure -->
+			<div id="programRemove" class="modal modalRemove">
+				<div class="modal-content">
+				<h4>Deletar program</h4>
+
+				<p>Tem certeza disso? Se fizer isso não vamos poder reverter</p>
+				  
+				</div>
+				<div class="modal-footer">
+					<a class="waves-effect waves-light btn green">Confirmar</a>
+					<a class="waves-effect waves-light btn red">Cancelar</a>
+				</div>
+			</div>
 			
 		</div>
 
@@ -31,48 +67,4 @@
 
 </div>
 
-</template>
-
-<template name="programList">
-    {{#each programs}}
-		<div class="col s4">
-		
-			<div class="program card">
-	            <div class="card-image">
-	              <img src="{{logo}}">
-
-	             <div class="secondary-content actions-icons">
-				  	<a href="{{pathFor 'programNew' }}/?i={{_id}}">
-				  		<i class="mdi-image-edit"></i>
-				  	</a>
-				  	<a href="#" class="modal-trigger" delete="delete">
-				  		<input type="text" value="{{_id}}" id="programDelete" readonly="readonly" />
-				  		<i class="mdi-navigation-close"></i>
-				  	</a>
-			  	</div>
-
-	            </div>
-	            <div class="card-content">
-	              	<strong class="card-title">{{name}}</strong>
-	            </div>
-            </div>
-
-        </div>
-    {{/each }}
-</template>
-
-<template name="programDelete">
-	<!-- Modal Structure -->
-	<div id="programRemove" class="modal modalRemove">
-		<div class="modal-content">
-		<h4>Deletar program</h4>
-
-		<p>Tem certeza disso? Se fizer isso não vamos poder reverter</p>
-		  
-		</div>
-		<div class="modal-footer">
-			<a class="waves-effect waves-light btn green">Confirmar</a>
-			<a class="waves-effect waves-light btn red">Cancelar</a>
-		</div>
-	</div>
 </template>
