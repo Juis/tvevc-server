@@ -6,6 +6,7 @@
 - meteor add iron:router
 - ostrio:iron-router-helpers
 - meteor add xcv58:collection-api
+- meteor add chrismbeckett:toastr
 
 > Arquivo de modelagem DER na pasta server/
 
@@ -17,3 +18,5 @@
 - https://www.meteor.com/
 - https://github.com/xcv58/meteor-collectionapi
 - https://github.com/xcv58/meteor-collectionapi-demo/
+- https://github.com/chrismbeckett/meteor-toastr
+- http://codeseven.github.io/toastr/demo.html
