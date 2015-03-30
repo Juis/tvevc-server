@@ -1,5 +1,5 @@
 Template.programs.rendered = function(){
-
+	
  //$('.modal-trigger').leanModal();
  /*console.log(this.data);
  if(Router.current().params.success){

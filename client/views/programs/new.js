@@ -1,5 +1,18 @@
 // PROGRAM NEW PAGE
 Template.programNew.rendered = function () {
+
+	//testa se existe dados na collection local, se nao, envia pra pagina inicial de programa
+	if(Category.find().count() === 0){
+		Router.go('programs');
+	}
+
+	//preeche o select option de categoria
+	var categoryes = Category.find().map(function(a) {return [a._id, a.description]; });
+	for(var i in categoryes){
+		$("#program_category").append("<option value=\""+categoryes[i][0]+"\">"+categoryes[i][1]+"<option/>");
+		$(".dropdown-content").append("<li class=\"\"><span>"+categoryes[i][1]+"</span></li>");
+	}
+
 	$('select').material_select();
 };
 
@@ -13,17 +26,18 @@ Template.programNew.events({
 	'submit #programForm': function(form){
 		form.preventDefault();
 		if(form.target[2].value === '' || form.target[3].value === '' || Session.get('getup__form__imgBase64') === 'undefined'){
-			toast('Necessário preencher os campos obrigatórios!', 4000);
+			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
 		}else{
 			Meteor.call('insertProgram', [111, form.target[2].value, form.target[3].value, form.target[4].value, Session.get('getup__form__imgBase64')]);
 			
-			Router.go('programs', {success:"23"});
+			//remove os dados dos campos do form para evitar a duplicidade do registro
+			form.target[2].value = '';
+			form.target[3].value = '';
+			form.target[4].value = '';
+			Session.set('getup__form__imgBase64', '');
 
-
-				//function(){
-				//Session.set('getup__form__imgBase64', 'undefined');
-				//toast('Programa inserido com sucesso.', 4000, 'rounded');
-			//});
+			//mostra a mensagem de sucesso, com botao OK para confirmar e ir para a lista
+			toastr.success("Programa inserido com sucesso.<br /><a href=\"/programas\" class=\"btn clear\">Ok</a>", '', {"closeButton": true, "tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
 		}
 	},
 

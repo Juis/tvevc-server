@@ -1,8 +1,6 @@
 if (Meteor.isClient) {
-	Meteor.subscribe('programListAllActive');
-	Meteor.subscribe('programListAllDisabled');
-	Meteor.subscribe('categoryListAllActive');
-	Meteor.subscribe('categoryListAllDisabled');
+	Meteor.subscribe('program');
+	Meteor.subscribe('category');
 }
 
 if (Meteor.isServer) { Meteor.startup(function () {}); }
