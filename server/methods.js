@@ -46,7 +46,17 @@ Meteor.methods({
 // ANSWER
   'insertAnswer': function(data){
     if(data[0] === 111 && data[1] !== ''){
-      return Answer.insert({status:1, description:data[1], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
+      return Answer.insert({status:1, poll_id:'undefined', description:data[1], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
+    }else{
+      //erro aqui
+    }
+  },
+
+// POLL
+  'insertPoll': function(data){
+    if(data[0] === 111 && data[1] !== ''){
+      var pollId = Poll.insert({status:1, program_id:data[1], description:data[2], img:data[4], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
+      Answer.update({_id: { $in:data[3] }}, {$set: {poll_id:pollId}}, {multi:true});
     }else{
       //erro aqui
     }

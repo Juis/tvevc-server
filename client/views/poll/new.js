@@ -41,20 +41,21 @@ Template.pollNew.events({
 
 	'submit #pollForm': function(form){
 		form.preventDefault();
-		/*if(form.target[2].value === '' || form.target[3].value === '' || form.target[7].value === ''){
+		if(form.target[2].value === '' || form.target[3].value === '' || !Session.get('getup__form_answerIds')){
 			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
 		}else{
-			Meteor.call('insertPoll', [111, form.target[2].value, form.target[3].value, form.target[4].value, Session.get('getup__form__imgBase64')]);
+			Meteor.call('insertPoll', [111, form.target[2].value, form.target[3].value, Session.get('getup__form_answerIds'), Session.get('getup__form__imgBase64')]);
 			
 			//remove os dados dos campos do form para evitar a duplicidade do registro
 			form.target[2].value = '';
 			form.target[3].value = '';
 			form.target[4].value = '';
 			Session.set('getup__form__imgBase64', '');
+			Session.set('getup__form_answerIds', '');
 
 			//mostra a mensagem de sucesso, com botao OK para confirmar e ir para a lista
 			toastr.success("Enquete inserida com sucesso.<br /><a href=\"/enquetes\" class=\"btn clear\">Ok</a>", '', {"closeButton": true, "tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
-		}*/
+		}
 	},
 
 	"change input[type='file']": function(event,template){
