@@ -48,7 +48,7 @@ Template.programNew.events({
 	    }
 	    var file = files[0];
 	    if(file.size > (3*100000)){
-	    	toast('A logomarca ultrapassou o limite de 3mb.', 4000);
+	    	toastr.warning('A imagem ultrapassou o limite de 3mb.', '', {"progressBar": true});
 	    }else{
 
 		    var fileReader = new FileReader();

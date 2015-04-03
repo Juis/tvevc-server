@@ -20,6 +20,7 @@ Meteor.methods({
     }
   },
 
+// PROGRAM
   'insertProgram': function(data){
     if(data[0] === 111 && Meteor.call('validateProgram', data)){
         Program.insert({status:1, category_id:data[1], name:data[2], description:data[3], img:data[4], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
@@ -40,5 +41,14 @@ Meteor.methods({
     if(data[0] === 333){
       Program.remove({_id:data[1]});
     }
-  }
+  },
+
+// ANSWER
+  'insertAnswer': function(data){
+    if(data[0] === 111 && data[1] !== ''){
+      return Answer.insert({status:1, description:data[1], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
+    }else{
+      //erro aqui
+    }
+  },
 });
