@@ -2,6 +2,11 @@
 Template.pollNew.rendered = function () { 
 	Session.set('getup__form_answerIds', '');
 
+	//testa se existe dados na collection local, se nao, envia pra pagina inicial de enquete
+	if(Program.find().count() === 0){
+		Router.go('poll');
+	}
+
 	//preeche o select option de programa
 	var programs = Program.find().map(function(a) {return [a._id, a.name]; });
 	for(var i in programs){
@@ -36,6 +41,9 @@ Template.pollNew.events({
 			
 			//remove os dados dos campos do form para evitar a duplicidade do registro
 			form.target.ownerDocument.all.answerdescription.value = '';
+
+			//mostra a mensagem de sucesso
+			toastr.success("Resposta inserida com sucesso.", '', {"progressBar": true});
 		}
 	},
 
