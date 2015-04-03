@@ -1,12 +1,4 @@
-Template.programs.rendered = function(){
-	
- //$('.modal-trigger').leanModal();
- /*console.log(this.data);
- if(Router.current().params.success){
-	Session.set('getup__form__imgBase64', 'undefined');
-	toast('Programa inserido com sucesso.', 4000, 'rounded');
- }*/
-}
+Template.programs.rendered = function(){ }
 
 Template.programs.helpers({
 	'programs': function(){
