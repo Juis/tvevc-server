@@ -61,4 +61,18 @@ Meteor.methods({
       //erro aqui
     }
   },
+
+  'updatePoll': function(data){
+    if(data[0] === 222 && data[1] !== ''){
+      Poll.update({_id:data[1]},{$set: {program_id:data[2], description:data[3], img:data[4], img:data[5], user_change:1, date_change:Meteor.call('dateNow')}});
+    }else{
+      //erro aqui
+    }
+  },
+
+  'deletePoll': function(data){
+    if(data[0] === 333){
+      Poll.remove({_id:data[1]});
+    }
+  },
 });

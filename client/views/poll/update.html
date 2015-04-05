@@ -1,10 +1,10 @@
-<template name="pollShow">
+<template name="pollUpdate">
 
 <div class="container">
 
 	<header class="top-container">
 		<h4>
-			Enquete (x)
+			<i class="mdi-content-add"></i> Atualizar Enquete
 		</h4>
 
 		<a href="{{pathFor 'poll' }}" class="waves-effect waves-light btn btn-model">
@@ -18,7 +18,67 @@
 
 		<div class="poll">
 		
-		Enquete
+			<div class="row">
+
+			  <form id="pollForm" class="col s12">
+
+				<input id="poll_id" type="text" readonly="readonly">
+
+			    <div class="col s12">
+			    	 <label>Programa *</label>
+					  <select id="poll_program">
+					    <option value="" disabled selected>Escolha o programa</option>
+					  </select>
+			    </div>
+
+				<div class="input-field col s12">
+					<i class="mdi-action-account-circle prefix"></i>
+					<input id="poll_name" type="text" class="validate">
+					<label for="poll_name">Pergunta *</label>
+				</div>
+
+			      <div class="col s12">
+				      <div class="file-field input-field">
+					      <input class="file-path validate" type="text"/>
+					      <div class="btn color-pattern">
+					        <span>Adicionar Imagem</span>
+					        <input type="file" id="program_upload" name="imageFile" />
+					      </div>
+					      <img src="{{imgBase64}}" id="poll_imgBase64" width="200" height="200">
+					    </div>
+			      </div>
+
+			      <div class="col s12">
+				      <div class="section">
+				
+				      	<div class="input-field col s12">
+						    <input id="answerdescription" type="text" class="validate">
+				        	<label for="answerdescription">Resposta *</label>
+			        	</div>
+
+			        	<a href="#" id="addAnswer" class="add-answer">
+				      		<i class="mdi-content-add"></i>
+				      		<span>Adicionar Resposta</span>
+				      	</a>
+
+				      	{{#each answers}}
+				      	<div class="input-field col s12">
+						    <span>{{description}}</span>
+			        	</div>
+			        	{{/each }}
+
+				  	  </div>
+			      </div>
+
+			      <div class="btn-new col s12">
+			      	<button type="submit" class="waves-effect waves-light btn green">
+						Criar
+					</button>
+			      </div>
+
+			  </form>
+
+			</div>
 
 		</div>	
 

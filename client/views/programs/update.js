@@ -8,6 +8,7 @@ Template.programUpdate.rendered = function () {
 	if(Router.current().params._id !== null){
 
 		//preeche o select option de categoria
+		var activeSelected = '';
 		var categoryes = Category.find().map(function(a) {return [a._id, a.description]; });
 		for(var i in categoryes){
 			activeSelected = (this.data.collection._docs['_map'][Router.current().params._id]['category_id'] === categoryes[i][0])? ['active', 'selected'] : ['',''];
