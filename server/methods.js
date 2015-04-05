@@ -39,6 +39,24 @@ Meteor.methods({
 
   'deleteProgram': function(data){
     if(data[0] === 333){
+      var polls = answers = '';
+      polls = Poll.find({program_id:data[1]}).map(function(a) {return [a._id]; });
+
+      if(polls){
+
+        for(var p in polls){
+          answers = Answer.find({poll_id:polls[p][0]}).map(function(a) {return [a._id]; });
+          if(answers){
+
+            for(var a in answers){
+              Answer.remove({_id:answers[a][0]});
+            }
+          }
+
+          Poll.remove({_id:polls[p][0]});
+        }
+      }
+
       Program.remove({_id:data[1]});
     }
   },
@@ -72,6 +90,14 @@ Meteor.methods({
 
   'deletePoll': function(data){
     if(data[0] === 333){
+      answers = Answer.find({poll_id:data[1]}).map(function(a) {return [a._id]; });
+      if(answers){
+
+        for(var a in answers){
+          Answer.remove({_id:answers[a][0]});
+        }
+      }
+
       Poll.remove({_id:data[1]});
     }
   },
