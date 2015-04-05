@@ -20,6 +20,7 @@ Template.programUpdate.rendered = function () {
 		document.querySelector("#program_id").value = this.data.collection._docs['_map'][Router.current().params._id]['_id'];//programSearch[0]['_id'];
 		document.querySelector("#program_name").value = this.data.collection._docs['_map'][Router.current().params._id]['name'];//programSearch[0]['name'];
 		document.querySelector("#program_description").value = this.data.collection._docs['_map'][Router.current().params._id]['description'];//programSearch[0]['description'];
+		document.querySelector("#program_imgBase64").src = this.data.collection._docs['_map'][Router.current().params._id]['img'];//programSearch[0]['description'];
 		Session.get('getup__form__imgBase64', this.data.collection._docs['_map'][Router.current().params._id]['img']);//programSearch[0]['img']);
 	}
 
