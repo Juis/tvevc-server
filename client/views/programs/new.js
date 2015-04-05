@@ -28,6 +28,7 @@ Template.programNew.events({
 		if(form.target[2].value === '' || form.target[3].value === '' || Session.get('getup__form__imgBase64') === 'undefined'){
 			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
 		}else{
+			form.target[4].value = (form.target[4].value)? form.target[4].value : ' ';
 			Meteor.call('insertProgram', [111, form.target[2].value, form.target[3].value, form.target[4].value, Session.get('getup__form__imgBase64')]);
 			
 			//remove os dados dos campos do form para evitar a duplicidade do registro
