@@ -4,7 +4,7 @@ for(var i in collections){
     insert: function(userId, form){
       //var key = ((1 + Math.floor(1e15)) + new Date().getSeconds(7)).toString(36).toUpperCase();
       //return (form.permission === key)? true : false;
-      return false;
+      return true;
     },
     update: function(userId, form, fields, modifier){
       //var key = ((1 + Math.floor(1e15)) + new Date().getSeconds(7)).toString(36).toUpperCase();

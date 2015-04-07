@@ -35,13 +35,13 @@
 			      <div class="input-field col s12">
 			      	<i class="mdi-action-account-circle prefix"></i>
 			        <input id="program_name" type="text" class="validate">
-			        <label for="program_name">Nome *</label>
+			        <label for="program_name" class="active">Nome *</label>
 			      </div>
 
 			      <div class="input-field col s12">
 			        <i class="mdi-editor-mode-edit prefix"></i>
 			        <textarea id="program_description" class="materialize-textarea"></textarea>
-			        <label for="program_description">Descrição</label>
+			        <label for="program_description" class="active">Descrição</label>
 			      </div>
 
 			      <div class="col s12">
@@ -51,13 +51,15 @@
 					        <span>Adicionar Imagem</span>
 					        <input type="file" id="program_upload" name="imageFile" />
 					  	</div>
-				  		<img src="{{imgBase64}}" id="program_imgBase64" width="200" height="200">
+				  		<div class="img-upload">
+					      	<img src="{{imgBase64}}" id="poll_imgBase64" width="200" height="200">
+					    </div>
 				  	</div>
 			      </div>
 
 			      <div class="btn-new col s12">
 			      	<button type="submit" class="waves-effect waves-light btn green">
-						Criar
+						Atualizar
 					</button>
 			      </div>
 

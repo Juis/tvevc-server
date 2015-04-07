@@ -40,6 +40,14 @@ body {
 			}
 
 			// Menu
+			#mobile-demo {
+				li {
+					  a {
+						  height: 42px!important;
+	  					  line-height: 60px!important;
+	  				  }
+				}
+			}
 			.menu {
 				li {
 					a {
@@ -246,6 +254,20 @@ body {
 		text-align:left;
 	}
 
+	.file-field  {
+		.color-pattern {
+			width:100%;
+		}
+	}
+	.img-upload {
+		text-align:center;
+	}
+
+	.update-in {
+
+	}
+
+	#poll_id, #notifications_id, #program_id {display:none;}
 	.color-pattern {
 		background-color:#607d8b;
 	}

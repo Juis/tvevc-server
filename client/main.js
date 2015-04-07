@@ -3,6 +3,7 @@ if (Meteor.isClient) {
 	Meteor.subscribe('category');
 	Meteor.subscribe('poll');
 	Meteor.subscribe('answer');
+	Meteor.subscribe('notifications');
 }
 
 if (Meteor.isServer) { Meteor.startup(function () {}); }
