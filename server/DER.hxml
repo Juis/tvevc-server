@@ -4,11 +4,10 @@
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
-    <row null="0" autoincrement="0" name="category_id">
+    <row null="1" autoincrement="0" name="">
       <datatype>INTEGER</datatype>
-      <relation table="category" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
     </row>
-    <row null="0" autoincrement="0" name="logo">
+    <row null="0" autoincrement="0" name="img">
       <datatype>TEXT</datatype>
     </row>
     <row null="0" autoincrement="0" name="name">
@@ -37,11 +36,19 @@
       <datatype>TIMESTAMP WITH TIME ZONE</datatype>
       <default>NULL</default>
     </row>
+    <row null="1" autoincrement="0" name="">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
     <key name="" type="PRIMARY">
       <part>_id</part>
     </key>
   </table>
-  <table x="37" y="296" name="category" color="#FFFFFF" relation-color="#000000">
+  <table x="15" y="29" name="category" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -98,6 +105,13 @@
     </row>
     <row null="1" autoincrement="0" name="">
       <datatype>BOOLEAN</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="block_notify_all">
+      <datatype>CHAR(1)</datatype>
+      <default>0</default>
+    </row>
+    <row null="1" autoincrement="0" name="block_notify_specific">
+      <datatype>TEXT</datatype>
     </row>
     <row null="1" autoincrement="0" name="user_record">
       <datatype>VARCHAR(100)</datatype>
@@ -182,6 +196,9 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <default>0</default>
     </row>
     <row null="0" autoincrement="0" name="description">
+      <datatype>TEXT</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="img">
       <datatype>TEXT</datatype>
     </row>
     <row null="1" autoincrement="0" name="user_record">
@@ -281,6 +298,38 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
     </row>
     <row null="1" autoincrement="0" name="date_change">
       <datatype>TIMESTAMP WITH TIME ZONE</datatype>
+      <default>NULL</default>
+    </row>
+    <key name="" type="PRIMARY">
+      <part>_id</part>
+    </key>
+  </table>
+  <table x="169" y="30" name="notify" color="#FFFFFF" relation-color="#000000">
+    <row null="0" autoincrement="1" name="_id">
+      <datatype>SERIAL</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="date_begin">
+      <datatype>DATE</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="date_end">
+      <datatype>DATE</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="description">
+      <datatype>TEXT</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="user_record">
+      <datatype>VARCHAR</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="user_change">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="date_record">
+      <datatype>DATE</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="date_change">
+      <datatype>DATE</datatype>
       <default>NULL</default>
     </row>
     <key name="" type="PRIMARY">
