@@ -7,6 +7,7 @@
 - ostrio:iron-router-helpers
 - meteor add xcv58:collection-api
 - meteor add chrismbeckett:toastr
+- meteor add http
 
 > Arquivo de modelagem DER na pasta server/
 
