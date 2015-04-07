@@ -4,14 +4,12 @@
 //update : curl -H "X-Auth-Token: undefined" -X PUT -d "{\"\$set\":{\"name\":\"Alisson\"}}" http://localhost:3000/collectionapi/players/JSY5gHgKsQSBBSGDd
 //delete : curl -H "X-Auth-Token: undefined" -X DELETE http://localhost:3000/collectionapi/players/JSY5gHgKsQSBBSGDd
 
-var Players = new Meteor.Collection("players");
-
 if (Meteor.isServer) {
   Meteor.startup(function () {
 
     // All values listed below are default
     collectionApi = new CollectionAPI({
-      authToken: undefined,              // Require this string to be passed in on each request
+      authToken: '97f0ad9e24ca5e0408a269748dgetup',              // Require this string to be passed in on each request
       apiPath: 'collectionapi',          // API path prefix
       standAlone: false,                 // Run as a stand-alone HTTP(S) server
       allowCORS: false,                  // Allow CORS (Cross-Origin Resource Sharing)
@@ -23,21 +21,16 @@ if (Meteor.isServer) {
     });
 
     // Add the collection Players to the API "/players" path
-    collectionApi.addCollection(Players, 'players', {
+    collectionApi.addCollection(Program, 'program', {
       // All values listed below are default
-      authToken: undefined,                   // Require this string to be passed in on each request
+      //authToken: undefined,                   // Require this string to be passed in on each request
       authenticate: function(token, method, requestMetadata) {
-        console.log("authen");
-        console.log("token: " + token);
-        console.log("method: " + method);
-        console.log("requestMetadata: " + JSON.stringify(requestMetadata));
-        if (token === undefined) {
-          return true;
-        }
-        if (token === "97f0ad9e24ca5e0408a269748d7fe0a0") {
-          return false;
-        }
-        return true;
+        //console.log("authen");
+        //console.log("token: " + token);
+        //console.log("method: " + method);
+        //console.log("requestMetadata: " + JSON.stringify(requestMetadata));
+
+        return (token !== undefined)? true : false;
       },
       methods: ['POST','GET','PUT','DELETE'],  // Allow creating, reading, updating, and deleting
       before: {  // This methods, if defined, will be called before the POST/GET/PUT/DELETE actions are performed on the collection.
@@ -46,12 +39,12 @@ if (Meteor.isServer) {
         POST: function(obj, requestMetadata, returnObject) {
           // always set returnObject.success = true, if you want handle it by yourself!
           returnObject.success = true;
-
+console.log("post"+obj);
           // only allow obj to insert with 'id' key exists.
-          var hasId = obj.hasOwnProperty('id');
-          if (hasId) {
+          //var hasId = obj.hasOwnProperty('id');
+          //if (hasId) {
             try {
-              var id = Players.insert(obj);
+              var id = Program.insert(obj);
               returnObject.statusCode = 201;
               obj._id = id;
               returnObject.body = {
@@ -64,16 +57,16 @@ if (Meteor.isServer) {
                 error: e.toString()
               };
             }
-          } else {
-            returnObject.statusCode = 500;
-            returnObject.body = {error: 'no id'};
-          }
+          //} else {
+          //  returnObject.statusCode = 500;
+          //  returnObject.body = {error: 'no id'};
+          //}
           return true;
         },
         // GET: undefined,     // function(objs, requestMetadata, returnObject) {return true/false;},
         GET: function (objs, requestMetadata, returnObject) {
           returnObject.success = true;
-
+console.log("get: "+objs);
           // only expose obj with no _del or _del === false
           // You may need manually get objs if you pass in an invalid collection
           returnObject.statusCode = 200;
@@ -88,6 +81,7 @@ if (Meteor.isServer) {
             objs: filteredObjs
           };
           return true;
+          
         },
         // PUT: undefined,     // function(obj, newValues, requestMetadata, returnObject) {return true/false;},
         PUT: function(obj, newValues, requestMetadata, returnObject) {
@@ -104,7 +98,7 @@ if (Meteor.isServer) {
           }
 
           try {
-            var updatedObj = Players.update(obj._id, newValues);
+            var updatedObj = Program.update(obj._id, newValues);
             returnObject.statusCode = 200;
             returnObject.body = {
               method: 'PUT',
@@ -132,7 +126,7 @@ if (Meteor.isServer) {
           }
 
           try {
-            Players.update(obj._id, {
+            Program.update(obj._id, {
               "$set": {
                 "_del": true
               }
