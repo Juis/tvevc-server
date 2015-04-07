@@ -39,7 +39,6 @@ if (Meteor.isServer) {
         POST: function(obj, requestMetadata, returnObject) {
           // always set returnObject.success = true, if you want handle it by yourself!
           returnObject.success = true;
-console.log("post"+obj);
           // only allow obj to insert with 'id' key exists.
           //var hasId = obj.hasOwnProperty('id');
           //if (hasId) {
@@ -66,7 +65,6 @@ console.log("post"+obj);
         // GET: undefined,     // function(objs, requestMetadata, returnObject) {return true/false;},
         GET: function (objs, requestMetadata, returnObject) {
           returnObject.success = true;
-console.log("get: "+objs);
           // only expose obj with no _del or _del === false
           // You may need manually get objs if you pass in an invalid collection
           returnObject.statusCode = 200;
