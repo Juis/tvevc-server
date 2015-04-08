@@ -5,6 +5,7 @@ Template.pollNew.rendered = function () {
 	//testa se existe dados na collection local, se nao, envia pra pagina inicial de enquete
 	if(Program.find().count() === 0){
 		Router.go('poll');
+		toastr.warning("Necessario ter algum programa cadastrado.", '', {"progressBar": true});
 	}
 
 	//preeche o select option de programa
