@@ -1,5 +1,7 @@
 /*
-  111 => Dados vindo do formulario, sempre colocar no inicio do array data no cliente
+  111 => insert
+  222 => update
+  333 => delete
 */
 Meteor.methods({
 

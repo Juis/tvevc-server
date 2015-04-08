@@ -1,4 +1,4 @@
-var collections = [Category, Program, Content, User, Publicity, Poll, Answer];
+var collections = [Notify, Program, Content, User, Publicity, Poll, Answer];
 for(var i in collections){
   collections[i].allow({
     insert: function(userId, form){

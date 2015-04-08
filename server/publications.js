@@ -2,17 +2,14 @@ Meteor.publish('program', function() {
   return Program.find({}, {fields:{user_record:0, user_change:0, date_record:0, date_change:0}});
 });
 
-Meteor.publish('category', function() {
-  //return Category.find({status:1}, {fields:{user_record:0, user_change:0, date_record:0, date_change:0}});
-  return Category.find({});
+Meteor.publish('notify', function() {
+  return Notify.find({status:1}, {fields:{user_record:0, user_change:0, date_record:0, date_change:0}});
 });
 
 Meteor.publish('poll', function() {
-  //return Category.find({status:1}, {fields:{user_record:0, user_change:0, date_record:0, date_change:0}});
-  return Poll.find({});
+  return Poll.find({status:1}, {fields:{user_record:0, user_change:0, date_record:0, date_change:0}});
 });
 
 Meteor.publish('answer', function() {
-  //return Category.find({status:1}, {fields:{user_record:0, user_change:0, date_record:0, date_change:0}});
-  return Answer.find({});
+  return Answer.find({status:1}, {fields:{user_record:0, user_change:0, date_record:0, date_change:0}});
 });
