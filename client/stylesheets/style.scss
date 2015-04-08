@@ -27,15 +27,15 @@ body {
 
 		// Header Bar
 		.nav-wrapper {
-			background:#607d8b;
+			background: linear-gradient(to right, #28abd8 0%, #4a70ca 100%) repeat scroll 0 0 rgba(0, 0, 0, 0)!important;
 
 			// Logo
 			.brand-logo {
 				@media (min-width: 0) and (max-width: 990px) {  
-					img {margin:0!important;}
+					img {margin:-4px !important;width:75px!important;}
 				}
 				img {
-					  margin: 18px;width: 100px;
+					  margin: 18px;width: 68px;
 				}
 			}
 
@@ -64,10 +64,10 @@ body {
 		.top-container {
 			position:relative;margin-top:30px;width:100%;padding-bottom:10px;margin-bottom:20px;border-bottom:1px solid #e5e5e5;
 			.btn-model {
-				position:absolute;right:0;top:0;background:none!important;color:rgba(0, 0, 0, 0.87);box-shadow:none!important;-webkit-box-shadow:none!important;-moz-box-shadow:none!important;padding:0!important;
+				position:absolute;right:0;top:0;background:none!important;color:#28abd8;box-shadow:none!important;-webkit-box-shadow:none!important;-moz-box-shadow:none!important;padding:0!important;
 			}
 			.btn-add {
-				position:absolute;right:0;top:0;background-color:#43a047;
+				position:absolute;right:0;top:0;background-color:#fff;color:#28abd8;
 			}
 		}
 
@@ -127,7 +127,7 @@ body {
 			}
 		}
 		.btn-more {
-			margin-left: -90px;left: 50%;background-color:#607d8b;
+			margin-left: -90px;left: 50%;  background-color: #fff;color: #28abd8;
 		}
 	}
 
@@ -263,14 +263,17 @@ body {
 		text-align:center;
 	}
 
-	.update-in {
-
+	.btn-submit {
+		background:#28abd8;color:#fff;
 	}
-
+	.btn-submit-white {
+		background:#fff;color:#28abd8;
+	}
 	#poll_id, #notify_id, #program_id {display:none;}
-	.color-pattern {
-		background-color:#607d8b;
-	}
 
 }
+
+.pull-left {float:left;}
+
+.pull-right {float:right;}
 
