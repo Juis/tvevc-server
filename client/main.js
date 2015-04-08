@@ -1,8 +1,8 @@
 if (Meteor.isClient) {
-	var collections = ['notify', 'program', 'content', 'user', 'publicity', 'poll', 'answer'];
-	for(var i in collections){
-		Meteor.subscribe(collections[i]);
-	}
+	Meteor.subscribe('program');
+	Meteor.subscribe('notify');
+	Meteor.subscribe('poll');
+	Meteor.subscribe('answer');
 }
 
 if (Meteor.isServer) { Meteor.startup(function () {}); }
