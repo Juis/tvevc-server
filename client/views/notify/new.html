@@ -1,0 +1,66 @@
+<template name="notifyNew">
+
+<div class="container">
+
+	<header class="top-container">
+		<h4>
+			<i class="mdi-content-add"></i> Nova Notificação
+		</h4>
+
+		<a href="{{pathFor 'notify' }}" class="waves-effect waves-light btn btn-model">
+			<i class="mdi-hardware-keyboard-backspace left"></i>
+			Voltar
+		</a>
+
+	</header>
+
+	<div class="content-container row">
+
+		<div class="poll notify">
+		
+			<div class="row">
+
+			  <form id="notifyForm" class="col s12">
+
+				<input id="notify_id" type="text" readonly="readonly">
+
+				<div class="input-field col s12">
+					<i class="mdi-action-account-circle prefix"></i>
+					<input id="notify_name" type="text" class="validate">
+					<label for="notify_name">Mensagem</label>
+				</div>
+
+				<div class="col s12">
+
+					<div class="input-field col s6 no-padding">
+						<i class="mdi-notify-event-available prefix"></i>
+						<input id="notify_date_start" type="text" class="validate" data-vm-mask-date-begin>
+						<label for="notify_date_start">Data Começo</label>
+					</div>
+
+					<div class="input-field col s6 no-padding">
+						<i class="mdi-notify-event-busy prefix"></i>
+						<input id="notify_date_end" type="text" class="validate" data-vm-mask-date-end>
+						<label for="notify_date_end">Data Saída</label>
+					</div>
+
+				</div>
+
+			      <div class="btn-new col s12">
+			      	<button type="submit" class="waves-effect waves-light btn green">
+						Enviar
+					</button>
+			      </div>
+
+			  </form>
+
+			</div>
+
+		</div>	
+
+	</div>
+
+
+</div>
+
+</template>

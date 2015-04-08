@@ -4593,106 +4593,106 @@ span.badge {
 .mdi-navigation-unfold-more:before {
   content: "\e8a6"; }
 
-.mdi-notification-adb:before {
+.mdi-notify-adb:before {
   content: "\e8a7"; }
 
-.mdi-notification-bluetooth-audio:before {
+.mdi-notify-bluetooth-audio:before {
   content: "\e8a8"; }
 
-.mdi-notification-disc-full:before {
+.mdi-notify-disc-full:before {
   content: "\e8a9"; }
 
-.mdi-notification-dnd-forwardslash:before {
+.mdi-notify-dnd-forwardslash:before {
   content: "\e8aa"; }
 
-.mdi-notification-do-not-disturb:before {
+.mdi-notify-do-not-disturb:before {
   content: "\e8ab"; }
 
-.mdi-notification-drive-eta:before {
+.mdi-notify-drive-eta:before {
   content: "\e8ac"; }
 
-.mdi-notification-event-available:before {
+.mdi-notify-event-available:before {
   content: "\e8ad"; }
 
-.mdi-notification-event-busy:before {
+.mdi-notify-event-busy:before {
   content: "\e8ae"; }
 
-.mdi-notification-event-note:before {
+.mdi-notify-event-note:before {
   content: "\e8af"; }
 
-.mdi-notification-folder-special:before {
+.mdi-notify-folder-special:before {
   content: "\e8b0"; }
 
-.mdi-notification-mms:before {
+.mdi-notify-mms:before {
   content: "\e8b1"; }
 
-.mdi-notification-more:before {
+.mdi-notify-more:before {
   content: "\e8b2"; }
 
-.mdi-notification-network-locked:before {
+.mdi-notify-network-locked:before {
   content: "\e8b3"; }
 
-.mdi-notification-phone-bluetooth-speaker:before {
+.mdi-notify-phone-bluetooth-speaker:before {
   content: "\e8b4"; }
 
-.mdi-notification-phone-forwarded:before {
+.mdi-notify-phone-forwarded:before {
   content: "\e8b5"; }
 
-.mdi-notification-phone-in-talk:before {
+.mdi-notify-phone-in-talk:before {
   content: "\e8b6"; }
 
-.mdi-notification-phone-locked:before {
+.mdi-notify-phone-locked:before {
   content: "\e8b7"; }
 
-.mdi-notification-phone-missed:before {
+.mdi-notify-phone-missed:before {
   content: "\e8b8"; }
 
-.mdi-notification-phone-paused:before {
+.mdi-notify-phone-paused:before {
   content: "\e8b9"; }
 
-.mdi-notification-play-download:before {
+.mdi-notify-play-download:before {
   content: "\e8ba"; }
 
 .mdi-notification-play-install:before {
   content: "\e8bb"; }
 
-.mdi-notification-sd-card:before {
+.mdi-notify-sd-card:before {
   content: "\e8bc"; }
 
-.mdi-notification-sim-card-alert:before {
+.mdi-notify-sim-card-alert:before {
   content: "\e8bd"; }
 
-.mdi-notification-sms:before {
+.mdi-notify-sms:before {
   content: "\e8be"; }
 
-.mdi-notification-sms-failed:before {
+.mdi-notify-sms-failed:before {
   content: "\e8bf"; }
 
-.mdi-notification-sync:before {
+.mdi-notify-sync:before {
   content: "\e8c0"; }
 
-.mdi-notification-sync-disabled:before {
+.mdi-notify-sync-disabled:before {
   content: "\e8c1"; }
 
-.mdi-notification-sync-problem:before {
+.mdi-notify-sync-problem:before {
   content: "\e8c2"; }
 
-.mdi-notification-system-update:before {
+.mdi-notify-system-update:before {
   content: "\e8c3"; }
 
-.mdi-notification-tap-and-play:before {
+.mdi-notify-tap-and-play:before {
   content: "\e8c4"; }
 
-.mdi-notification-time-to-leave:before {
+.mdi-notify-time-to-leave:before {
   content: "\e8c5"; }
 
-.mdi-notification-vibration:before {
+.mdi-notify-vibration:before {
   content: "\e8c6"; }
 
-.mdi-notification-voice-chat:before {
+.mdi-notify-voice-chat:before {
   content: "\e8c7"; }
 
-.mdi-notification-vpn-lock:before {
+.mdi-notify-vpn-lock:before {
   content: "\e8c8"; }
 
 .mdi-social-cake:before {
@@ -4713,19 +4713,19 @@ span.badge {
 .mdi-social-mood:before {
   content: "\e8ce"; }
 
-.mdi-social-notifications:before {
+.mdi-social-notify:before {
   content: "\e8cf"; }
 
-.mdi-social-notifications-none:before {
+.mdi-social-notify-none:before {
   content: "\e8d0"; }
 
-.mdi-social-notifications-off:before {
+.mdi-social-notify-off:before {
   content: "\e8d1"; }
 
-.mdi-social-notifications-on:before {
+.mdi-social-notify-on:before {
   content: "\e8d2"; }
 
-.mdi-social-notifications-paused:before {
+.mdi-social-notify-paused:before {
   content: "\e8d3"; }
 
 .mdi-social-pages:before {
