@@ -26,6 +26,12 @@
 	  		<span>Enquetes</span>
 	  	</a>
 	  </li>
+  	  <li class="{{ isActiveRoute 'puser|userNew|userUpdate' }}">
+	  	<a href="{{pathFor 'user' }}">
+	  		<i class="mdi-action-question-answer"></i>
+	  		<span>Usuário</span>
+	  	</a>
+	  </li>
 	</ul>
 	<ul class="side-nav" id="mobile-demo">
 	  <li class="{{ isActiveRoute 'index' }}">
@@ -50,6 +56,12 @@
 	  	<a href="{{pathFor 'poll' }}">
 	  		<i class="mdi-action-question-answer"></i>
 	  		<span>Enquetes</span>
+	  	</a>
+	  </li>
+	  <li class="{{ isActiveRoute 'user|userNew|userUpdate' }}">
+	  	<a href="{{pathFor 'user' }}">
+	  		<i class="mdi-action-question-answer"></i>
+	  		<span>Usuário</span>
 	  	</a>
 	  </li>
 	</ul>
