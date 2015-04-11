@@ -82,7 +82,7 @@
       <part>_id</part>
     </key>
   </table>
-  <table x="712" y="7" name="user" color="#FFFFFF" relation-color="#000000">
+  <table x="760" y="38" name="user" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -221,7 +221,7 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <part>_id</part>
     </key>
   </table>
-  <table x="711" y="512" name="answer" color="#FFFFFF" relation-color="#000000">
+  <table x="496" y="686" name="answer" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -321,6 +321,46 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <datatype>VARCHAR</datatype>
     </row>
     <row null="1" autoincrement="0" name="user_change">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="date_record">
+      <datatype>DATE</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="date_change">
+      <datatype>DATE</datatype>
+      <default>NULL</default>
+    </row>
+    <key name="" type="PRIMARY">
+      <part>_id</part>
+    </key>
+  </table>
+  <table x="783" y="496" name="pollUser" color="#FFFFFF" relation-color="#000000">
+    <row null="0" autoincrement="1" name="_id">
+      <datatype>SERIAL</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="poll_id">
+      <datatype>INTEGER</datatype>
+      <relation table="poll" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
+    </row>
+    <row null="0" autoincrement="0" name="answer_id">
+      <datatype>INTEGER</datatype>
+      <relation table="answer" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
+    </row>
+    <row null="0" autoincrement="0" name="user_id">
+      <datatype>INTEGER</datatype>
+      <relation table="user" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
+    </row>
+    <row null="1" autoincrement="0" name="">
+      <datatype>VARCHAR</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="status">
       <datatype>VARCHAR(100)</datatype>
       <default>NULL</default>
     </row>
