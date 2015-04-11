@@ -1,13 +1,13 @@
-<template name="notify">
+<template name="user">
 
 <div class="container">
 
 	<header class="top-container">
 		<h4>
-			Notificações
+			Usuários
 		</h4>
 
-		<a href="{{pathFor 'notifyNew' }}" class="waves-effect waves-light btn btn-add">
+		<a href="{{pathFor 'userNew' }}" class="waves-effect waves-light btn btn-add">
 			<i class="mdi-content-add left"></i>
 			NOVO
 		</a>
@@ -16,12 +16,12 @@
 
 	<div class="content-container row">
 
-		<div class="poll notifyNew">
+		<div class="poll userNew">
 		
 			<div class="col s12">
 
 				<div class="collection">
-					{{#each notifyes}}
+					{{#each users}}
 					<div class="collection-item avatar">
 					
 					  <div class="item-inner collapsible-header">
@@ -30,12 +30,12 @@
 						  <p class="date">Começo: {{date_begin}} <br /> Saída: {{date_end}}</p>
 						  <div class="secondary-content actions-icons">
 						  	
-						  	<a href="{{pathFor 'notifyUpdate' _id=this._id}}">
+						  	<a href="{{pathFor 'userUpdate' _id=this._id}}">
 						  		<i class="mdi-image-edit"></i>
 						  	</a>
 
 							<a href="#" class="modal-trigger" id="btnDelete">
-						  		<input type="text" value="{{_id}}" id="notifyDelete" readonly="readonly" style="display:none;" />
+						  		<input type="text" value="{{_id}}" id="userDelete" readonly="readonly" style="display:none;" />
 						  		<i class="mdi-navigation-close"></i>
 						  	</a>
 						  </div>

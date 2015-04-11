@@ -1,15 +1,14 @@
-Template.notifyNew.rendered = function () {
-    VMasker(this.find("[data-vm-mask-date-begin]")).maskPattern("99/99/9999");
-    VMasker(this.find("[data-vm-mask-date-end]")).maskPattern("99/99/9999");
+Template.userNew.rendered = function () {
+	$('select').material_select();
 }
 
-Template.notifyNew.events({ 
-	'submit #notifyForm': function(form){
+Template.userNew.events({ 
+	'submit #userForm': function(form){
 		form.preventDefault();
 		if(form.target[1].value === '' || form.target[2].value === '' || form.target[3].value === ''){
 			toastr.warning("Preecha os campos obrigatorios.", '', {"progressBar": true});
 		}else{
-			Meteor.call('insertNotify', [111, form.target[1].value, form.target[2].value, form.target[3].value]);
+			Meteor.call('insertUser', [111, form.target[1].value, form.target[2].value, form.target[3].value]);
 			
 			//remove os dados dos campos do form para evitar a duplicidade do registro
 			form.target[1].value = form.target[2].value = form.target[3].value = '';

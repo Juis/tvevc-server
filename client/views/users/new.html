@@ -1,13 +1,13 @@
-<template name="notifyNew">
+<template name="userNew">
 
 <div class="container">
 
 	<header class="top-container">
 		<h4>
-			<i class="mdi-content-add"></i> Nova Notificação
+			<i class="mdi-content-add"></i> Novo Usuário
 		</h4>
 
-		<a href="{{pathFor 'notify' }}" class="waves-effect waves-light btn btn-model">
+		<a href="{{pathFor 'user' }}" class="waves-effect waves-light btn btn-model">
 			<i class="mdi-hardware-keyboard-backspace left"></i>
 			Voltar
 		</a>
@@ -16,39 +16,47 @@
 
 	<div class="content-container row">
 
-		<div class="poll notify">
+		<div class="poll user">
 		
 			<div class="row">
 
-			  <form id="notifyForm" class="col s12">
+			  <form id="userForm" class="col s12">
 
-				<input id="notify_id" type="text" readonly="readonly">
+				<input id="user_id" type="text" readonly="readonly">
 
 				<div class="input-field col s12">
-					<i class="mdi-action-account-circle prefix"></i>
-					<input id="notify_name" type="text" class="validate">
-					<label for="notify_name">Mensagem</label>
+					<input id="user_name" type="text" class="validate">
+					<label for="user_name">Nome *</label>
+				</div>
+
+				<div class="input-field col s12">
+					<input id="user_email" type="text" class="validate">
+					<label for="user_email">Email *</label>
+				</div>
+
+				<div class="input-field col s12">
+					<input id="user_password" type="password" class="validate">
+					<label for="user_password">Senha *</label>
 				</div>
 
 				<div class="col s12">
+			    	 <label>Nível de Acesso *</label>
+					  <select id="user_nivel">
+					    <option value="" disabled selected>Escolha o nível</option>
+					    <option value="0" >Aplicativo</option>
+					    <option value="1" >Sistema</option>
+					    <option value="2" >Administrador</option>
+					  </select>
+			    </div>
 
-					<div class="input-field col s6 no-padding">
-						<i class="mdi-notify-event-available prefix"></i>
-						<input id="notify_date_start" type="text" class="validate" data-vm-mask-date-begin>
-						<label for="notify_date_start">Data Começo</label>
-					</div>
-
-					<div class="input-field col s6 no-padding">
-						<i class="mdi-notify-event-busy prefix"></i>
-						<input id="notify_date_end" type="text" class="validate" data-vm-mask-date-end>
-						<label for="notify_date_end">Data Saída</label>
-					</div>
-
+				<div class="input-field col s12">
+					<input id="user_block_all_notify" type="checkbox" class="validate">
+					<label for="user_block_all_notify">Bloquear todas as notificações?</label>
 				</div>
 
 			      <div class="btn-new col s12">
 			      	<button type="submit" class="waves-effect waves-light btn btn-submit pull-right" style="width:100%;">
-						Enviar
+						Criar
 					</button>
 			      </div>
 

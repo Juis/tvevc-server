@@ -1,4 +1,4 @@
-Template.notifyUpdate.rendered = function(){
+Template.userUpdate.rendered = function(){
 	var notify_id = Router.current().params._id;
 	if(notify_id !== null){
 		document.querySelector("#notify_id").value = this.data.collection._docs['_map'][notify_id]['_id'];//programSearch[0]['_id'];
@@ -8,13 +8,13 @@ Template.notifyUpdate.rendered = function(){
 	}
 }
 
-Template.notifyUpdate.events({
+Template.userUpdate.events({
 	'submit #notifyForm': function(form){
 		form.preventDefault();
 		if(form.target[1].value === '' || form.target[2].value === '' || form.target[3].value === ''){
 			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
 		}else{
-			Meteor.call('updateNotify', [222, form.target[0].value, form.target[1].value, form.target[2].value, form.target[3].value]);
+			Meteor.call('updateUser', [222, form.target[0].value, form.target[1].value, form.target[2].value, form.target[3].value]);
 			toastr.success("Notificacao atualizada com sucesso.", '', {"progressBar": true});
 		}
 	},
