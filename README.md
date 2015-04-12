@@ -9,6 +9,7 @@
 - meteor add chrismbeckett:toastr
 - meteor add http
 - meteor add bankfacil:vanilla-masker
+- meteor add jparker:crypto-md5
 
 > Arquivo de modelagem DER na pasta server/
 
@@ -23,3 +24,4 @@
 - https://github.com/chrismbeckett/meteor-toastr
 - http://codeseven.github.io/toastr/demo.html
 - https://github.com/BankFacil/vanilla-masker
+- https://atmospherejs.com/jparker/crypto-md5
