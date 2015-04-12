@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sql title="" gridSize="10,10" fk_template="%f" cascadeDeleteFk="true" openEditWindowAfterAddTable="false" displayFieldType="false" defaultTableColor="#FFFFFF" defaultRelationColor="#000000" databaseType="postgresql" dataTypes="[object Object]" defaultType="VARCHAR" showGrid="false" alignToGrid="false" svgNS="http://www.w3.org/2000/svg" drawLinesOnDrag="false" defaultFkUpdate="CASCADE" defaultFkDelete="CASCADE" fkActions="CASCADE,RESTRICT,NO ACTION" autoAlignGap="10" highlightTime="500" displayFkLines="true">
-  <table x="272" y="246" name="program" color="#FFFFFF" relation-color="#000000">
+  <table x="271" y="246" name="program" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -52,7 +52,7 @@
       <part>_id</part>
     </key>
   </table>
-  <table x="15" y="29" name="category" color="#FFFFFF" relation-color="#000000">
+  <table x="14" y="29" name="category" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -86,7 +86,7 @@
       <part>_id</part>
     </key>
   </table>
-  <table x="760" y="38" name="user" color="#FFFFFF" relation-color="#000000">
+  <table x="759" y="38" name="user" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -138,7 +138,7 @@
       <part>_id</part>
     </key>
   </table>
-  <table x="501" y="57" name="content" color="#FFFFFF" relation-color="#000000">
+  <table x="500" y="57" name="content" color="#FFFFFF" relation-color="#000000">
     <comment>Aqui ira poder salvar:
 &gt; texto
 &gt; imagem
@@ -173,7 +173,7 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <part>_id</part>
     </key>
   </table>
-  <table x="499" y="473" name="poll" color="#FFFFFF" relation-color="#000000">
+  <table x="498" y="473" name="poll" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -206,6 +206,14 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
     <row null="1" autoincrement="0" name="img">
       <datatype>TEXT</datatype>
     </row>
+    <row null="1" autoincrement="0" name="">
+      <datatype>DATE</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="">
+      <datatype>DATE</datatype>
+      <default>NULL</default>
+    </row>
     <row null="1" autoincrement="0" name="user_record">
       <datatype>VARCHAR(100)</datatype>
       <default>NULL</default>
@@ -226,7 +234,7 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <part>_id</part>
     </key>
   </table>
-  <table x="496" y="686" name="answer" color="#FFFFFF" relation-color="#000000">
+  <table x="499" y="717" name="answer" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -264,7 +272,7 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <part>_id</part>
     </key>
   </table>
-  <table x="500" y="239" name="publicity" color="#FFFFFF" relation-color="#000000">
+  <table x="499" y="239" name="publicity" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -309,14 +317,14 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <part>_id</part>
     </key>
   </table>
-  <table x="169" y="30" name="notify" color="#FFFFFF" relation-color="#000000">
+  <table x="168" y="30" name="notify" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
-    <row null="0" autoincrement="0" name="date_begin">
+    <row null="1" autoincrement="0" name="">
       <datatype>DATE</datatype>
     </row>
-    <row null="0" autoincrement="0" name="date_end">
+    <row null="1" autoincrement="0" name="">
       <datatype>DATE</datatype>
     </row>
     <row null="0" autoincrement="0" name="description">
@@ -341,7 +349,7 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <part>_id</part>
     </key>
   </table>
-  <table x="783" y="496" name="pollUser" color="#FFFFFF" relation-color="#000000">
+  <table x="782" y="496" name="pollUser" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -381,7 +389,7 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <part>_id</part>
     </key>
   </table>
-  <table x="999" y="53" name="level" color="#FFFFFF" relation-color="#000000">
+  <table x="998" y="53" name="level" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
