@@ -19,10 +19,11 @@ Template.pollUpdate.rendered = function(){
 		}
 
 		//preenche os outros campos
-		document.querySelector("#poll_id").value = this.data.collection._docs['_map'][enquete_id]['_id'];//programSearch[0]['_id'];
-		document.querySelector("#poll_name").value = this.data.collection._docs['_map'][enquete_id]['description'];//programSearch[0]['name'];
-		document.querySelector("#poll_imgBase64").src = this.data.collection._docs['_map'][enquete_id]['img'];//programSearch[0]['description'];
-		Session.get('getup__form__imgBase64', this.data.collection._docs['_map'][enquete_id]['img']);//programSearch[0]['img']);
+		document.querySelector("#poll_id").value = this.data.collection._docs['_map'][enquete_id]['_id'];
+		document.querySelector("#poll_name").value = this.data.collection._docs['_map'][enquete_id]['description'];
+		document.querySelector("#poll_active").checked = (this.data.collection._docs['_map'][enquete_id]['status'] === 1)? true : false;
+		document.querySelector("#poll_imgBase64").src = this.data.collection._docs['_map'][enquete_id]['img'];
+		Session.get('getup__form__imgBase64', this.data.collection._docs['_map'][enquete_id]['img']);
 		
 		//preeche as respostas da enquete
 		var answers = Answer.find({poll_id:enquete_id}).map(function(a) {return [a._id, a.description]; });
@@ -64,7 +65,17 @@ Template.pollUpdate.events({
 		if(form.target[2].value === '' || form.target[3].value === '' || !Session.get('getup__form_answerIds')){
 			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
 		}else{
-			Meteor.call('updatePoll', [222, form.target[0].value, form.target[2].value, form.target[3].value, Session.get('getup__form_answerIds'), Session.get('getup__form__imgBase64')]);
+			notDisablePoll = 0;
+			if(form.target[5].ownerDocument.all.poll_active.checked === true){
+				// Deixar somente uma enquete ativa por programa
+				searchPoll = Poll.find({status:1, program_id:form.target[2].value}).map(function(a) {return [a._id]; });
+				if(searchPoll.length > 0){
+					Meteor.call('updateStatusPoll', [222, searchPoll[0][0], 0]);
+				}
+				notDisablePoll = 1;
+			}
+
+			Meteor.call('updatePoll', [222, form.target[0].value, form.target[2].value, form.target[3].value, Session.get('getup__form_answerIds'), Session.get('getup__form__imgBase64'), notDisablePoll]);
 			toastr.success("Enquete atualizada com sucesso.", '', {"progressBar": true});
 		}
 	},

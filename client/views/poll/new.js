@@ -1,6 +1,7 @@
 // POLL NEW PAGE
 Template.pollNew.rendered = function () { 
 	Session.set('getup__form_answerIds', '');
+	Session.set('getup__form__pollId', '');
 
 	//testa se existe dados na collection local, se nao, envia pra pagina inicial de enquete
 	if(Program.find().count() === 0){
@@ -53,15 +54,34 @@ Template.pollNew.events({
 		if(form.target[2].value === '' || form.target[3].value === '' || !Session.get('getup__form_answerIds')){
 			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
 		}else{
-			Meteor.call('insertPoll', [111, form.target[2].value, form.target[3].value, Session.get('getup__form_answerIds'), Session.get('getup__form__imgBase64')]);
-			
-			//remove os dados dos campos do form para evitar a duplicidade do registro
-			form.target[2].value = form.target[3].value = '';
-			Session.set('getup__form__imgBase64', '');
-			Session.set('getup__form_answerIds', '');
+			var searchPoll = '';
 
-			//mostra a mensagem de sucesso, com botao OK para confirmar e ir para a lista
-			toastr.success("Enquete inserida com sucesso.<br /><a href=\"/enquetes\" class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Ok</a>", '', {"tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
+			//verificar se ja existe uma enquete com a mesma pergunta
+			searchPoll = Poll.find({description:form.target[3].value}).map(function(a) {return [a._id]; });
+			if(searchPoll.length > 0){
+				Session.set('getup__form__pollId', searchPoll[0][0]);
+				Session.set('getup__form__programId', form.target[2].value);
+				toastr.warning("Já existe uma enquete registrada com esta pergunta, deseja ativa-lá?<br /><a href=\"/enquetes\" class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Sim</a><a href=\"#\" class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Não</a>", '', {"progressBar": true});
+			}else{
+
+				// Deixar somente uma enquete ativa por programa
+				searchPoll = Poll.find({status:1, program_id:form.target[2].value}).map(function(a) {return [a._id]; });
+				if(searchPoll.length > 0){
+					Meteor.call('updateStatusPoll', [222, searchPoll[0][0], 0]);
+				}
+
+				// insere a nova enquete ativa
+				Meteor.call('insertPoll', [111, form.target[2].value, form.target[3].value, Session.get('getup__form_answerIds'), Session.get('getup__form__imgBase64')]);
+				
+				//remove os dados dos campos do form para evitar a duplicidade do registro
+				form.target[2].value = form.target[3].value = '';
+				Session.set('getup__form__imgBase64', '');
+				Session.set('getup__form_answerIds', '');
+				Session.set('getup__form__pollId', '');
+
+				//mostra a mensagem de sucesso, com botao OK para confirmar e ir para a lista
+				toastr.success("Enquete inserida com sucesso.<br /><a href=\"/enquetes\" class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Ok</a>", '', {"tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
+			}
 		}
 	},
 

@@ -11,7 +11,15 @@ Meteor.methods({
 
   'updatePoll': function(data){
     if(data[0] === 222 && data[1] !== ''){
-      Poll.update({_id:data[1]},{$set: {program_id:data[2], description:data[3], img:data[4], img:data[5], user_change:1, date_change:Meteor.call('dateNow')}});
+      Poll.update({_id:data[1]},{$set: {program_id:data[2], description:data[3], img:data[4], img:data[5], status:data[6], user_change:1, date_change:Meteor.call('dateNow')}});
+    }else{
+      //erro aqui
+    }
+  },
+
+  'updateStatusPoll': function(data){
+    if(data[0] === 222 && data[1] !== ''){
+      Poll.update({_id:data[1]},{$set: {status:data[2], user_change:1, date_change:Meteor.call('dateNow')}});
     }else{
       //erro aqui
     }
