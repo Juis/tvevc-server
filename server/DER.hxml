@@ -7,8 +7,12 @@
     <row null="1" autoincrement="0" name="">
       <datatype>INTEGER</datatype>
     </row>
-    <row null="0" autoincrement="0" name="img">
+    <row null="0" autoincrement="0" name="img_topo">
       <datatype>TEXT</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="img_avatar">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
     </row>
     <row null="0" autoincrement="0" name="name">
       <datatype>VARCHAR(100)</datatype>
@@ -99,9 +103,10 @@
       <datatype>VARCHAR(100)</datatype>
       <default>0</default>
     </row>
-    <row null="1" autoincrement="0" name="level">
-      <datatype>SMALLINT</datatype>
+    <row null="1" autoincrement="0" name="level_id">
+      <datatype>INTEGER</datatype>
       <default>0</default>
+      <relation table="level" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
     </row>
     <row null="1" autoincrement="0" name="">
       <datatype>BOOLEAN</datatype>
@@ -361,6 +366,37 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <default>NULL</default>
     </row>
     <row null="1" autoincrement="0" name="status">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="date_record">
+      <datatype>DATE</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="date_change">
+      <datatype>DATE</datatype>
+      <default>NULL</default>
+    </row>
+    <key name="" type="PRIMARY">
+      <part>_id</part>
+    </key>
+  </table>
+  <table x="999" y="53" name="level" color="#FFFFFF" relation-color="#000000">
+    <row null="0" autoincrement="1" name="_id">
+      <datatype>SERIAL</datatype>
+    </row>
+    <row null="0" autoincrement="0" name="description">
+      <datatype>VARCHAR(100)</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="status">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="user_record">
+      <datatype>VARCHAR(100)</datatype>
+      <default>NULL</default>
+    </row>
+    <row null="1" autoincrement="0" name="user_change">
       <datatype>VARCHAR(100)</datatype>
       <default>NULL</default>
     </row>
