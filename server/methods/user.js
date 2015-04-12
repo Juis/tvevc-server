@@ -1,3 +1,5 @@
+//Level.insert({status:1, description:"Administrador"});Level.insert({status:1, description:"Sistema"});Level.insert({status:1, description:"Aplicativo"});
+
 Meteor.methods({
 
 	'insertUser': function(data){

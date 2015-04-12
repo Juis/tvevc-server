@@ -1,5 +1,5 @@
 if (Meteor.isClient) {
-	subscribes = ['program', 'notify', 'poll', 'answer', 'user'];
+	subscribes = ['program', 'notify', 'poll', 'answer', 'user', 'level'];
 	for(var i in subscribes){
 		Meteor.subscribe(subscribes[i]);
 	}

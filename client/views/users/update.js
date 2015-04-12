@@ -1,38 +1,35 @@
 Template.userUpdate.rendered = function(){
-	var notify_id = Router.current().params._id;
-	if(notify_id !== null){
-		document.querySelector("#notify_id").value = this.data.collection._docs['_map'][notify_id]['_id'];//programSearch[0]['_id'];
-		document.querySelector("#notify_name").value = this.data.collection._docs['_map'][notify_id]['description'];//programSearch[0]['name'];
-		document.querySelector("#notify_date_start").value = this.data.collection._docs['_map'][notify_id]['date_begin'];//programSearch[0]['description'];
-		document.querySelector("#notify_date_end").value = this.data.collection._docs['_map'][notify_id]['date_end'];//programSearch[0]['description'];
+	var activeSelected = '';
+	var user_id = Router.current().params._id;
+	if(user_id !== null){
+		document.querySelector("#user_id").value = this.data.collection._docs['_map'][user_id]['_id'];
+		document.querySelector("#user_name").value = this.data.collection._docs['_map'][user_id]['name'];
+		document.querySelector("#user_email").value = this.data.collection._docs['_map'][user_id]['email'];
+		document.querySelector("#user_password").value = this.data.collection._docs['_map'][user_id]['password'];
+		document.querySelector("#user_block_all_notify").checked = (this.data.collection._docs['_map'][user_id]['not_block_notify_all'] === 1)? true : false;
+
+		//preeche o select option de programa
+		var levels = Level.find().map(function(a) {return [a._id, a.description]; });
+		for(var i in levels){
+			activeSelected = (this.data.collection._docs['_map'][user_id]['level'] === levels[i][0])? ['active', 'selected'] : ['',''];
+
+			$("#user_nivel").append("<option value=\""+levels[i][0]+"\" "+activeSelected[1]+">"+levels[i][1]+"<option/>");
+			$(".dropdown-content").append("<li class=\""+activeSelected[0]+"\"><span>"+levels[i][1]+"</span></li>");
+		}
+
+		$('select').material_select();
 	}
 }
 
 Template.userUpdate.events({
-	'submit #notifyForm': function(form){
+	'submit #userForm': function(form){
 		form.preventDefault();
-		if(form.target[1].value === '' || form.target[2].value === '' || form.target[3].value === ''){
+		if(form.target[1].value === '' || form.target[2].value === '' || form.target[3].value === '' || form.target[5].value === ''){
 			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
 		}else{
-			Meteor.call('updateUser', [222, form.target[0].value, form.target[1].value, form.target[2].value, form.target[3].value]);
-			toastr.success("Notificacao atualizada com sucesso.", '', {"progressBar": true});
+			notBlockNotify = (form.target[6].ownerDocument.all.user_block_all_notify.checked === true)? 1 : 0;
+			Meteor.call('updateUser', [222, form.target[0].value, form.target[1].value, form.target[2].value, CryptoJS.MD5(form.target[3].value).toString(), form.target[5].value, notBlockNotify]);
+			toastr.success("Usuário atualizado com sucesso.", '', {"progressBar": true});
 		}
-	},
-
-	"change input[type='file']": function(event,template){
-	    var files = event.target.files;
-	    if(files.length === 0){
-	      return;
-	    }
-	    var file = files[0];
-	    if(file.size > (3*100000)){
-	    	toastr.warning("A logomarca ultrapassou o limite de 3mb.", '', {"progressBar": true});
-	    }else{
-		    var fileReader = new FileReader();
-		    fileReader.onload = function(event){
-		      Session.set('getup__form__imgBase64', (event.target.result)? event.target.result : 'undefined');
-		    };
-		    fileReader.readAsDataURL(file);
-		}
-  	}
+	}
 });

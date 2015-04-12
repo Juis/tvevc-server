@@ -1,4 +1,17 @@
 Template.userNew.rendered = function () {
+	//testa se existe dados na collection local, se nao, envia pra pagina inicial de enquete
+	if(Level.find().count() === 0){
+		Router.go('user');
+		toastr.warning("Necessario ter algum nível de permissão cadastrado.", '', {"progressBar": true});
+	}
+
+	//preeche o select option de programa
+	var levels = Level.find().map(function(a) {return [a._id, a.description]; });
+	for(var i in levels){
+		$("#user_nivel").append("<option value=\""+levels[i][0]+"\">"+levels[i][1]+"<option/>");
+		$(".dropdown-content").append("<li class=\"\"><span>"+levels[i][1]+"</span></li>");
+	}
+
 	$('select').material_select();
 }
 

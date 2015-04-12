@@ -1,6 +1,6 @@
 
 // PERMISSIONS
-var collections = [Notify, Program, Content, User, Publicity, Poll, Answer, PollUser];
+var collections = [Notify, Program, Content, User, Publicity, Poll, Answer, PollUser, Level];
 for(var i in collections){
   collections[i].allow({
     insert: function(userId, form){
@@ -38,4 +38,8 @@ Meteor.publish('polluser', function() {
 
 Meteor.publish('user', function() {
   return User.find({status:1}, {fields:{user_record:0, user_change:0, date_record:0, date_change:0}});
+});
+
+Meteor.publish('level', function() {
+  return Level.find({status:1}, {fields:{user_record:0, user_change:0, date_record:0, date_change:0}});
 });
