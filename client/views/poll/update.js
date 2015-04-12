@@ -46,10 +46,10 @@ Template.pollUpdate.helpers({
 
 Template.pollUpdate.events({
 	'click #addAnswer': function(form){
-		if(form.target.ownerDocument.all.answerdescription.value === ''){
+		if(form.target.ownerDocument.all.answerNewDescription.value === ''){
 			toastr.warning("Preecha o campo de resposta.", '', {"progressBar": true});
 		}else{
-			Meteor.call('insertAnswer', [111, form.target.ownerDocument.all.answerdescription.value], function(err, data){
+			Meteor.call('insertAnswer', [111, form.target.ownerDocument.all.answerNewDescription.value], function(err, data){
 				var answerIds = (Session.get('getup__form_answerIds'))? Session.get('getup__form_answerIds') : [];
 				answerIds[answerIds.length] = data;
 			    Session.set('getup__form_answerIds', answerIds);

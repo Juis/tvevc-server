@@ -32,21 +32,34 @@ Template.pollNew.helpers({
 
 Template.pollNew.events({ 
 	'click #addAnswer': function(form){
-		if(form.target.ownerDocument.all.answerdescription.value === ''){
+		if(form.target.ownerDocument.all.answerNewDescription.value === ''){
 			toastr.warning("Preecha o campo de resposta.", '', {"progressBar": true});
 		}else{
-			Meteor.call('insertAnswer', [111, form.target.ownerDocument.all.answerdescription.value], function(err, data){
+			Meteor.call('insertAnswer', [111, form.target.ownerDocument.all.answerNewDescription.value], function(err, data){
 				var answerIds = (Session.get('getup__form_answerIds'))? Session.get('getup__form_answerIds') : [];
 				answerIds[answerIds.length] = data;
 			    Session.set('getup__form_answerIds', answerIds);
 			});
 			
 			//remove os dados dos campos do form para evitar a duplicidade do registro
-			form.target.ownerDocument.all.answerdescription.value = '';
+			form.target.ownerDocument.all.answerNewDescription.value = '';
 
 			//mostra a mensagem de sucesso
 			toastr.success("Resposta inserida com sucesso.", '', {"progressBar": true});
 		}
+	},
+
+	'click #btnAnswerUpdate': function(form){
+		if(form.currentTarget.ownerDocument.all["answerDescription"+form.currentTarget.children[0].value]['value'] !== ''){
+			Meteor.call('updateAnswer', [222, form.currentTarget.children[0].value, form.currentTarget.ownerDocument.all["answerDescription"+form.currentTarget.children[0].value]['value']]);
+			toastr.success("Resposta atualizada com sucesso.", '', {"progressBar": true});
+		}else{
+			toastr.warning("Necessario preencher o campo da resposta a ser alterada.", '', {"progressBar": true});
+		}
+	},
+
+	'click #btnAnswerDelete': function(form){
+		toastr.warning("Deseja realmente remover esta resposta?<br /><span class=\"btn clear\" onclick=\"Meteor.call('deleteAnswer', [333, '"+form.currentTarget.childNodes[1].value+"']); $('#toast-container').remove();\">Ok</span><span class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Cancelar</span>", '', {"tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
 	},
 
 	'submit #pollForm': function(form){

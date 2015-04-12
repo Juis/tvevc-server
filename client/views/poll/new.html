@@ -55,8 +55,8 @@
 				      <div class="section">
 				
 				      	<div class="input-field col s12">
-						    <input id="answerdescription" type="text" class="validate">
-				        	<label for="answerdescription">Resposta *</label>
+						    <input id="answerNewDescription" type="text" class="validate">
+				        	<label for="answerNewDescription">Resposta *</label>
 			        	</div>
 
 			        	<a href="#" id="addAnswer" class="add-answer">
@@ -65,8 +65,19 @@
 				      	</a>
 
 				      	{{#each answers}}
-				      	<div class="input-field col s12">
-						    <span>{{description}}</span>
+				      	<div class="item-inner collapsible-header">
+				      		<span style="float:left; width:89%; margin-bottom:-16px;">
+						    	<input id="answerDescription{{_id}}" type="text" value="{{description}}" />
+						    </span>
+						    <a href="#" class="modal-trigger" id="btnAnswerUpdate" style="float:left;">
+						    	<input type="text" value="{{_id}}" id="answerUpdate" readonly="readonly" style="display:none;" />
+						  		<i class="mdi-image-edit"></i>
+						  	</a>
+
+							<a href="#" class="modal-trigger" id="btnAnswerDelete">
+						  		<input type="text" value="{{_id}}" id="answerDelete" readonly="readonly" style="display:none;" />
+						  		<i class="mdi-navigation-close"></i>
+						  	</a>
 			        	</div>
 			        	{{/each }}
 
