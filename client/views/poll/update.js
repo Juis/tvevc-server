@@ -1,4 +1,7 @@
 Template.pollUpdate.rendered = function(){
+	Session.set('getup__form_answerIds', true);
+	Session.set('getup__form__enqueteId', '');
+	Session.set('getup__form__enqueteId', Router.current().params._id);
 
 	//testa se existe dados na collection local, se nao, envia pra pagina inicial de enquete
 	if(Program.find().count() === 0){
@@ -24,15 +27,6 @@ Template.pollUpdate.rendered = function(){
 		document.querySelector("#poll_active").checked = (this.data.collection._docs['_map'][enquete_id]['status'] === 1)? true : false;
 		document.querySelector("#poll_imgBase64").src = this.data.collection._docs['_map'][enquete_id]['img'];
 		Session.get('getup__form__imgBase64', this.data.collection._docs['_map'][enquete_id]['img']);
-		
-		//preeche as respostas da enquete
-		var answers = Answer.find({poll_id:enquete_id}).map(function(a) {return [a._id, a.description]; });
-		for(var i in answers){
-			$(".section").append("<div class=\"input-field col s12\"><span>"+answers[i][1]+"</span></div>");
-			answerIds = (Session.get('getup__form_answerIds'))? Session.get('getup__form_answerIds') : [];
-			answerIds[answerIds.length] = answers[i][0];
-		    Session.set('getup__form_answerIds', answerIds);
-		}
 	}
 
 	$('select').material_select();
@@ -41,6 +35,10 @@ Template.pollUpdate.rendered = function(){
 Template.pollUpdate.helpers({
 	'imgBase64': function(){
 		return Session.get('getup__form__imgBase64');
+	},
+
+	'answers': function(){
+		return Answer.find({poll_id:Session.get('getup__form__enqueteId')}).map(function(a) {return {_id:a._id, description:a.description}; });
 	}
 });
 
@@ -49,15 +47,27 @@ Template.pollUpdate.events({
 		if(form.target.ownerDocument.all.answerNewDescription.value === ''){
 			toastr.warning("Preecha o campo de resposta.", '', {"progressBar": true});
 		}else{
-			Meteor.call('insertAnswer', [111, form.target.ownerDocument.all.answerNewDescription.value], function(err, data){
-				var answerIds = (Session.get('getup__form_answerIds'))? Session.get('getup__form_answerIds') : [];
-				answerIds[answerIds.length] = data;
-			    Session.set('getup__form_answerIds', answerIds);
-			});
+			Meteor.call('insertAnswer', [111, form.target.ownerDocument.all.answerNewDescription.value, Session.get('getup__form__enqueteId')]);
+
+			//remove os dados dos campos do form para evitar a duplicidade do registro
+			form.target.ownerDocument.all.answerNewDescription.value = '';
 
 			//mostra a mensagem de sucesso
 			toastr.success("Resposta inserida com sucesso.", '', {"progressBar": true});
 		}
+	},
+
+	'click #btnAnswerUpdate': function(form){
+		if(form.currentTarget.ownerDocument.all["answerDescription"+form.currentTarget.children[0].value]['value'] !== ''){
+			Meteor.call('updateAnswer', [222, form.currentTarget.children[0].value, form.currentTarget.ownerDocument.all["answerDescription"+form.currentTarget.children[0].value]['value']]);
+			toastr.success("Resposta atualizada com sucesso.", '', {"progressBar": true});
+		}else{
+			toastr.warning("Necessario preencher o campo da resposta a ser alterada.", '', {"progressBar": true});
+		}
+	},
+
+	'click #btnAnswerDelete': function(form){
+		toastr.warning("Deseja realmente remover esta resposta?<br /><span class=\"btn clear\" onclick=\"Meteor.call('deleteAnswer', [333, '"+form.currentTarget.childNodes[1].value+"']); $('#toast-container').remove();\">Ok</span><span class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Cancelar</span>", '', {"tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
 	},
 
 	'submit #pollForm': function(form){

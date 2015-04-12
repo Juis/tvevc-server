@@ -2,7 +2,8 @@ Meteor.methods({
 	
 	'insertAnswer': function(data){
 	    if(data[0] === 111 && data[1] !== ''){
-	      return Answer.insert({status:1, poll_id:'undefined', description:data[1], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
+	    	var pollId = (data[2])? data[2] : 'undefined';
+	      	return Answer.insert({status:1, poll_id:pollId, description:data[1], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
 	    }else{
 	      //erro aqui
 	    }
