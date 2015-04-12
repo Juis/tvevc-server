@@ -1,11 +1,7 @@
 Meteor.methods({
 
-// NOTIFY
 	'insertNotify': function(data){
-		console.log(data[0]);
-		console.log(1);
 		if(data[0] === 111){
-			console.log(2);
 		    Notify.insert({status:1, description:data[1], date_begin:data[2], date_end:data[3], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
 		}else{
 		  //erro aqui
@@ -25,6 +21,5 @@ Meteor.methods({
 		  Notify.remove({_id:data[1]});
 		}
 	}
-
 
 });
