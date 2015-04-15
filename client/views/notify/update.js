@@ -30,7 +30,7 @@ Template.notifyUpdate.events({
 	    }else{
 		    var fileReader = new FileReader();
 		    fileReader.onload = function(event){
-		      Session.set('getup__form__imgBase64', (event.target.result)? event.target.result : 'undefined');
+		      Session.set('getupFormImgBase64', (event.target.result)? event.target.result : 'undefined');
 		    };
 		    fileReader.readAsDataURL(file);
 		}

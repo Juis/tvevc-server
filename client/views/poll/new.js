@@ -1,7 +1,7 @@
 // POLL NEW PAGE
 Template.pollNew.rendered = function () { 
-	Session.set('getup__form_answerIds', '');
-	Session.set('getup__form__pollId', '');
+	Session.set('getupFormAnswerIds', null);
+	Session.set('getupFormPollId', null);
 
 	//testa se existe dados na collection local, se nao, envia pra pagina inicial de enquete
 	if(Program.find().count() === 0){
@@ -22,11 +22,11 @@ Template.pollNew.rendered = function () {
 
 Template.pollNew.helpers({ 
 	'imgBase64': function(){
-		return Session.get('getup__form__imgBase64');
+		return Session.get('getupFormImgBase64');
 	},
 
 	'answers': function(){
-		return (Session.get('getup__form_answerIds'))? Answer.find({status: 1, _id:{ $in:Session.get('getup__form_answerIds') }}, {fields: {_id:1, description:1}}) : '';
+		return (Session.get('getupFormAnswerIds'))? Answer.find({status: 1, _id:{ $in:Session.get('getupFormAnswerIds') }}, {fields: {_id:1, description:1}}) : '';
 	}
 });
 
@@ -36,9 +36,9 @@ Template.pollNew.events({
 			toastr.warning("Preecha o campo de resposta.", '', {"progressBar": true});
 		}else{
 			Meteor.call('insertAnswer', [111, form.target.ownerDocument.all.answerNewDescription.value], function(err, data){
-				var answerIds = (Session.get('getup__form_answerIds'))? Session.get('getup__form_answerIds') : [];
+				var answerIds = (Session.get('getupFormAnswerIds'))? Session.get('getupFormAnswerIds') : [];
 				answerIds[answerIds.length] = data;
-			    Session.set('getup__form_answerIds', answerIds);
+			    Session.set('getupFormAnswerIds', answerIds);
 			});
 			
 			//remove os dados dos campos do form para evitar a duplicidade do registro
@@ -64,7 +64,7 @@ Template.pollNew.events({
 
 	'submit #pollForm': function(form){
 		form.preventDefault();
-		if(form.target[2].value === '' || form.target[3].value === '' || !Session.get('getup__form_answerIds')){
+		if(form.target[2].value === '' || form.target[3].value === '' || !Session.get('getupFormAnswerIds')){
 			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
 		}else{
 			var searchPoll = '';
@@ -72,8 +72,8 @@ Template.pollNew.events({
 			//verificar se ja existe uma enquete com a mesma pergunta
 			searchPoll = Poll.find({description:form.target[3].value}).map(function(a) {return [a._id]; });
 			if(searchPoll.length > 0){
-				Session.set('getup__form__pollId', searchPoll[0][0]);
-				Session.set('getup__form__programId', form.target[2].value);
+				Session.set('getupFormPollId', searchPoll[0][0]);
+				Session.set('getupFormProgramId', form.target[2].value);
 				toastr.warning("Já existe uma enquete registrada com esta pergunta, deseja ativa-lá?<br /><a href=\"/enquetes\" class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Sim</a><a href=\"#\" class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Não</a>", '', {"progressBar": true});
 			}else{
 
@@ -84,13 +84,14 @@ Template.pollNew.events({
 				}
 
 				// insere a nova enquete ativa
-				Meteor.call('insertPoll', [111, form.target[2].value, form.target[3].value, Session.get('getup__form_answerIds'), Session.get('getup__form__imgBase64')]);
+				Meteor.call('insertPoll', [111, form.target[2].value, form.target[3].value, Session.get('getupFormAnswerIds'), Session.get('getupFormImgBase64')]);
 				
 				//remove os dados dos campos do form para evitar a duplicidade do registro
 				form.target[2].value = form.target[3].value = '';
-				Session.set('getup__form__imgBase64', '');
-				Session.set('getup__form_answerIds', '');
-				Session.set('getup__form__pollId', '');
+				Session.set('getupFormImgBase64', null);
+				Session.set('getupFormAnswerIds', null);
+				Session.set('getupFormProgramId', null);
+				Session.set('getupFormPollId', null);
 
 				//mostra a mensagem de sucesso, com botao OK para confirmar e ir para a lista
 				toastr.success("Enquete inserida com sucesso.<br /><a href=\"/enquetes\" class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Ok</a>", '', {"tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
@@ -110,7 +111,7 @@ Template.pollNew.events({
 
 		    var fileReader = new FileReader();
 		    fileReader.onload = function(event){
-		      Session.set('getup__form__imgBase64', (event.target.result)? event.target.result : 'undefined');
+		      Session.set('getupFormImgBase64', (event.target.result)? event.target.result : 'undefined');
 		    };
 		    fileReader.readAsDataURL(file);
 		}

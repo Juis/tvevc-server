@@ -1,18 +1,18 @@
  Template.poll.rendered = function(){ 
 
-	if(Session.get('getup__form__pollId') && Session.get('getup__form__programId')){
+	if(Session.get('getupFormPollId') && Session.get('getupFormProgramId')){
 		
 		// Deixar somente uma enquete ativa por programa
-		searchPoll = Poll.find({status:1, program_id:Session.get('getup__form__programId')}).map(function(a) {return [a._id]; });
+		searchPoll = Poll.find({status:1, program_id:Session.get('getupFormProgramId')}).map(function(a) {return [a._id]; });
 		if(searchPoll.length > 0){
 			Meteor.call('updateStatusPoll', [222, searchPoll[0][0], 0]);
 		}
 
 		// Deixa ativo a enquete escolhida
-		Meteor.call('updateStatusPoll', [222, Session.get('getup__form__pollId'), 1]);
+		Meteor.call('updateStatusPoll', [222, Session.get('getupFormPollId'), 1]);
 
-		Session.set('getup__form__pollId', '');
-		Session.set('getup__form__programId', '');
+		Session.set('getupFormPollId', null);
+		Session.set('getupFormProgramId', null);
 		toastr.success("Enquete ativada com sucesso.", '', {"progressBar": true});
 	}
  }

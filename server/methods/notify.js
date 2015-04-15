@@ -9,7 +9,7 @@ Meteor.methods({
 	},
 
 	'updateNotify': function(data){
-		if(data[0] === 222 && Meteor.call('validateProgram', data)){
+		if(data[0] === 222){
 		    Notify.update({_id:data[1]},{$set: {description:data[2], date_begin:data[3], date_end:data[4], user_change:1, date_change:Meteor.call('dateNow')}});
 		}else{
 		  //erro aqui

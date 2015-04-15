@@ -1,7 +1,7 @@
 Template.pollUpdate.rendered = function(){
-	Session.set('getup__form_answerIds', true);
-	Session.set('getup__form__enqueteId', '');
-	Session.set('getup__form__enqueteId', Router.current().params._id);
+	Session.set('getupFormAnswerIds', true);
+	Session.set('getupFormEnqueteId', null);
+	Session.set('getupFormEnqueteId', Router.current().params._id);
 
 	//testa se existe dados na collection local, se nao, envia pra pagina inicial de enquete
 	if(Program.find().count() === 0){
@@ -26,7 +26,7 @@ Template.pollUpdate.rendered = function(){
 		document.querySelector("#poll_name").value = this.data.collection._docs['_map'][enquete_id]['description'];
 		document.querySelector("#poll_active").checked = (this.data.collection._docs['_map'][enquete_id]['status'] === 1)? true : false;
 		document.querySelector("#poll_imgBase64").src = this.data.collection._docs['_map'][enquete_id]['img'];
-		Session.get('getup__form__imgBase64', this.data.collection._docs['_map'][enquete_id]['img']);
+		Session.get('getupFormImgBase64', this.data.collection._docs['_map'][enquete_id]['img']);
 	}
 
 	$('select').material_select();
@@ -34,11 +34,11 @@ Template.pollUpdate.rendered = function(){
 
 Template.pollUpdate.helpers({
 	'imgBase64': function(){
-		return Session.get('getup__form__imgBase64');
+		return Session.get('getupFormImgBase64');
 	},
 
 	'answers': function(){
-		return Answer.find({poll_id:Session.get('getup__form__enqueteId')}).map(function(a) {return {_id:a._id, description:a.description}; });
+		return Answer.find({poll_id:Session.get('getupFormEnqueteId')}).map(function(a) {return {_id:a._id, description:a.description}; });
 	}
 });
 
@@ -47,7 +47,7 @@ Template.pollUpdate.events({
 		if(form.target.ownerDocument.all.answerNewDescription.value === ''){
 			toastr.warning("Preecha o campo de resposta.", '', {"progressBar": true});
 		}else{
-			Meteor.call('insertAnswer', [111, form.target.ownerDocument.all.answerNewDescription.value, Session.get('getup__form__enqueteId')]);
+			Meteor.call('insertAnswer', [111, form.target.ownerDocument.all.answerNewDescription.value, Session.get('getupFormEnqueteId')]);
 
 			//remove os dados dos campos do form para evitar a duplicidade do registro
 			form.target.ownerDocument.all.answerNewDescription.value = '';
@@ -72,7 +72,7 @@ Template.pollUpdate.events({
 
 	'submit #pollForm': function(form){
 		form.preventDefault();
-		if(form.target[2].value === '' || form.target[3].value === '' || !Session.get('getup__form_answerIds')){
+		if(form.target[2].value === '' || form.target[3].value === '' || !Session.get('getupFormAnswerIds')){
 			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
 		}else{
 			notDisablePoll = 0;
@@ -85,7 +85,7 @@ Template.pollUpdate.events({
 				notDisablePoll = 1;
 			}
 
-			Meteor.call('updatePoll', [222, form.target[0].value, form.target[2].value, form.target[3].value, Session.get('getup__form_answerIds'), Session.get('getup__form__imgBase64'), notDisablePoll]);
+			Meteor.call('updatePoll', [222, form.target[0].value, form.target[2].value, form.target[3].value, Session.get('getupFormAnswerIds'), Session.get('getupFormImgBase64'), notDisablePoll]);
 			toastr.success("Enquete atualizada com sucesso.", '', {"progressBar": true});
 		}
 	},
@@ -101,7 +101,7 @@ Template.pollUpdate.events({
 	    }else{
 		    var fileReader = new FileReader();
 		    fileReader.onload = function(event){
-		      Session.set('getup__form__imgBase64', (event.target.result)? event.target.result : 'undefined');
+		      Session.set('getupFormImgBase64', (event.target.result)? event.target.result : 'undefined');
 		    };
 		    fileReader.readAsDataURL(file);
 		}

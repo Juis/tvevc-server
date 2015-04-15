@@ -8,28 +8,28 @@ Template.programUpdate.rendered = function () {
 		document.querySelector("#program_description").value = this.data.collection._docs['_map'][programId]['description'];
 		document.querySelector("#topo_upload").src = this.data.collection._docs['_map'][programId]['img_topo'];
 		document.querySelector("#avatar_upload").src = this.data.collection._docs['_map'][programId]['img_avatar'];
-		Session.set('getup__form__imgBase64_topo', this.data.collection._docs['_map'][programId]['img_topo']);
-		Session.set('getup__form__imgBase64_avatar', this.data.collection._docs['_map'][programId]['img_avatar']);
+		Session.set('getupFormImgBase64Top', this.data.collection._docs['_map'][programId]['img_topo']);
+		Session.set('getupFormImgBase64Avatar', this.data.collection._docs['_map'][programId]['img_avatar']);
 	}
 };
 
 Template.programUpdate.helpers({
 	'imgBase64_topo': function(){
-		return Session.get('getup__form__imgBase64_topo');
+		return Session.get('getupFormImgBase64Top');
 	},
 
 	'imgBase64_avatar': function(){
-		return Session.get('getup__form__imgBase64_avatar');
+		return Session.get('getupFormImgBase64Avatar');
 	}
 });
 
 Template.programUpdate.events({
 	'submit #programForm': function(form){
 		form.preventDefault();
-		if(form.target[1].value === '' || Session.get('getup__form__imgBase64_topo') === 'undefined' || Session.get('getup__form__imgBase64_avatar') === 'undefined'){
+		if(form.target[1].value === '' || Session.get('getupFormImgBase64Top') === 'undefined' || Session.get('getupFormImgBase64Avatar') === 'undefined'){
 			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
 		}else{
-			Meteor.call('updateProgram', [222, form.target[0].value, form.target[1].value, form.target[2].value, Session.get('getup__form__imgBase64_topo'), Session.get('getup__form__imgBase64_avatar')]);
+			Meteor.call('updateProgram', [222, form.target[0].value, form.target[1].value, form.target[2].value, Session.get('getupFormImgBase64Top'), Session.get('getupFormImgBase64Avatar')]);
 			toastr.success("Programa atualizado com sucesso.", '', {"progressBar": true});
 		}
 	},
@@ -46,7 +46,7 @@ Template.programUpdate.events({
 
 		    var fileReader = new FileReader();
 		    fileReader.onload = function(event){
-		      Session.set('getup__form__imgBase64_topo', (event.target.result)? event.target.result : false);
+		      Session.set('getupFormImgBase64Top', (event.target.result)? event.target.result : false);
 		    };
 		    fileReader.readAsDataURL(file);
 		}
@@ -64,7 +64,7 @@ Template.programUpdate.events({
 
 		    var fileReader = new FileReader();
 		    fileReader.onload = function(event){
-		      Session.set('getup__form__imgBase64_avatar', (event.target.result)? event.target.result : false);
+		      Session.set('getupFormImgBase64Avatar', (event.target.result)? event.target.result : false);
 		    };
 		    fileReader.readAsDataURL(file);
 		}
