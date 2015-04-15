@@ -1,7 +1,13 @@
 // PROGRAM NEW PAGE
 Template.programNew.rendered = function () { 
-	Session.set('getupFormImgBase64Top', null); 
-	Session.set('getupFormImgBase64Avatar', null); 
+	Session.set(
+		'getupFormImgBase64Top', 
+		null
+	); 
+	Session.set(
+		'getupFormImgBase64Avatar', 
+		null
+	); 
 };
 
 Template.programNew.helpers({
@@ -18,18 +24,46 @@ Template.programNew.events({
 	'submit #programForm': function(form){
 		form.preventDefault();
 		if(form.target[1].value === '' || !Session.get('getupFormImgBase64Top') || !Session.get('getupFormImgBase64Avatar')){
-			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
+			toastr.warning(
+				"Preecha os campos obrigatórios.", 
+				'', 
+				{"progressBar": true}
+			);
 		}else{
 			form.target[2].value = (form.target[2].value)? form.target[2].value : ' ';
-			Meteor.call('insertProgram', [111, form.target[1].value, form.target[2].value, Session.get('getupFormImgBase64Top'), Session.get('getupFormImgBase64Avatar')]);
+			Meteor.call(
+				'insertProgram', 
+				[
+					111, 
+					form.target[1].value, 
+					form.target[2].value, 
+					Session.get('getupFormImgBase64Top'), 
+					Session.get('getupFormImgBase64Avatar')
+				]
+			);
 			
 			//remove os dados dos campos do form para evitar a duplicidade do registro
 			form.target[2].value = form.target[3].value = '';
-			Session.set('getupFormImgBase64Top', '');
-			Session.set('getupFormImgBase64Avatar', '');
+			Session.set(
+				'getupFormImgBase64Top', 
+				null
+			);
+
+			Session.set(
+				'getupFormImgBase64Avatar', 
+				null
+			);
 
 			//mostra a mensagem de sucesso, com botao OK para confirmar e ir para a lista
-			toastr.success("Programa inserido com sucesso.<br /><a href=\"/programas\" class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Ok</a>", '', {"tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
+			toastr.success(
+				"Programa inserido com sucesso.<br /><a href=\"/programas\" class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Ok</a>", 
+				'', 
+				{
+					"tapToDismiss": false, 
+					"timeOut": 0, 
+					"extendedTimeOut": 0
+				}
+			);
 		}
 	},
 
@@ -40,13 +74,21 @@ Template.programNew.events({
 	    }
 	    var file = files[0];
 	    if(file.size > (3*100000)){
-	    	toastr.warning('A imagem ultrapassou o limite de 3mb.', '', {"progressBar": true});
+	    	toastr.warning(
+	    		'A imagem ultrapassou o limite de 3mb.', 
+	    		'', 
+	    		{"progressBar": true}
+    		);
 	    }else{
 
 		    var fileReader = new FileReader();
 		    fileReader.onload = function(event){
-		      Session.set('getupFormImgBase64Top', (event.target.result)? event.target.result : false);
+		      	Session.set(
+			      	'getupFormImgBase64Top', 
+			      	(event.target.result)? event.target.result : false
+	      		);
 		    };
+
 		    fileReader.readAsDataURL(file);
 		}
   	},
@@ -58,13 +100,21 @@ Template.programNew.events({
 	    }
 	    var file = files[0];
 	    if(file.size > (3*100000)){
-	    	toastr.warning('A imagem ultrapassou o limite de 3mb.', '', {"progressBar": true});
+	    	toastr.warning(
+	    		'A imagem ultrapassou o limite de 3mb.', 
+	    		'', 
+	    		{"progressBar": true}
+    		);
 	    }else{
 
 		    var fileReader = new FileReader();
 		    fileReader.onload = function(event){
-		      Session.set('getupFormImgBase64Avatar', (event.target.result)? event.target.result : false);
+		      	Session.set(
+			      	'getupFormImgBase64Avatar', 
+			      	(event.target.result)? event.target.result : false
+		      	);
 		    };
+
 		    fileReader.readAsDataURL(file);
 		}
   	}

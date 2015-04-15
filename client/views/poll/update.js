@@ -1,7 +1,18 @@
 Template.pollUpdate.rendered = function(){
-	Session.set('getupFormAnswerIds', true);
-	Session.set('getupFormEnqueteId', null);
-	Session.set('getupFormEnqueteId', Router.current().params._id);
+	Session.set(
+		'getupFormAnswerIds', 
+		true
+	);
+
+	Session.set(
+		'getupFormEnqueteId', 
+		null
+	);
+
+	Session.set(
+		'getupFormEnqueteId', 
+		Router.current().params._id
+	);
 
 	//testa se existe dados na collection local, se nao, envia pra pagina inicial de enquete
 	if(Program.find().count() === 0){
@@ -26,7 +37,10 @@ Template.pollUpdate.rendered = function(){
 		document.querySelector("#poll_name").value = this.data.collection._docs['_map'][enquete_id]['description'];
 		document.querySelector("#poll_active").checked = (this.data.collection._docs['_map'][enquete_id]['status'] === 1)? true : false;
 		document.querySelector("#poll_imgBase64").src = this.data.collection._docs['_map'][enquete_id]['img'];
-		Session.get('getupFormImgBase64', this.data.collection._docs['_map'][enquete_id]['img']);
+		Session.set(
+			'getupFormImgBase64', 
+			this.data.collection._docs['_map'][enquete_id]['img']
+		);
 	}
 
 	$('select').material_select();
@@ -38,55 +52,133 @@ Template.pollUpdate.helpers({
 	},
 
 	'answers': function(){
-		return Answer.find({poll_id:Session.get('getupFormEnqueteId')}).map(function(a) {return {_id:a._id, description:a.description}; });
+		return Answer.find({poll_id:Session.get('getupFormEnqueteId')}).map(
+			function(a) {
+				return {
+					_id:a._id, 
+					description:a.description
+				}; 
+			}
+		);
 	}
 });
 
 Template.pollUpdate.events({
 	'click #addAnswer': function(form){
 		if(form.target.ownerDocument.all.answerNewDescription.value === ''){
-			toastr.warning("Preecha o campo de resposta.", '', {"progressBar": true});
+			toastr.warning(
+				"Preecha o campo de resposta.", 
+				'', 
+				{"progressBar": true}
+			);
 		}else{
-			Meteor.call('insertAnswer', [111, form.target.ownerDocument.all.answerNewDescription.value, Session.get('getupFormEnqueteId')]);
+			Meteor.call(
+				'insertAnswer', 
+				[
+					111, 
+					form.target.ownerDocument.all.answerNewDescription.value, 
+					Session.get('getupFormEnqueteId')
+				]
+			);
 
 			//remove os dados dos campos do form para evitar a duplicidade do registro
 			form.target.ownerDocument.all.answerNewDescription.value = '';
 
 			//mostra a mensagem de sucesso
-			toastr.success("Resposta inserida com sucesso.", '', {"progressBar": true});
+			toastr.success(
+				"Resposta inserida com sucesso.", 
+				'', 
+				{"progressBar": true}
+			);
 		}
 	},
 
 	'click #btnAnswerUpdate': function(form){
 		if(form.currentTarget.ownerDocument.all["answerDescription"+form.currentTarget.children[0].value]['value'] !== ''){
-			Meteor.call('updateAnswer', [222, form.currentTarget.children[0].value, form.currentTarget.ownerDocument.all["answerDescription"+form.currentTarget.children[0].value]['value']]);
-			toastr.success("Resposta atualizada com sucesso.", '', {"progressBar": true});
+			Meteor.call(
+				'updateAnswer', 
+				[
+					222, 
+					form.currentTarget.children[0].value, 
+					form.currentTarget.ownerDocument.all["answerDescription"+form.currentTarget.children[0].value]['value']
+				]
+			);
+
+			toastr.success(
+				"Resposta atualizada com sucesso.", 
+				'', 
+				{"progressBar": true}
+			);
 		}else{
-			toastr.warning("Necessario preencher o campo da resposta a ser alterada.", '', {"progressBar": true});
+			toastr.warning(
+				"Necessario preencher o campo da resposta a ser alterada.", 
+				'', 
+				{"progressBar": true}
+			);
 		}
 	},
 
 	'click #btnAnswerDelete': function(form){
-		toastr.warning("Deseja realmente remover esta resposta?<br /><span class=\"btn clear\" onclick=\"Meteor.call('deleteAnswer', [333, '"+form.currentTarget.childNodes[1].value+"']); $('#toast-container').remove();\">Ok</span><span class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Cancelar</span>", '', {"tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
+		toastr.warning(
+			"Deseja realmente remover esta resposta?<br /><span class=\"btn clear\" onclick=\"Meteor.call('deleteAnswer', [333, '"+form.currentTarget.childNodes[1].value+"']); $('#toast-container').remove();\">Ok</span><span class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Cancelar</span>", 
+			'', 
+			{
+				"tapToDismiss": false, 
+				"timeOut": 0, 
+				"extendedTimeOut": 0
+			}
+		);
 	},
 
 	'submit #pollForm': function(form){
 		form.preventDefault();
 		if(form.target[2].value === '' || form.target[3].value === '' || !Session.get('getupFormAnswerIds')){
-			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
+			toastr.warning(
+				"Preecha os campos obrigatórios.", 
+				'', 
+				{"progressBar": true}
+			);
 		}else{
 			notDisablePoll = 0;
 			if(form.target[5].ownerDocument.all.poll_active.checked === true){
 				// Deixar somente uma enquete ativa por programa
-				searchPoll = Poll.find({status:1, program_id:form.target[2].value}).map(function(a) {return [a._id]; });
+				searchPoll = Poll.find({status:1, program_id:form.target[2].value}).map(
+					function(a) {
+						return [a._id]; 
+					}
+				);
+
 				if(searchPoll.length > 0){
-					Meteor.call('updateStatusPoll', [222, searchPoll[0][0], 0]);
+					Meteor.call(
+						'updateStatusPoll', 
+						[
+							222, 
+							searchPoll[0][0], 
+							0
+						]
+					);
 				}
 				notDisablePoll = 1;
 			}
 
-			Meteor.call('updatePoll', [222, form.target[0].value, form.target[2].value, form.target[3].value, Session.get('getupFormAnswerIds'), Session.get('getupFormImgBase64'), notDisablePoll]);
-			toastr.success("Enquete atualizada com sucesso.", '', {"progressBar": true});
+			Meteor.call(
+				'updatePoll', 
+				[
+					222, 
+					form.target[0].value, 
+					form.target[2].value, 
+					form.target[3].value, 
+					Session.get('getupFormAnswerIds'), 
+					Session.get('getupFormImgBase64'), 
+					notDisablePoll
+				]
+			);
+
+			toastr.success(
+				"Enquete atualizada com sucesso.", 
+				'', 
+				{"progressBar": true}
+			);
 		}
 	},
 
@@ -97,12 +189,20 @@ Template.pollUpdate.events({
 	    }
 	    var file = files[0];
 	    if(file.size > (3*100000)){
-	    	toastr.warning("A logomarca ultrapassou o limite de 3mb.", '', {"progressBar": true});
+	    	toastr.warning(
+	    		"A logomarca ultrapassou o limite de 3mb.", 
+	    		'', 
+	    		{"progressBar": true}
+    		);
 	    }else{
 		    var fileReader = new FileReader();
 		    fileReader.onload = function(event){
-		      Session.set('getupFormImgBase64', (event.target.result)? event.target.result : 'undefined');
+		      	Session.set(
+			      	'getupFormImgBase64', 
+			      	(event.target.result)? event.target.result : 'undefined'
+		      	);
 		    };
+
 		    fileReader.readAsDataURL(file);
 		}
   	}

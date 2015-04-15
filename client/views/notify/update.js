@@ -12,10 +12,28 @@ Template.notifyUpdate.events({
 	'submit #notifyForm': function(form){
 		form.preventDefault();
 		if(form.target[1].value === '' || form.target[2].value === '' || form.target[3].value === ''){
-			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
+			toastr.warning(
+				"Preecha os campos obrigatórios.", 
+				'', 
+				{"progressBar": true}
+			);
 		}else{
-			Meteor.call('updateNotify', [222, form.target[0].value, form.target[1].value, form.target[2].value, form.target[3].value]);
-			toastr.success("Notificacao atualizada com sucesso.", '', {"progressBar": true});
+			Meteor.call(
+				'updateNotify', 
+				[
+					222, 
+					form.target[0].value, 
+					form.target[1].value, 
+					form.target[2].value, 
+					form.target[3].value
+				]
+			);
+
+			toastr.success(
+				"Notificacao atualizada com sucesso.", 
+				'', 
+				{"progressBar": true}
+			);
 		}
 	},
 
@@ -26,12 +44,20 @@ Template.notifyUpdate.events({
 	    }
 	    var file = files[0];
 	    if(file.size > (3*100000)){
-	    	toastr.warning("A logomarca ultrapassou o limite de 3mb.", '', {"progressBar": true});
+	    	toastr.warning(
+	    		"A logomarca ultrapassou o limite de 3mb.", 
+	    		'', 
+	    		{"progressBar": true}
+    		);
 	    }else{
 		    var fileReader = new FileReader();
 		    fileReader.onload = function(event){
-		      Session.set('getupFormImgBase64', (event.target.result)? event.target.result : 'undefined');
+		      	Session.set(
+			      	'getupFormImgBase64', 
+			      	(event.target.result)? event.target.result : 'undefined'
+		      	);
 		    };
+		    
 		    fileReader.readAsDataURL(file);
 		}
   	}

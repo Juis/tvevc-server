@@ -2,7 +2,18 @@ Meteor.methods({
 
 	'insertNotify': function(data){
 		if(data[0] === 111){
-		    Notify.insert({status:1, description:data[1], date_begin:data[2], date_end:data[3], user_record:1, user_change:1, date_record:Meteor.call('dateNow'), date_change:Meteor.call('dateNow')});
+		    Notify.insert(
+		    	{
+		    		status:1, 
+		    		description:data[1], 
+		    		date_begin:data[2], 
+		    		date_end:data[3], 
+		    		user_record:1, 
+		    		user_change:1, 
+		    		date_record:Meteor.call('dateNow'), 
+		    		date_change:Meteor.call('dateNow')
+		    	}
+	    	);
 		}else{
 		  //erro aqui
 		}
@@ -10,7 +21,18 @@ Meteor.methods({
 
 	'updateNotify': function(data){
 		if(data[0] === 222){
-		    Notify.update({_id:data[1]},{$set: {description:data[2], date_begin:data[3], date_end:data[4], user_change:1, date_change:Meteor.call('dateNow')}});
+		    Notify.update(
+		    	{_id:data[1]},
+		    	{$set: 
+		    		{
+		    			description:data[2], 
+		    			date_begin:data[3], 
+		    			date_end:data[4], 
+		    			user_change:1, 
+		    			date_change:Meteor.call('dateNow')
+		    		}
+		    	}
+	    	);
 		}else{
 		  //erro aqui
 		}

@@ -1,4 +1,3 @@
-subscribes = ['program', 'notify', 'poll', 'answer', 'user', 'level'];
-for(var i in subscribes){
-	Meteor.subscribe(subscribes[i]);
+for(var i in collections){
+	Meteor.subscribe(collectionsName[i]);
 }

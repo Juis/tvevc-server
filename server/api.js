@@ -5,8 +5,6 @@
 //delete : curl -H "X-Auth-Token: undefined" -X DELETE http://localhost:3000/collectionapi/players/JSY5gHgKsQSBBSGDd
 
 Meteor.startup(function () {
-  var collections = [];
-
   collectionApi = new CollectionAPI({
     authToken: '97f0ad9e24ca5e0408a269748dgetup',               // Require this string to be passed in on each request
     apiPath: 'vtvapi',                                          // API path prefix
@@ -19,35 +17,37 @@ Meteor.startup(function () {
     certificateFile: 'certificate.pem'                          // SSL certificate key file (only used if SSL is enabled)
   });
 
-  collections[0] = [Notify, Program, Content, User, Publicity, Poll, Answer];
-  collections[1] = ['notify', 'program', 'content', 'user', 'publicity', 'poll', 'answer'];
-  for(var i in collections[0]){
-    collectionApi.addCollection(collections[0][i], collections[1][i], {
-      authenticate: function(token, method, requestMetadata) {
-        return (token !== undefined)? true : false;
-      },
-      methods: ['GET'],  
-      before: { 
-        GET: function (objs, requestMetadata, returnObject) {
-          returnObject.success = true;
-          returnObject.statusCode = 200;
-          var filteredObjs = [];
-          objs.forEach(function(obj) {
-            if (!obj.hasOwnProperty("_del") || obj._del === false) {
-              filteredObjs.push(obj);
-            }
-          });
-          returnObject.body = {
-            method: 'GET',
-            objs: filteredObjs
-          };
-          return true;
+  for(var i in collections){
+    collectionApi.addCollection(
+      collections[i], 
+      collectionsName[i], 
+      {
+        authenticate: function(token, method, requestMetadata) {
+          return (token !== undefined)? true : false;
+        },
+        methods: ['GET'],  
+        before: { 
+          GET: function (objs, requestMetadata, returnObject) {
+            returnObject.success = true;
+            returnObject.statusCode = 200;
+            var filteredObjs = [];
+            objs.forEach(function(obj) {
+              if (!obj.hasOwnProperty("_del") || obj._del === false) {
+                filteredObjs.push(obj);
+              }
+            });
+            returnObject.body = {
+              method: 'GET',
+              objs: filteredObjs
+            };
+            return true;
+          }
+        },
+        after: {
+          GET: undefined
         }
-      },
-      after: {
-        GET: undefined
       }
-    });
+    );
   }
   
   collectionApi.start();

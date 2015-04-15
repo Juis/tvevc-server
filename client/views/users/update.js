@@ -9,7 +9,13 @@ Template.userUpdate.rendered = function(){
 		document.querySelector("#user_block_all_notify").checked = (this.data.collection._docs['_map'][user_id]['not_block_notify_all'] === 1)? true : false;
 
 		//preeche o select option de programa
-		var levels = Level.find().map(function(a) {return [a._id, a.description]; });
+		var levels = Level.find().map(function(a) {
+			return [
+				a._id, 
+				a.description
+			]; 
+		});
+
 		for(var i in levels){
 			activeSelected = (this.data.collection._docs['_map'][user_id]['level'] === levels[i][0])? ['active', 'selected'] : ['',''];
 
@@ -25,11 +31,31 @@ Template.userUpdate.events({
 	'submit #userForm': function(form){
 		form.preventDefault();
 		if(form.target[1].value === '' || form.target[2].value === '' || form.target[3].value === '' || form.target[5].value === ''){
-			toastr.warning("Preecha os campos obrigatórios.", '', {"progressBar": true});
+			toastr.warning(
+				"Preecha os campos obrigatórios.", 
+				'', 
+				{"progressBar": true}
+			);
 		}else{
 			notBlockNotify = (form.target[6].ownerDocument.all.user_block_all_notify.checked === true)? 1 : 0;
-			Meteor.call('updateUser', [222, form.target[0].value, form.target[1].value, form.target[2].value, CryptoJS.MD5(form.target[3].value).toString(), form.target[5].value, notBlockNotify]);
-			toastr.success("Usuário atualizado com sucesso.", '', {"progressBar": true});
+			Meteor.call(
+				'updateUser', 
+				[
+					222, 
+					form.target[0].value, 
+					form.target[1].value, 
+					form.target[2].value, 
+					CryptoJS.MD5(form.target[3].value).toString(), 
+					form.target[5].value, 
+					notBlockNotify
+				]
+			);
+
+			toastr.success(
+				"Usuário atualizado com sucesso.", 
+				'', 
+				{"progressBar": true}
+			);
 		}
 	}
 });

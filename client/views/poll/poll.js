@@ -3,28 +3,79 @@
 	if(Session.get('getupFormPollId') && Session.get('getupFormProgramId')){
 		
 		// Deixar somente uma enquete ativa por programa
-		searchPoll = Poll.find({status:1, program_id:Session.get('getupFormProgramId')}).map(function(a) {return [a._id]; });
+		searchPoll = Poll.find(
+			{
+				status:1, 
+				program_id:Session.get('getupFormProgramId')
+			}).map(
+				function(a) {
+					return [a._id]; 
+				}
+			);
+
 		if(searchPoll.length > 0){
-			Meteor.call('updateStatusPoll', [222, searchPoll[0][0], 0]);
+			Meteor.call(
+				'updateStatusPoll', 
+				[
+					222, 
+					searchPoll[0][0], 
+					0
+				]
+			);
 		}
 
 		// Deixa ativo a enquete escolhida
-		Meteor.call('updateStatusPoll', [222, Session.get('getupFormPollId'), 1]);
+		Meteor.call(
+			'updateStatusPoll', 
+			[
+				222, 
+				Session.get('getupFormPollId'), 
+				1
+			]
+		);
 
-		Session.set('getupFormPollId', null);
-		Session.set('getupFormProgramId', null);
-		toastr.success("Enquete ativada com sucesso.", '', {"progressBar": true});
+		Session.set(
+			'getupFormPollId', 
+			null
+		);
+
+		Session.set(
+			'getupFormProgramId', 
+			null
+		);
+
+		toastr.success(
+			"Enquete ativada com sucesso.", 
+			'', 
+			{"progressBar": true}
+		);
 	}
  }
 
  Template.poll.helpers({
 	'polls': function(){
-    	return Poll.find({}).map(function(a) {return {_id:a._id, description:a.description, status:(a.status === 1)? 'Ativada' : 'Desativada'}; });
+    	return Poll.find({}).map(
+    		function(a) {
+    			return {
+    				_id:a._id, 
+    				description:a.description, 
+    				status:(a.status === 1)? 'Ativada' : 'Desativada'
+    			}; 
+    		}
+		);
 	}
 });
 
 Template.poll.events({
 	'click #btnDelete': function(form){
-		toastr.warning("Deseja realmente remover a enquete e todas respostas equivalente?<br /><span class=\"btn clear\" onclick=\"Meteor.call('deletePoll', [333, '"+form.currentTarget.childNodes[1].value+"']); $('#toast-container').remove();\">Ok</span><span class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Cancelar</span>", '', {"tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
+		toastr.warning(
+			"Deseja realmente remover a enquete e todas respostas equivalente?<br /><span class=\"btn clear\" onclick=\"Meteor.call('deletePoll', [333, '"+form.currentTarget.childNodes[1].value+"']); $('#toast-container').remove();\">Ok</span><span class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Cancelar</span>", 
+			'', 
+			{
+				"tapToDismiss": false, 
+				"timeOut": 0, 
+				"extendedTimeOut": 0
+			}
+		);
 	}
 });

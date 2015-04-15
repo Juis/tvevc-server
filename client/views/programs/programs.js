@@ -8,6 +8,14 @@ Template.programs.helpers({
 
 Template.programs.events({
 	'click #btnDelete': function(form){
-		toastr.warning("Deseja realmente remover o programa e todos os registros equivalente?<br /><span class=\"btn clear\" onclick=\"Meteor.call('deleteProgram', [333, '"+form.currentTarget.childNodes[1].value+"']); $('#toast-container').remove();\">Ok</span><span class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Cancelar</span>", '', {"tapToDismiss": false, "timeOut": 0, "extendedTimeOut": 0});
+		toastr.warning(
+			"Deseja realmente remover o programa e todos os registros equivalente?<br /><span class=\"btn clear\" onclick=\"Meteor.call('deleteProgram', [333, '"+form.currentTarget.childNodes[1].value+"']); $('#toast-container').remove();\">Ok</span><span class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Cancelar</span>", 
+			'', 
+			{
+				"tapToDismiss": false, 
+				"timeOut": 0, 
+				"extendedTimeOut": 0
+			}
+		);
 	}
 });
