@@ -1,4 +1,4 @@
-Meteor.methods({
+/*Meteor.methods({
 
 //Meteor.call("apiSearch",["program", "97f0ad9e24ca5e0408a269748dgetup"], function(error,result) { console.log(result.content); });
   'apiSearch': function(dataHttp){
@@ -25,4 +25,4 @@ Meteor.methods({
     return Meteor.http.call("DELETE",  "http://alissonplus.meteor.com/collectionapi/"+dataHttp[0]+"/"+dataHttp[2], {headers:{"x-auth-token":dataHttp[1]}});   
   }
   
-});
+});*/
