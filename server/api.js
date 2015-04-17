@@ -25,8 +25,33 @@ Meteor.startup(function () {
         authenticate: function(token, method, requestMetadata) {
           return (token !== undefined)? true : false;
         },
-        methods: ['GET'],  
+        methods: ['POST', 'GET'],  
         before: { 
+          POST: function(obj, requestMetadata, returnObject) {
+            returnObject.success = true;
+            var hasId = obj.hasOwnProperty('id');
+            if (hasId) {
+              try {
+                var id = Players.insert(obj);
+                returnObject.statusCode = 201;
+                obj._id = id;
+                returnObject.body = {
+                  method: 'POST',
+                  obj: obj
+                };
+              } catch (e) {
+                returnObject.statusCode = 500;
+                returnObject.body = {
+                  error: e.toString()
+                };
+              }
+            } else {
+              returnObject.statusCode = 500;
+              returnObject.body = {error: 'no id'};
+            }
+            return true;
+          },
+
           GET: function (objs, requestMetadata, returnObject) {
             returnObject.success = true;
             returnObject.statusCode = 200;
@@ -44,6 +69,7 @@ Meteor.startup(function () {
           }
         },
         after: {
+          POST: undefined,
           GET: undefined
         }
       }
