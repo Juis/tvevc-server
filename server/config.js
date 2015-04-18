@@ -31,7 +31,7 @@ Meteor.publish('program', function() {
 
 Meteor.publish('notify', function() {
   return Notify.find(
-    {status:1}, 
+    {}, 
     {fields:
       {
         user_record:0, 
