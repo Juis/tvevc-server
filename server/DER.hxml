@@ -317,7 +317,7 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
       <part>_id</part>
     </key>
   </table>
-  <table x="168" y="30" name="notify" color="#FFFFFF" relation-color="#000000">
+  <table x="52" y="228" name="notify" color="#FFFFFF" relation-color="#000000">
     <row null="0" autoincrement="1" name="_id">
       <datatype>SERIAL</datatype>
     </row>
@@ -326,6 +326,11 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
     </row>
     <row null="1" autoincrement="0" name="">
       <datatype>DATE</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="program_id">
+      <datatype>INTEGER</datatype>
+      <default>NULL</default>
+      <relation table="program" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
     </row>
     <row null="0" autoincrement="0" name="description">
       <datatype>TEXT</datatype>
