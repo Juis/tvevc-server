@@ -4,7 +4,7 @@
 //update : curl -H "X-Auth-Token: undefined" -X PUT -d "{\"\$set\":{\"name\":\"Alisson\"}}" http://localhost:3000/collectionapi/players/JSY5gHgKsQSBBSGDd
 //delete : curl -H "X-Auth-Token: undefined" -X DELETE http://localhost:3000/collectionapi/players/JSY5gHgKsQSBBSGDd
 
-Meteor.startup(function () {
+/*Meteor.startup(function () {
   collectionApi = new CollectionAPI({
     authToken: '97f0ad9e24ca5e0408a269748dgetup',               // Require this string to be passed in on each request
     apiPath: 'vtvapi',                                          // API path prefix
@@ -77,4 +77,4 @@ Meteor.startup(function () {
   }
   
   collectionApi.start();
-});
+});*/
