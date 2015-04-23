@@ -27,7 +27,8 @@ body {
 
 		// Header Bar
 		.nav-wrapper {
-			background: linear-gradient(to right, #28abd8 0%, #4a70ca 100%) repeat scroll 0 0 rgba(0, 0, 0, 0)!important;
+			
+			background:#3F51B5!important;
 
 			// Logo
 			.brand-logo {
@@ -64,10 +65,10 @@ body {
 		.top-container {
 			position:relative;margin-top:30px;width:100%;padding-bottom:10px;margin-bottom:20px;border-bottom:1px solid #e5e5e5;
 			.btn-model {
-				position:absolute;right:0;top:0;background:none!important;color:#28abd8;box-shadow:none!important;-webkit-box-shadow:none!important;-moz-box-shadow:none!important;padding:0!important;
+				position:absolute;right:0;top:0;background:none!important;color:#536DFE;box-shadow:none!important;-webkit-box-shadow:none!important;-moz-box-shadow:none!important;padding:0!important;
 			}
 			.btn-add {
-				position:absolute;right:0;top:0;background-color:#fff;color:#28abd8;
+				position:absolute;right:0;top:0;background-color:#fff;color:#536DFE;
 			}
 		}
 
@@ -127,7 +128,7 @@ body {
 			}
 		}
 		.btn-more {
-			margin-left: -90px;left: 50%;  background-color: #fff;color: #28abd8;
+			margin-left: -90px;left: 50%;  background-color: #fff;color: #536DFE;
 		}
 	}
 
@@ -264,10 +265,10 @@ body {
 	}
 
 	.btn-submit {
-		background:#28abd8;color:#fff;
+		background:#536DFE;color:#fff;
 	}
 	.btn-submit-white {
-		background:#fff;color:#28abd8;
+		background:#fff;color:#536DFE;
 	}
 	#poll_id, #notify_id, #program_id {display:none;}
 
