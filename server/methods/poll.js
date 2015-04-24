@@ -79,6 +79,46 @@ Meteor.methods({
 
       Poll.remove({_id:data[1]});
     }
+  },
+
+  'insertPollUser': function(data){
+    if(data[0] === 111){
+      try{
+        PollUser.insert({
+          poll_id:data[1],
+          answer_id:data[2],
+          user_id:data[3],
+          status:1,
+          date_record:Meteor.call('dateNow'),
+          date_change:Meteor.call('dateNow')
+        });
+        return true;
+      }catch(e){
+        return false;
+      }
+    }
+  },
+
+  'updatePollUser': function(data){
+    if(data[0] === 222){
+      try{
+        Poll.update(
+          {_id:data[1]},
+          {$set: 
+            {
+              poll_id:data[2],
+              answer_id:data[3],
+              user_id:data[4],
+              status:1,
+              date_change:Meteor.call('dateNow')
+            }
+          }
+        );
+        return true;
+      }catch(e){
+        return false;
+      }
+    }
   }
   
 });
