@@ -118,7 +118,6 @@ Meteor.publish('content', function() {
       {
         user_record:0, 
         user_change:0, 
-        date_record:0, 
         date_change:0
       }
     }
