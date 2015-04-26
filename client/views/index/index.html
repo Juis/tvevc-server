@@ -7,7 +7,9 @@
 			Timeline
 		</h4>
 
-		  <a class="waves-effect waves-light btn btn-model modal-trigger" href="#lista-usuarios">Ver todos os usuários</a>
+		  <a class="waves-effect waves-light btn btn-model modal-trigger" href="#lista-usuarios">
+		  	Ver todos os usuários
+		  </a>
 
 	</header>
 
@@ -20,13 +22,7 @@
 				<div class="collection" data-collapsible="accordion">
 				{{#each contents}}
 					<div class="collection-item avatar">
-
-					  <div class="item-inner collapsible-header">
-
-						  <img src="http://placehold.it/80x80/" alt="" class="circle">
-						  <strong class="title">{{user_name}}</strong>
-						  <p class="date">Enviado há 20 minutos</p>
-						  <div class="secondary-content actions-icons">
+		  			  <div class="secondary-content actions-icons">
 						  	
 						  	<a href="#programStar">
 						  		<i class="mdi-action-grade"></i>
@@ -34,16 +30,22 @@
 
 						  	<i class="mdi-navigation-check"></i>
 
-						  	<a href="#messageRemove" class="modal-trigger">
+						  	<a id="btnDelete" href="#" class="modal-trigger">
+						  		<input type="text" value="{{_id}}" id="programDelete" readonly="readonly" style="display:none;" />
 						  		<i class="mdi-navigation-close"></i>
 						  	</a>
-						  </div>
+					  </div>
+					  <div class="item-inner collapsible-header">
+
+						  <img src="http://placehold.it/80x80/" alt="" class="circle">
+						  <strong class="title">{{user_name}}</strong>
+						  <p class="date">Enviado há 20 minutos</p>
 
 					  </div>
 
 					  <div class="collection-message card collapsible-body">
 				        <div class="card-image waves-effect waves-block waves-light">
-				          <img class="activator" src="http://placehold.it/300x140">
+				          <img class="activator" src="{{img}}">
 				        </div>
 				        <div class="card-content">
 				          <span class="card-title activator grey-text">
@@ -58,13 +60,7 @@
 				          </span>
 
 				          <p class="card-message">
-				          	{{#if img}}
-				          		{{img}}
-			          		{{/if}}
-
-			          		{{#if text}}
-			          			{{text}}
-		          			{{/if}}
+		          			{{text}}
 				          </p>
 
 				        </div>
@@ -87,20 +83,6 @@
 		      <h4>Lista de usuários</h4>
 		    </div>
 		  </div>
-
-		<!-- Modal Structure -->
-		<div id="messageRemove" class="modal modalRemove">
-			<div class="modal-content">
-			  <h4>Deletar Programa</h4>
-
-			  <p>Tem certeza disso? Se fizer isso não vamos poder reverter</p>
-			  
-			</div>
-			<div class="modal-footer">
-				<a class="waves-effect waves-light btn green">Confirmar</a>
-				<a class="waves-effect waves-light btn red">Cancelar</a>
-			</div>
-		</div>
 
 	</div>
 
