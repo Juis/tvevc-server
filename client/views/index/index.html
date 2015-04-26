@@ -18,13 +18,13 @@
 			<div class="col s12">
 
 				<div class="collection" data-collapsible="accordion">
-
+				{{#each contents}}
 					<div class="collection-item avatar">
 
 					  <div class="item-inner collapsible-header">
 
 						  <img src="http://placehold.it/80x80/" alt="" class="circle">
-						  <strong class="title">Usuário</strong>
+						  <strong class="title">{{user_name}}</strong>
 						  <p class="date">Enviado há 20 minutos</p>
 						  <div class="secondary-content actions-icons">
 						  	
@@ -47,168 +47,31 @@
 				        </div>
 				        <div class="card-content">
 				          <span class="card-title activator grey-text">
-					          Usuário
+					          {{user_name}}
 					          <i class="mdi-action-info right"></i>
 				          </span>
 				        </div>
 				        <div class="card-reveal">
 				          <span class="card-title grey-text">
-
-				          Usuário
-
+				          	{{user_name}}
 				          	<i class="mdi-navigation-close right"></i>
-
 				          </span>
 
-				          <p class="card-message">Here is some more information about this product that is only revealed once clicked on.</p>
+				          <p class="card-message">
+				          	{{#if img}}
+				          		{{img}}
+			          		{{/if}}
+
+			          		{{#if text}}
+			          			{{text}}
+		          			{{/if}}
+				          </p>
 
 				        </div>
 				      </div>
 
 					</div>
-					<div class="collection-item avatar">
-
-					  <div class="item-inner collapsible-header">
-
-						  <img src="http://placehold.it/80x80/" alt="" class="circle">
-						  <strong class="title">Usuário</strong>
-						  <p class="date">Enviado há 20 minutos</p>
-						  <div class="secondary-content actions-icons">
-						  	
-						  	<a href="#programStar">
-						  		<i class="mdi-action-grade"></i>
-						  	</a>
-
-						  	<i class="mdi-navigation-check"></i>
-
-						  	<a href="#messageRemove" class="modal-trigger">
-						  		<i class="mdi-navigation-close"></i>
-						  	</a>
-						  </div>
-
-					  </div>
-
-					  <div class="collection-message card collapsible-body">
-				        <div class="card-image waves-effect waves-block waves-light">
-				          <!--<iframe class="activator" width="100%" height="315" src="https://www.youtube.com/embed/XjL2UCwHYgI" frameborder="0" allowfullscreen></iframe>-->
-				        </div>
-				        <div class="card-content">
-				          <span class="card-title activator grey-text">
-					          Usuário
-					          <i class="mdi-action-info right"></i>
-				          </span>
-				        </div>
-				        <div class="card-reveal">
-				          <span class="card-title grey-text">
-
-				          Usuário
-
-				          	<i class="mdi-navigation-close right"></i>
-
-				          </span>
-
-				          <p class="card-message">Here is some more information about this product that is only revealed once clicked on.</p>
-
-				        </div>
-				      </div>
-
-					</div>
-					<div class="collection-item avatar">
-
-					  <div class="item-inner collapsible-header">
-
-						  <img src="http://placehold.it/80x80/" alt="" class="circle">
-						  <strong class="title">Usuário</strong>
-						  <p class="date">Enviado há 20 minutos</p>
-						  <div class="secondary-content actions-icons">
-						  	
-						  	<a href="#programStar">
-						  		<i class="mdi-action-grade"></i>
-						  	</a>
-
-						  	<i class="mdi-navigation-check"></i>
-
-						  	<a href="#messageRemove" class="modal-trigger">
-						  		<i class="mdi-navigation-close"></i>
-						  	</a>
-						  </div>
-
-					  </div>
-
-					  <div class="collection-message card collapsible-body">
-				        <div class="card-image waves-effect waves-block waves-light">
-				          <img class="activator" src="http://placehold.it/300x140">
-				        </div>
-				        <div class="card-content">
-				          <span class="card-title activator grey-text">
-					          Usuário
-					          <i class="mdi-action-info right"></i>
-				          </span>
-				        </div>
-				        <div class="card-reveal">
-				          <span class="card-title grey-text">
-
-				          Usuário
-
-				          	<i class="mdi-navigation-close right"></i>
-
-				          </span>
-
-				          <p class="card-message">Here is some more information about this product that is only revealed once clicked on.</p>
-
-				        </div>
-				      </div>
-
-
-					</div>
-
-					<div class="collection-item avatar">
-
-					  <div class="item-inner collapsible-header">
-
-						  <img src="http://placehold.it/80x80/" alt="" class="circle">
-						  <strong class="title">Usuário</strong>
-						  <p class="date">Enviado há 20 minutos</p>
-						  <div class="secondary-content actions-icons">
-						  	
-						  	<a href="#programStar">
-						  		<i class="mdi-action-grade"></i>
-						  	</a>
-
-						  	<i class="mdi-navigation-check"></i>
-
-						  	<a href="#messageRemove" class="modal-trigger">
-						  		<i class="mdi-navigation-close"></i>
-						  	</a>
-						  </div>
-
-					  </div>
-
-					  <div class="collection-message card collapsible-body">
-				        <div class="card-content">
-				          <span class="card-title activator grey-text">
-					          Usuário
-					          <i class="mdi-action-info right"></i>
-				          </span>
-				        </div>
-				        <div class="card-reveal">
-				          <span class="card-title grey-text">
-
-				          Usuário
-
-				          	<i class="mdi-navigation-close right"></i>
-
-				          </span>
-
-				          <p class="card-message">Here is some more information about this product that is only revealed once clicked on.</p>
-
-				        </div>
-				      </div>
-
-
-					</div>
-					
-
+					{{/each }}
 				</div>
 
 				<a class="waves-effect waves-light btn btn-more pull-right color-pattern">Carregar mais</a>

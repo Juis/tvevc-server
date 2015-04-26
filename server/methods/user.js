@@ -57,6 +57,12 @@ Meteor.methods({
 		  		}
 	  		);
 		}
+	},
+
+	'insertLevel': function(){
+		Level.insert({status:1, description: 'usuario'});
+		Level.insert({status:1, description: 'administrador'});
+		return true;
 	}
 
 });
