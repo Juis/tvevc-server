@@ -2,7 +2,15 @@ Template.programs.rendered = function(){ }
 
 Template.programs.helpers({
 	'programs': function(){
-    	return Program.find({status: 1});
+    	return Program.find({status: 1}).map(
+    		function(p) {
+    			return {
+    				_id:p._id, 
+    				name:p.name, 
+    				img_avatar:p.img_avatar
+    			}; 
+    		}
+		);
 	}
 });
 

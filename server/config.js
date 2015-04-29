@@ -36,7 +36,6 @@ Meteor.publish('notify', function() {
       {
         user_record:0, 
         user_change:0, 
-        date_record:0, 
         date_change:0
       }
     }
@@ -50,7 +49,6 @@ Meteor.publish('poll', function() {
       {
         user_record:0, 
         user_change:0, 
-        date_record:0, 
         date_change:0
       }
     }

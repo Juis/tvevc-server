@@ -1,3 +1,5 @@
+Meteor.setInterval(updateDateRecord, 1000 * 60);
+
 Template.index.rendered = function(){
 
 	$('.collection').collapsible({
@@ -7,15 +9,37 @@ Template.index.rendered = function(){
      $('.modal-trigger').leanModal();
 }
 
+Template.notify.destroyed = function() {
+    Meteor.clearInterval();
+};
+
 Template.index.helpers({
 	'contents': function(){
+		var dateRecords = [];
+		var i = 0;
     	return Content.find({}).map(
-    		function(a) {
+    		function(c) {
+    			dateRecords[i] = {
+    				_id:c._id, 
+    				date_record:c.date_record
+    			};
+    			Session.set('getupDateRecods', dateRecords);
+    			i++;
+
+    			Meteor.call(
+    				'timeCompare', 
+    				c.date_record, 
+    				function(error, result){
+    					Session.set('getupToolTimeCompare' + c._id, result);
+    				}
+				);
+
     			return {
-    				_id:a._id, 
-    				text:a.text, 
-    				img:a.img,
-    				user_name:User.find({_id:a.user_id}).map(
+    				_id:c._id, 
+    				text:c.text, 
+    				img:c.img,
+    				timeCompared:Session.get('getupToolTimeCompare' + c._id),
+    				user_name:User.find({_id:c.user_id}).map(
     					function(u){
     						return u.name;
 						}

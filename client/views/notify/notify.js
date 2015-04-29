@@ -1,3 +1,5 @@
+Meteor.setInterval(updateDateRecord, 1000 * 60);
+
 Template.notify.rendered = function(){ 
 	
 	if(Session.get('getupFormNotifyId') && Session.get('getupFormProgramId')){
@@ -52,19 +54,41 @@ Template.notify.rendered = function(){
 	}
  }
 
- Template.notify.helpers({
+Template.notify.destroyed = function() {
+    Meteor.clearInterval();
+};
+
+Template.notify.helpers({
 	'notifyes': function(){
-    	return Notify.find({}).map(
-    		function(a) {
+		var dateRecords = [];
+		var i = 0;
+		return Notify.find({}, {sort: {status:-1}}).map(
+    		function(n) {
+    			dateRecords[i] = {
+    				_id:n._id, 
+    				date_record:n.date_record
+    			};
+    			Session.set('getupDateRecods', dateRecords);
+    			i++;
+
+    			Meteor.call(
+    				'timeCompare', 
+    				n.date_record, 
+    				function(error, result){
+    					Session.set('getupToolTimeCompare' + n._id, result);
+    				}
+				);
+    			
     			return {
-    				_id:a._id, 
-    				description:a.description, 
-    				program:Program.find({_id:a.program_id}).map(
+    				_id:n._id, 
+    				description:n.description, 
+    				timeCompared:Session.get('getupToolTimeCompare' + n._id),
+    				program:Program.find({_id:n.program_id}).map(
     					function(p){
     						return p.name;
 						}
 					),
-    				status:(a.status === 1)? 'Ativada' : 'Desativada'
+    				status:(n.status === 1)? 'Ativada' : 'Desativada'
     			}; 
     		}
 		);
@@ -84,3 +108,4 @@ Template.notify.events({
 		);
 	}
 });
+
