@@ -223,6 +223,25 @@ body {
 				}
 			}
 		}
+		.answer {
+			.collapsible-header {
+				position:relative;
+				.modal-trigger {
+					position:absolute;
+				}
+			}
+			#addAnswer {
+				display:inline-block;
+				width:100%;
+				margin:22px 0;
+			}
+			#btnAnswerUpdate {
+				right:40px;
+			}
+			#btnAnswerDelete {
+				right:10px;
+			}
+		}
 	}
 
 
