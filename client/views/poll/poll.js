@@ -1,4 +1,6 @@
- Template.poll.rendered = function(){ 
+Meteor.setInterval(updateDateRecord, 1000 * 60);
+
+Template.poll.rendered = function(){ 
 
 	if(Session.get('getupFormPollId') && Session.get('getupFormProgramId')){
 		
@@ -50,16 +52,38 @@
 			{"progressBar": true}
 		);
 	}
- }
+}
 
- Template.poll.helpers({
+Template.notify.destroyed = function() {
+    Meteor.clearInterval();
+};
+
+Template.poll.helpers({
 	'polls': function(){
-    	return Poll.find({}).map(
-    		function(a) {
+		var dateRecords = [];
+		var i = 0;
+    	return Poll.find({}, {sort: {status:-1}}).map(
+    		function(p) {
+    			dateRecords[i] = {
+    				_id:p._id, 
+    				date_record:p.date_record
+    			};
+    			Session.set('getupDateRecods', dateRecords);
+    			i++;
+    			
+    			Meteor.call(
+    				'timeCompare', 
+    				p.date_record, 
+    				function(error, result){
+    					Session.set('getupToolTimeCompare' + p._id, result);
+    				}
+				);
+
     			return {
-    				_id:a._id, 
-    				description:a.description, 
-    				status:(a.status === 1)? 'Ativada' : 'Desativada'
+    				_id:p._id, 
+    				description:p.description, 
+    				timeCompared:Session.get('getupToolTimeCompare' + p._id),
+    				status:(p.status === 1)? 'Ativada' : 'Desativada'
     			}; 
     		}
 		);
