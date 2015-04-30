@@ -31,8 +31,8 @@ Meteor.methods({
             {
               name:data[2], 
               description:data[3], 
-              hour:data[3], 
-              day:data[4], 
+              hour:data[4], 
+              day:data[5], 
               img_topo:data[6], 
               img_avatar:data[8], 
               user_change:1, 

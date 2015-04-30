@@ -6,8 +6,8 @@ Template.programUpdate.rendered = function () {
 		document.querySelector("#program_id").value = this.data.collection._docs['_map'][programId]['_id'];
 		document.querySelector("#program_name").value = this.data.collection._docs['_map'][programId]['name'];
 		document.querySelector("#program_description").value = this.data.collection._docs['_map'][programId]['description'];
-		document.querySelector("#program_day").value = this.data.collection._docs['_map'][programId]['day'];
 		document.querySelector("#program_hour").value = this.data.collection._docs['_map'][programId]['hour'];
+		document.querySelector("#program_day").value = this.data.collection._docs['_map'][programId]['day'];
 		document.querySelector("#topo_upload").src = this.data.collection._docs['_map'][programId]['img_topo'];
 		document.querySelector("#avatar_upload").src = this.data.collection._docs['_map'][programId]['img_avatar'];
 		Session.set(
