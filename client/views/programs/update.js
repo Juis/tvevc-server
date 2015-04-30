@@ -19,6 +19,8 @@ Template.programUpdate.rendered = function () {
 			this.data.collection._docs['_map'][programId]['img_avatar']
 		);
 	}
+
+	VMasker(this.find("[data-vm-mask-hour]")).maskPattern("99:99");
 };
 
 Template.programUpdate.helpers({
@@ -48,6 +50,8 @@ Template.programUpdate.events({
 					form.target[0].value, 
 					form.target[1].value, 
 					form.target[2].value, 
+					form.target[3].value,
+					form.target[4].value,
 					Session.get('getupFormImgBase64Top'), 
 					Session.get('getupFormImgBase64Avatar')
 				]

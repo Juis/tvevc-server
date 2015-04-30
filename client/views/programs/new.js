@@ -8,6 +8,8 @@ Template.programNew.rendered = function () {
 		'getupFormImgBase64Avatar', 
 		null
 	); 
+
+	VMasker(this.find("[data-vm-mask-hour]")).maskPattern("99:99");
 };
 
 Template.programNew.helpers({
@@ -24,7 +26,7 @@ Template.programNew.events({
 	'submit #programForm': function(form){
 		console.log(form);
 		form.preventDefault();
-		if(form.target[1].value === '' || !Session.get('getupFormImgBase64Top') || !Session.get('getupFormImgBase64Avatar')){
+		if(form.target[1].value === '' || form.target[3].value === '' || form.target[4].value === '' || !Session.get('getupFormImgBase64Top') || !Session.get('getupFormImgBase64Avatar')){
 			toastr.warning(
 				"Preecha os campos obrigatórios.", 
 				'', 
@@ -38,6 +40,8 @@ Template.programNew.events({
 					111, 
 					form.target[1].value, 
 					form.target[2].value, 
+					form.target[3].value, 
+					form.target[4].value, 
 					Session.get('getupFormImgBase64Top'), 
 					Session.get('getupFormImgBase64Avatar')
 				]

@@ -9,8 +9,8 @@ Meteor.methods({
             description:data[2], 
             hour:data[3], 
             day:data[4], 
-            img_topo:data[6], 
-            img_avatar:data[8], 
+            img_topo:data[5], 
+            img_avatar:data[6], 
             user_record:1, 
             user_change:1, 
             date_record:Meteor.call('dateNow'), 
@@ -34,7 +34,7 @@ Meteor.methods({
               hour:data[4], 
               day:data[5], 
               img_topo:data[6], 
-              img_avatar:data[8], 
+              img_avatar:data[7], 
               user_change:1, 
               date_change:Meteor.call('dateNow')
             }
