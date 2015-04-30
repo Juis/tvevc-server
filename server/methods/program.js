@@ -7,8 +7,10 @@ Meteor.methods({
             status:1, 
             name:data[1], 
             description:data[2], 
-            img_topo:data[3], 
-            img_avatar:data[4], 
+            hour:data[3], 
+            day:data[4], 
+            img_topo:data[6], 
+            img_avatar:data[8], 
             user_record:1, 
             user_change:1, 
             date_record:Meteor.call('dateNow'), 
@@ -16,7 +18,8 @@ Meteor.methods({
           }
         );
     }else{
-      //erro aqui
+      
+
     }
   },
 
@@ -28,8 +31,10 @@ Meteor.methods({
             {
               name:data[2], 
               description:data[3], 
-              img_topo:data[4], 
-              img_avatar:data[4], 
+              hour:data[3], 
+              day:data[4], 
+              img_topo:data[6], 
+              img_avatar:data[8], 
               user_change:1, 
               date_change:Meteor.call('dateNow')
             }

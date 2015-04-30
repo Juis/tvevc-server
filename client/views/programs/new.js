@@ -22,6 +22,7 @@ Template.programNew.helpers({
 
 Template.programNew.events({
 	'submit #programForm': function(form){
+		console.log(form);
 		form.preventDefault();
 		if(form.target[1].value === '' || !Session.get('getupFormImgBase64Top') || !Session.get('getupFormImgBase64Avatar')){
 			toastr.warning(
@@ -30,7 +31,7 @@ Template.programNew.events({
 				{"progressBar": true}
 			);
 		}else{
-			form.target[2].value = (form.target[2].value)? form.target[2].value : ' ';
+			form.target[2].value = (form.target[2].value) ? form.target[2].value : ' ';
 			Meteor.call(
 				'insertProgram', 
 				[
