@@ -4,16 +4,16 @@ Meteor.methods({
 	    	return false;
     	}
 
-      	Content.insert(
-      		{
-      			status:1, 
-      			program_id:data[1], 
-      			user_id:data[2], 
-      			text:data[3], 
-      			img:data[4], 
-      			date_record:Meteor.call('dateNow'), 
-      			date_change:Meteor.call('dateNow')
-      		}
+    	Content.insert(
+    		{
+    			status:1, 
+    			program_id:data[1], 
+    			user_id:data[2], 
+    			text:data[4], 
+    			img:data[3], 
+    			date_record:Meteor.call('dateNow'), 
+    			date_change:Meteor.call('dateNow')
+    		}
   		);
   		return true;	    
   	},
@@ -23,7 +23,7 @@ Meteor.methods({
 			return false;
 		}
 
-	  	Content.remove({_id:data[1]});
-	  	return true;
+  	Content.remove({_id:data[1]});
+  	return true;
 	}
 });
