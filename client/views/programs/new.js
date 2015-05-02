@@ -32,6 +32,12 @@ Template.programNew.events({
 				'', 
 				{"progressBar": true}
 			);
+		}else if((form.target[1].value).length > 200 || form.target[2].value).length > 200 || form.target[4].value).length > 200){
+			toastr.warning(
+				"rum, ultrapassou o limite de caracteres, somente possivel 200.", 
+				'', 
+				{"progressBar": true}
+			);
 		}else{
 			form.target[2].value = (form.target[2].value) ? form.target[2].value : ' ';
 			Meteor.call(

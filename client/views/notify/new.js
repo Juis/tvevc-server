@@ -45,6 +45,12 @@ Template.notifyNew.events({
 				'', 
 				{"progressBar": true}
 			);
+		}else if((form.target[3].value).length > 200){
+			toastr.warning(
+				"rum, ultrapassou o limite de caracteres, somente possivel 200.", 
+				'', 
+				{"progressBar": true}
+			);
 		}else{
 			var searchNotify = '';
 

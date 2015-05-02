@@ -34,6 +34,12 @@ Template.userNew.events({
 				'', 
 				{"progressBar": true}
 			);
+		}else if((form.target[1].value).length > 200 || form.target[2].value).length > 200 || form.target[3].value).length > 200){
+			toastr.warning(
+				"rum, ultrapassou o limite de caracteres, somente possivel 200.", 
+				'', 
+				{"progressBar": true}
+			);
 		}else{
 			notBlockNotify = (form.target[6].ownerDocument.all.user_block_all_notify.checked === true)? 1 : 0;
 			Meteor.call(

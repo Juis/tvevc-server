@@ -71,6 +71,12 @@ Template.pollUpdate.events({
 				'', 
 				{"progressBar": true}
 			);
+		}else if((form.target.ownerDocument.all.answerNewDescription.value).length > 200){
+			toastr.warning(
+				"rum, ultrapassou o limite de caracteres, somente possivel 200.", 
+				'', 
+				{"progressBar": true}
+			);
 		}else{
 			Meteor.call(
 				'insertAnswer', 
@@ -94,7 +100,19 @@ Template.pollUpdate.events({
 	},
 
 	'click #btnAnswerUpdate': function(form){
-		if(form.currentTarget.ownerDocument.all["answerDescription"+form.currentTarget.children[0].value]['value'] !== ''){
+		if(form.currentTarget.ownerDocument.all["answerDescription"+form.currentTarget.children[0].value]['value'] === ''){
+			toastr.warning(
+				"Necessario preencher o campo da resposta a ser alterada.", 
+				'', 
+				{"progressBar": true}
+			);
+		}else if((form.currentTarget.ownerDocument.all["answerDescription"+form.currentTarget.children[0].value]['value']).length > 200){
+			toastr.warning(
+				"rum, ultrapassou o limite de caracteres, somente possivel 200.", 
+				'', 
+				{"progressBar": true}
+			);
+		}else{
 			Meteor.call(
 				'updateAnswer', 
 				[
@@ -106,12 +124,6 @@ Template.pollUpdate.events({
 
 			toastr.success(
 				"Resposta atualizada com sucesso.", 
-				'', 
-				{"progressBar": true}
-			);
-		}else{
-			toastr.warning(
-				"Necessario preencher o campo da resposta a ser alterada.", 
 				'', 
 				{"progressBar": true}
 			);
@@ -135,6 +147,12 @@ Template.pollUpdate.events({
 		if(form.target[2].value === '' || form.target[3].value === '' || !Session.get('getupFormAnswerIds')){
 			toastr.warning(
 				"Preecha os campos obrigatórios.", 
+				'', 
+				{"progressBar": true}
+			);
+		}else if((form.target[3].value).length > 200){
+			toastr.warning(
+				"rum, ultrapassou o limite de caracteres, somente possivel 200.", 
 				'', 
 				{"progressBar": true}
 			);

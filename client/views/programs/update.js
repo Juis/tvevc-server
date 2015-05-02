@@ -36,9 +36,15 @@ Template.programUpdate.helpers({
 Template.programUpdate.events({
 	'submit #programForm': function(form){
 		form.preventDefault();
-		if(form.target[1].value === '' || Session.get('getupFormImgBase64Top') === 'undefined' || Session.get('getupFormImgBase64Avatar') === 'undefined'){
+		if(form.target[1].value === '' || form.target[3].value === '' || form.target[4].value === '' || Session.get('getupFormImgBase64Top') === 'undefined' || Session.get('getupFormImgBase64Avatar') === 'undefined'){
 			toastr.warning(
 				"Preecha os campos obrigatórios.", 
+				'', 
+				{"progressBar": true}
+			);
+		}else if((form.target[1].value).length > 200 || form.target[2].value).length > 200 || form.target[4].value).length > 200){
+			toastr.warning(
+				"rum, ultrapassou o limite de caracteres, somente possivel 200.", 
 				'', 
 				{"progressBar": true}
 			);

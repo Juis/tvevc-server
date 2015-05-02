@@ -33,14 +33,14 @@
 
 				<div class="input-field col s12">
 					<i class="mdi-action-account-circle prefix"></i>
-					<input id="poll_name" type="text" class="validate">
+					<input id="poll_name" type="text" class="validate" maxlength="200">
 					<label for="poll_name">Pergunta *</label>
 				</div>
 
 			      <div class="col s12">
 			      	  <small>Imagem ( 300x150 )</small>
 				      <div class="file-field input-field">
-					      <input class="file-path validate" type="text"/>
+					      <input class="file-path validate" type="text" />
 					      <div class="btn color-pattern btn-submit-white">
 					        <span>Imagem</span>
 					        <input type="file" id="program_upload" name="imageFile" />
@@ -55,7 +55,7 @@
 				      <div class="answer section">
 				
 				      	<div class="input-field col s12">
-						    <input id="answerNewDescription" type="text" class="validate">
+						    <input id="answerNewDescription" type="text" class="validate" maxlength="200">
 				        	<label for="answerNewDescription">Resposta *</label>
 			        	</div>
 
@@ -69,7 +69,7 @@
 				      	
 				      	<div class="item-inner collapsible-header">
 				      		<span style="float:left; width:89%; margin-bottom:-16px;">
-						    	<input id="answerDescription{{_id}}" type="text" value="{{description}}" />
+						    	<input id="answerDescription{{_id}}" type="text" value="{{description}}" maxlength="200"/>
 						    </span>
 						    <a href="#" class="modal-trigger" id="btnAnswerUpdate" style="float:left;">
 						    	<input type="text" value="{{_id}}" id="answerUpdate" readonly="readonly" style="display:none;" />
