@@ -44,26 +44,38 @@
 					  </div>
 
 					  <div class="collection-message card collapsible-body">
-				        <div class="card-image waves-effect waves-block waves-light">
-				          <img class="activator" src="{{img}}">
-				        </div>
-				        <div class="card-content">
-				          <span class="card-title activator grey-text">
-					          {{user_name}}
-					          <i class="mdi-action-info right"></i>
-				          </span>
-				        </div>
-				        <div class="card-reveal">
-				          <span class="card-title grey-text">
-				          	{{user_name}}
-				          	<i class="mdi-navigation-close right"></i>
-				          </span>
+					  	{{#if img}}
+					        <div class="card-image waves-effect waves-block waves-light">
+					          <img class="activator" src="{{img}}">
+					        </div>
+					        <div class="card-content">
+					          <span class="card-title activator grey-text">
+						          {{user_name}}
+						          <i class="mdi-action-info right"></i>
+					          </span>
+					        </div>
+					        <div class="card-reveal">
+					          <span class="card-title grey-text">
+					          	{{user_name}}
+					          	<i class="mdi-navigation-close right"></i>
+					          </span>
 
-				          <p class="card-message">
-		          			{{text}}
-				          </p>
+					          <p class="card-message">
+			          			{{text}}
+					          </p>
 
-				        </div>
+					        </div>
+				        {{else}}
+				        	<div class="card-image waves-effect waves-block waves-light">
+					          {{text}}
+					        </div>
+				        	<div class="card-content">
+					          <span class="card-title activator grey-text">
+						          {{user_name}}
+						          <i class="mdi-action-info right"></i>
+					          </span>
+					        </div>
+				        {{/if}}
 				      </div>
 
 					</div>
