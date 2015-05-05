@@ -1,6 +1,13 @@
 Meteor.setInterval(updateDateRecord, 1000 * 60);
 
 Template.index.rendered = function(){
+    Session.set('limit', 5);
+
+    /*$(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+          incrementLimit();
+        }
+    });*/
 
 	$('.collection').collapsible({
       accordion : false
@@ -15,9 +22,10 @@ Template.notify.destroyed = function() {
 
 Template.index.helpers({
 	'contents': function(){
+
 		var dateRecords = [];
 		var i = 0;
-    	return Content.find({}).map(
+    	return Content.find({status:1}, { limit: Session.get('limit') }).map(
     		function(c) {
     			dateRecords[i] = {
     				_id:c._id, 
@@ -47,12 +55,16 @@ Template.index.helpers({
     			}; 
     		}
 		);
-	}
+	},
+
+    'mais': function(){
+        console.log(Session.get('limit'));
+        return (Session.get('limit') >= Content.find().count())? 'display:none' : 'display:block';
+    }
 });
 
 Template.index.events({
 	'click #btnDelete': function(form){
-		console.log(form.currentTarget.childNodes[1].value);
 		toastr.warning(
 			"Deseja realmente remover a mensagem?<br /><span class=\"btn clear\" onclick=\"Meteor.call('deleteContent', [333, '"+form.currentTarget.childNodes[1].value+"']); $('#toast-container').remove();\">Ok</span><span class=\"btn clear\" onclick=\"$('#toast-container').remove()\">Cancelar</span>", 
 			'', 
@@ -62,5 +74,9 @@ Template.index.events({
 				"extendedTimeOut": 0
 			}
 		);
-	}
+	},
+
+    'click #mais': function(){
+        incrementLimit();
+    }
 });
