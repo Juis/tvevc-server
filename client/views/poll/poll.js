@@ -1,6 +1,7 @@
 Meteor.setInterval(updateDateRecord, 1000 * 60);
 
 Template.poll.rendered = function(){ 
+	Session.set('limit', 5);
 
 	if(Session.get('getupFormPollId') && Session.get('getupFormProgramId')){
 		
@@ -62,7 +63,7 @@ Template.poll.helpers({
 	'polls': function(){
 		var dateRecords = [];
 		var i = 0;
-    	return Poll.find({}, {sort: {status:-1}}).map(
+    	return Poll.find({}, {limit: Session.get('limit')}, {sort: {status:-1}}).map(
     		function(p) {
     			dateRecords[i] = {
     				_id:p._id, 
@@ -87,7 +88,11 @@ Template.poll.helpers({
     			}; 
     		}
 		);
-	}
+	},
+
+    'mais': function(){
+        return (Session.get('limit') >= Poll.find().count())? 'display:none' : 'display:block';
+    }
 });
 
 Template.poll.events({
@@ -101,5 +106,9 @@ Template.poll.events({
 				"extendedTimeOut": 0
 			}
 		);
-	}
+	},
+
+    'click #mais': function(){
+        incrementLimit();
+    }
 });

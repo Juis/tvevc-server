@@ -139,3 +139,76 @@ Meteor.publish('contentPagination', function(limit) {
     { limit: limit }
   );
 });
+
+Meteor.publish('notifyPagination', function(limit) {
+  if (limit > Notify.find().count()) {
+    limit = 0;
+  }
+
+  return Notify.find(
+    {}, 
+    {fields:
+      {
+        user_record:0, 
+        user_change:0, 
+        date_change:0
+      }
+    },
+    { limit: limit }
+  );
+});
+
+Meteor.publish('pollPagination', function(limit) {
+  if (limit > Poll.find().count()) {
+    limit = 0;
+  }
+
+  return Poll.find(
+    {}, 
+    {fields:
+      {
+        user_record:0, 
+        user_change:0, 
+        date_change:0
+      }
+    },
+    { limit: limit }
+  );
+});
+
+Meteor.publish('userPagination', function(limit) {
+  if (limit > User.find().count()) {
+    limit = 0;
+  }
+
+  return User.find(
+    {status:1}, 
+    {fields:
+      {
+        user_record:0, 
+        user_change:0, 
+        date_change:0
+      }
+    },
+    { limit: limit }
+  );
+});
+
+Meteor.publish('programPagination', function(limit) {
+  if (limit > Program.find().count()) {
+    limit = 0;
+  }
+
+  return Program.find(
+    {status:1}, 
+    {fields:
+      {
+        user_record:0, 
+        user_change:0, 
+        date_record:0,
+        date_change:0
+      }
+    },
+    { limit: limit }
+  );
+});

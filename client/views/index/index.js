@@ -58,7 +58,6 @@ Template.index.helpers({
 	},
 
     'mais': function(){
-        console.log(Session.get('limit'));
         return (Session.get('limit') >= Content.find().count())? 'display:none' : 'display:block';
     }
 });

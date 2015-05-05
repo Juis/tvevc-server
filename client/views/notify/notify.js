@@ -1,7 +1,8 @@
 Meteor.setInterval(updateDateRecord, 1000 * 60);
 
 Template.notify.rendered = function(){ 
-	
+	Session.set('limit', 5);
+
 	if(Session.get('getupFormNotifyId') && Session.get('getupFormProgramId')){
 
 		// Deixar somente uma notificacao ativa por programa
@@ -62,7 +63,7 @@ Template.notify.helpers({
 	'notifyes': function(){
 		var dateRecords = [];
 		var i = 0;
-		return Notify.find({}, {sort: {status:-1}}).map(
+		return Notify.find({}, {limit: Session.get('limit')}, {sort: {status:1}}).map(
     		function(n) {
     			dateRecords[i] = {
     				_id:n._id, 
@@ -92,7 +93,11 @@ Template.notify.helpers({
     			}; 
     		}
 		);
-	}
+	},
+
+    'mais': function(){
+        return (Session.get('limit') >= Notify.find().count())? 'display:none' : 'display:block';
+    }
 });
 
 Template.notify.events({
@@ -106,6 +111,10 @@ Template.notify.events({
 				"extendedTimeOut": 0
 			}
 		);
-	}
+	},
+
+    'click #mais': function(){
+        incrementLimit();
+    }
 });
 

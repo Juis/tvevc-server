@@ -1,6 +1,10 @@
- Template.user.helpers({
+Template.user.rendered = function(){ 
+	Session.set('limit', 5);
+}
+
+Template.user.helpers({
 	'users': function(){
-    	return User.find({status:1}).map(function(a) {
+    	return User.find({status:1}, {limit: Session.get('limit')}).map(function(a) {
     		return {
     			_id:a._id, 
     			name:a.name, 
@@ -13,7 +17,11 @@
 				)
     		}; 
     	});
-	}
+	},
+
+    'mais': function(){
+        return (Session.get('limit') >= User.find().count())? 'display:none' : 'display:block';
+    }
 });
 
 Template.user.events({
@@ -27,5 +35,9 @@ Template.user.events({
 				"extendedTimeOut": 0
 			}
 		);
-	}
+	},
+
+    'click #mais': function(){
+        incrementLimit();
+    }
 });
