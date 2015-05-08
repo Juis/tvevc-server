@@ -4,14 +4,15 @@ Template.user.rendered = function(){
 
 Template.user.helpers({
 	'users': function(){
-    	return User.find({status:1}, {limit: Session.get('limit')}).map(function(a) {
+    	return User.find({status:1}, {limit: Session.get('limit')}).map(function(u) {
     		return {
-    			_id:a._id, 
-    			name:a.name, 
-    			email:a.email, 
-    			level:(Level.find({_id:a.level}).map(
-	    				function(a) {
-	    					return a.description; 
+    			_id:u._id, 
+    			name:u.name, 
+    			email:u.email, 
+    			picture:u.picture,
+    			level:(Level.find({_id:u.level}).map(
+	    				function(l) {
+	    					return l.description; 
 						}
 					)
 				)

@@ -14,6 +14,7 @@ Meteor.methods({
 		    		not_block_notify_all:data[5], 
 		    		social_network:data[6],
 		    		social_network_id:data[7],
+		    		picture:data[8],
 		    		user_record:1, 
 		    		user_change:1, 
 		    		date_record:Meteor.call('dateNow'), 
@@ -36,6 +37,7 @@ Meteor.methods({
 	   					password:data[4], 
 	   					level:data[5], 
 	   					not_block_notify_all:data[6], 
+			    		picture:data[7],
 	   					user_change:1, 
 	   					date_change:Meteor.call('dateNow')
 	   				}
