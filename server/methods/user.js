@@ -21,8 +21,9 @@ Meteor.methods({
 		    		date_change:Meteor.call('dateNow')
 		    	}
 	    	);
+	    	return true;
 		}else{
-		  //erro aqui
+			return false;
 		}
 	},
 
