@@ -49,6 +49,22 @@ Meteor.methods({
 		}
 	},
 
+	'updateUserPassword': function(data){
+		if(data[0] === 222){
+	   		User.update(
+	   			{_id:data[1]},
+	   			{$set: 
+	   				{
+	   					password:CryptoJS.MD5(data[2]).toString(),
+	   					date_change:Meteor.call('dateNow')
+	   				}
+	   			}
+   			);
+		}else{
+		  //erro aqui
+		}
+	},
+
 	'deleteUser': function(data){
 		if(data[0] === 333){
 		  	User.update(

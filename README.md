@@ -10,6 +10,7 @@
 - meteor add http
 - meteor add bankfacil:vanilla-masker
 - meteor add jparker:crypto-md5
+- meteor add email
 
 > Arquivo de modelagem DER na pasta server/
 
