@@ -16,7 +16,24 @@ Meteor.methods({
     		}
   		);
   		return true;	    
-  	},
+	},
+
+  'updateContent': function(data){
+    if(data[0] === 222){
+      Content.update(
+        {_id:data[1]},
+        {$set: 
+          {
+            text:data[3], 
+            img:data[2],
+            date_change:Meteor.call('dateNow')
+          }
+        }
+      );
+    }else{
+      //erro aqui
+    }
+  },
 
 	'deleteContent': function(data){
 		if(data[0] !== 333){
