@@ -119,7 +119,7 @@
       <datatype>VARCHAR(100)</datatype>
       <default>NULL</default>
     </row>
-    <row null="1" autoincrement="0" name="level_id">
+    <row null="1" autoincrement="0" name="level">
       <datatype>INTEGER</datatype>
       <default>0</default>
       <relation table="level" row="_id" on_update="CASCADE" on_delete="CASCADE"/>
@@ -428,6 +428,10 @@ ou tudo junto, ou seja, ira utilizar um editor de texto;</comment>
     </row>
     <row null="0" autoincrement="0" name="description">
       <datatype>VARCHAR(100)</datatype>
+    </row>
+    <row null="1" autoincrement="0" name="level">
+      <datatype>INTEGER</datatype>
+      <default>0</default>
     </row>
     <row null="1" autoincrement="0" name="status">
       <datatype>VARCHAR(100)</datatype>

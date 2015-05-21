@@ -1,5 +1,8 @@
-//Level.insert({status:1, description:"Administrador"});Level.insert({status:1, description:"Sistema"});Level.insert({status:1, description:"Aplicativo"});
-
+/*
+Level.insert({status:1, level:0, description:'Usuario'});
+Level.insert({status:1, level:1, description:'Programa'});
+Level.insert({status:1, level:2, description:'Admin'});
+*/
 Meteor.methods({
 
 	'insertUser': function(data){
@@ -81,8 +84,9 @@ Meteor.methods({
 	},
 
 	'insertLevel': function(){
-		Level.insert({status:1, description: 'usuario'});
-		Level.insert({status:1, description: 'administrador'});
+		Level.insert({status:1, level:0, description:'Usuario'});
+		Level.insert({status:1, level:1, description:'Programa'});
+		Level.insert({status:1, level:2, description:'Admin'});
 		return true;
 	}
 

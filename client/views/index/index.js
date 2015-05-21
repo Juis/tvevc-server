@@ -1,6 +1,8 @@
 Meteor.setInterval(updateDateRecord, 1000 * 60);
 
 Template.index.rendered = function(){
+    var userSearch = User.findOne({_id:Meteor.userId()}, {$fields: {_id:1, status:1}});
+    Session.set('getupDataUser', userSearch);
     Session.set('limit', 5);
 
     /*$(window).scroll(function() {
@@ -21,6 +23,10 @@ Template.notify.destroyed = function() {
 };
 
 Template.index.helpers({
+    'qtUserCadastrado': function(){
+        return User.find({status:1, level:0}).count();
+    },
+
 	'contents': function(){
 
 		var dateRecords = [];
@@ -43,6 +49,7 @@ Template.index.helpers({
 				);
 
     			return {
+                    status:c.status,
     				_id:c._id, 
     				text:c.text, 
     				img:c.img,
@@ -77,5 +84,11 @@ Template.index.events({
 
     'click #mais': function(){
         incrementLimit();
+    },
+
+    'click #visualizeMensageHistory': function(form){
+        if(Session.set('getupDataUser').status === 1){
+            Meteor.call('updateContentStatus', [222, form.currentTarget.childNodes[0].value]);
+        }
     }
 });
