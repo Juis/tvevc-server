@@ -8,7 +8,7 @@
 		</h4>
 
 		  <a class="waves-effect waves-light btn btn-model modal-trigger" href="#lista-usuarios">
-		  	Ver todos os usuários
+		  	{{qtUserCadastrado}} usuários cadastrados
 		  </a>
 
 	</header>
@@ -35,8 +35,8 @@
 						  		<i class="mdi-navigation-close"></i>
 						  	</a>
 					  </div>
-					  <div class="item-inner collapsible-header">
-
+					  <div id="visualizeMensageHistory" class="item-inner collapsible-header">
+					  	  <input type="text" id="mensageHistoryId" style="display:none">
 						  <img src="http://placehold.it/80x80/" alt="" class="circle">
 						  <strong class="title">{{user_name}}</strong>
 						  <p class="date">Enviado há {{timeCompared}}</p>
