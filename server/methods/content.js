@@ -35,6 +35,22 @@ Meteor.methods({
     }
   },
 
+  'updateContentStatus': function(data){
+    if(data[0] === 222){
+      Content.update(
+        {_id:data[1]},
+        {$set: 
+          {
+            status:2, 
+            date_change:Meteor.call('dateNow')
+          }
+        }
+      );
+    }else{
+      //erro aqui
+    }
+  },
+
 	'deleteContent': function(data){
 		if(data[0] !== 333){
 			return false;
