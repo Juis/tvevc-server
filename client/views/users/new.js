@@ -34,7 +34,6 @@ Template.userNew.helpers({
 Template.userNew.events({ 
 	'submit #userForm': function(form){
 		form.preventDefault();
-		console.log(form);
 		if(form.target[1].value === '' || form.target[2].value === '' || form.target[3].value === '' || form.target[5].value === ''){
 			toastr.warning(
 				"Preecha os campos obrigatorios.", 
