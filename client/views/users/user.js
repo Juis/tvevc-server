@@ -10,7 +10,7 @@ Template.user.helpers({
     			name:u.name, 
     			email:u.email, 
     			picture:u.picture,
-    			level:(Level.find({_id:u.level}).map(
+    			level:(Level.find({level:u.level}).map(
 	    				function(l) {
 	    					return l.description; 
 						}

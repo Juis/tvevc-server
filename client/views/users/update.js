@@ -17,7 +17,7 @@ Template.userUpdate.rendered = function(){
 		//preeche o select option de programa
 		var levels = Level.find().map(function(a) {
 			return [
-				a._id, 
+				a.level, 
 				a.description
 			]; 
 		});
