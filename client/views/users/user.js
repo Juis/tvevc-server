@@ -10,7 +10,7 @@ Template.user.helpers({
     			name:u.name, 
     			email:u.email, 
     			picture:u.picture,
-    			level:(Level.find({level:parseInt(u.level)}).map(
+    			level:(Level.find({level:u.level}).map(
 	    				function(l) {
 	    					return l.description; 
 						}
@@ -22,6 +22,11 @@ Template.user.helpers({
 
     'mais': function(){
         return (Session.get('limit') >= User.find().count())? 'display:none' : 'display:block';
+    },
+
+    'admin': function(){
+		var userSearch = User.findOne({_id:Meteor.userId2}, {$fields: {_id:1, level:1}});
+        return (userSearch !== undefined && userSearch.level !== '2')? false : true;
     }
 });
 

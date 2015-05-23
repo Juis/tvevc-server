@@ -14,10 +14,11 @@ Meteor.methods({
 		    		email:data[2], 
 		    		password:data[3], 
 		    		level:data[4], 
-		    		not_block_notify_all:data[5], 
-		    		social_network:data[6],
-		    		social_network_id:data[7],
-		    		picture:data[8],
+		    		program_id:data[5],
+		    		not_block_notify_all:data[6], 
+		    		social_network:data[7],
+		    		social_network_id:data[8],
+		    		picture:data[9],
 		    		user_record:1, 
 		    		user_change:1, 
 		    		date_record:Meteor.call('dateNow'), 
@@ -40,8 +41,9 @@ Meteor.methods({
 	   					email:data[3], 
 	   					password:data[4], 
 	   					level:data[5], 
-	   					not_block_notify_all:data[6], 
-			    		picture:data[7],
+	   					program_id:data[6],
+	   					not_block_notify_all:data[7], 
+			    		picture:data[8],
 	   					user_change:1, 
 	   					date_change:Meteor.call('dateNow')
 	   				}
@@ -84,9 +86,31 @@ Meteor.methods({
 	},
 
 	'insertLevel': function(){
-		Level.insert({status:1, level:0, description:'Usuario'});
-		Level.insert({status:1, level:1, description:'Programa'});
-		Level.insert({status:1, level:2, description:'Admin'});
+		Level.insert({status:1, level:'0', description:'Usuario'});
+		Level.insert({status:1, level:'1', description:'Programa'});
+		Level.insert({status:1, level:'2', description:'Administrador'});
+		return true;
+	},
+
+	'insertUserAdmin': function(){
+		User.insert(
+	    	{
+	    		status:1, 
+	    		name:'Alisson', 
+	    		email:'admin@gmail.com', 
+	    		password:CryptoJS.MD5('123').toString(), 
+	    		level:'2', 
+	    		program_id:null,
+	    		not_block_notify_all:false, 
+	    		social_network:null,
+	    		social_network_id:null,
+	    		picture:null,
+	    		user_record:1, 
+	    		user_change:1, 
+	    		date_record:Meteor.call('dateNow'), 
+	    		date_change:Meteor.call('dateNow')
+	    	}
+    	);
 		return true;
 	}
 

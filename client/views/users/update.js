@@ -2,13 +2,20 @@ Template.userUpdate.rendered = function(){
 	var activeSelected = '';
 	var user_id = Router.current().params._id;
 	if(user_id !== null){
-		console.log(this.data);
+
+		Session.set(
+			'getupFormPassword',
+			this.data.collection._docs['_map'][user_id]['password']
+		);
+		
 		document.querySelector("#user_id").value = this.data.collection._docs['_map'][user_id]['_id'];
 		document.querySelector("#user_name").value = this.data.collection._docs['_map'][user_id]['name'];
 		document.querySelector("#user_email").value = this.data.collection._docs['_map'][user_id]['email'];
-		document.querySelector("#user_password").value = this.data.collection._docs['_map'][user_id]['password'];
+		document.querySelector("#user_password").value = '';
 		document.querySelector("#user_block_all_notify").checked = (this.data.collection._docs['_map'][user_id]['not_block_notify_all'] === 1)? true : false;
 		document.querySelector("#avatar_upload").src = this.data.collection._docs['_map'][user_id]['picture'];
+		document.querySelector("#program").style.display = 'none';
+
 		Session.set(
 			'getupFormImgBase64Avatar', 
 			this.data.collection._docs['_map'][user_id]['picture']
@@ -29,6 +36,21 @@ Template.userUpdate.rendered = function(){
 			$(".dropdown-content").append("<li class=\""+activeSelected[0]+"\"><span>"+levels[i][1]+"</span></li>");
 		}
 
+		//preeche o select option de programa
+		var programs = Program.find().map(function(a) {
+			return [
+				a._id, 
+				a.name
+			]; 
+		});
+
+		for(var x in programs){
+			activeSelected = (this.data.collection._docs['_map'][user_id]['_id'] === programs[x][0])? ['active', 'selected'] : ['',''];
+
+			$("#user_program").append("<option value=\""+programs[x][0]+"\">"+programs[x][1]+"<option/>");
+			$(".dropdown-content").append("<li class=\"\"><span>"+programs[x][1]+"</span></li>");
+		}
+
 		$('select').material_select();
 	}
 }
@@ -40,10 +62,16 @@ Template.userUpdate.helpers({
 });
 
 Template.userUpdate.events({
+	'change #user_nivel': function(form){
+		document.querySelector("#program").style.display = (form.target.selectedIndex === 3)? 'block' : 'none';
+	},
+
 	'submit #userForm': function(form){
 		form.preventDefault();
-		console.log(form);
-		if(form.target[1].value === '' || form.target[2].value === '' || form.target[3].value === '' || form.target[5].value === ''){
+		if(form.target[1].value === '' 
+			|| form.target[2].value === '' 
+			|| form.target[5].value === ''
+			|| (form.target[7].value === '' && form.target[5].value === '1')){
 			toastr.warning(
 				"Preecha os campos obrigatórios.", 
 				'', 
@@ -56,7 +84,6 @@ Template.userUpdate.events({
 				{"progressBar": true}
 			);
 		}else{
-			console.log(Session.get('getupFormImgBase64Avatar'));
 			notBlockNotify = (form.target[8].ownerDocument.all.user_block_all_notify.checked === true)? 1 : 0;
 			Meteor.call(
 				'updateUser', 
@@ -65,8 +92,9 @@ Template.userUpdate.events({
 					form.target[0].value, 
 					form.target[1].value, 
 					form.target[2].value, 
-					CryptoJS.MD5(form.target[3].value).toString(), 
+					(form.target[3].value !== '')? CryptoJS.MD5(form.target[3].value).toString() : Session.get('getupFormPassword'), 
 					form.target[5].value, 
+					(form.target[7].value !== '')? form.target[7].value : null, 
 					notBlockNotify,
 					Session.get('getupFormImgBase64Avatar'),
 				]

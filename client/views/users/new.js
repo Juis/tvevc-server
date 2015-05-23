@@ -9,7 +9,9 @@ Template.userNew.rendered = function () {
 		);
 	}
 
-	//preeche o select option de programa
+	document.querySelector("#program").style.display = 'none';
+
+	//preeche os levels
 	var levels = Level.find().map(function(a) {
 		return [
 			a.level, 
@@ -22,6 +24,19 @@ Template.userNew.rendered = function () {
 		$(".dropdown-content").append("<li class=\"\"><span>"+levels[i][1]+"</span></li>");
 	}
 
+	//preeche o select option de programa
+	var programs = Program.find().map(function(a) {
+		return [
+			a._id, 
+			a.name
+		]; 
+	});
+
+	for(var x in programs){
+		$("#user_program").append("<option value=\""+programs[x][0]+"\">"+programs[x][1]+"<option/>");
+		$(".dropdown-content").append("<li class=\"\"><span>"+programs[x][1]+"</span></li>");
+	}
+
 	$('select').material_select();
 }
 
@@ -32,9 +47,17 @@ Template.userNew.helpers({
 });
 
 Template.userNew.events({ 
+	'change #user_nivel': function(form){
+		document.querySelector("#program").style.display = (form.target.selectedIndex === 3)? 'block' : 'none';
+	},
+
 	'submit #userForm': function(form){
 		form.preventDefault();
-		if(form.target[1].value === '' || form.target[2].value === '' || form.target[3].value === '' || form.target[5].value === ''){
+		if(form.target[1].value === '' 
+			|| form.target[2].value === '' 
+			|| form.target[3].value === '' 
+			|| form.target[5].value === ''
+			|| (form.target[7].value === '' && form.target[5].value === '1')){
 			toastr.warning(
 				"Preecha os campos obrigatorios.", 
 				'', 
@@ -56,6 +79,7 @@ Template.userNew.events({
 					form.target[2].value, 
 					CryptoJS.MD5(form.target[3].value).toString(), 
 					form.target[5].value, 
+					(form.target[7].value !== '')? form.target[7].value : null, 
 					notBlockNotify,
 		    		0,
 		    		null,

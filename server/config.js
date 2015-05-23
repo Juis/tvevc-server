@@ -120,7 +120,7 @@ Meteor.startup(function () {
 
   Meteor.publish('content', function() {
     return Content.find(
-      {status:1}, 
+      {}, 
       {fields:
         {
           user_record:0, 
@@ -137,7 +137,7 @@ Meteor.startup(function () {
     }
 
     return Content.find(
-      {status:1}, 
+      {}, 
       {fields:
         {
           user_record:0, 

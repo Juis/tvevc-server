@@ -1,7 +1,7 @@
 <template name="programs">
 
 <div class="container">
-
+{{#if admin}}
 	<header class="top-container">
 		<h4>
 			Programas
@@ -49,7 +49,9 @@
 		</div>
 
 	</div>
-
+{{else}}
+Usuário sem permissão
+{{/if}}
 </div>
 
 </template>

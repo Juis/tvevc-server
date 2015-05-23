@@ -14,16 +14,17 @@
 	  		<span>Notificações</span>
 	  	</a>
 	  </li>
-	  <li class="{{ isActiveRoute 'programs|programNew|programUpdate' }}">
-	  	<a href="{{pathFor 'programs' }}">
-	  		<i class="mdi-hardware-desktop-windows"></i>
-	  		<span>Programas</span>
-	  	</a>
-	  </li>
 	  <li class="{{ isActiveRoute 'poll|pollNew|pollUpdate' }}">
 	  	<a href="{{pathFor 'poll' }}">
 	  		<i class="mdi-action-question-answer"></i>
 	  		<span>Enquetes</span>
+	  	</a>
+	  </li>
+	  {{#if admin}}
+  	  <li class="{{ isActiveRoute 'programs|programNew|programUpdate' }}">
+	  	<a href="{{pathFor 'programs' }}">
+	  		<i class="mdi-hardware-desktop-windows"></i>
+	  		<span>Programas</span>
 	  	</a>
 	  </li>
   	  <li class="{{ isActiveRoute 'user|userNew|userUpdate' }}">
@@ -32,6 +33,7 @@
 	  		<span>Usuário</span>
 	  	</a>
 	  </li>
+	  {{/if}}
 	</ul>
 	<ul class="side-nav" id="mobile-demo">
 	  <li class="{{ isActiveRoute 'index' }}">
@@ -46,16 +48,17 @@
 	  		<span>Notificações</span>
 	  	</a>
 	  </li>
-	  <li class="{{ isActiveRoute 'programs|programNew|programUpdate' }}">
-	  	<a href="{{pathFor 'programs' }}">
-	  		<i class="mdi-hardware-desktop-windows"></i>
-	  		<span>Programas</span>
-	  	</a>
-	  </li>
 	  <li class="{{ isActiveRoute 'poll|pollNew|pollUpdate' }}">
 	  	<a href="{{pathFor 'poll' }}">
 	  		<i class="mdi-action-question-answer"></i>
 	  		<span>Enquetes</span>
+	  	</a>
+	  </li>
+	  {{#if admin}}
+  	  <li class="{{ isActiveRoute 'programs|programNew|programUpdate' }}">
+	  	<a href="{{pathFor 'programs' }}">
+	  		<i class="mdi-hardware-desktop-windows"></i>
+	  		<span>Programas</span>
 	  	</a>
 	  </li>
 	  <li class="{{ isActiveRoute 'user|userNew|userUpdate' }}">
@@ -64,6 +67,7 @@
 	  		<span>Usuário</span>
 	  	</a>
 	  </li>
+	  {{/if}}
 	</ul>
 </div>
 

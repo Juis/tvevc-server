@@ -6,3 +6,7 @@ Meteor.subscribe('contentPagination', Session.get('limit'));
 Meteor.subscribe('notifyPagination', Session.get('limit'));
 Meteor.subscribe('pollPagination', Session.get('limit'));
 Meteor.subscribe('userPagination', Session.get('limit'));
+
+if(Meteor.userId2 === undefined){
+    Router.go('/login');
+}

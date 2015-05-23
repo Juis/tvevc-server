@@ -11,7 +11,11 @@ Template.programs.helpers({
     			}; 
     		}
 		);
-	}
+	},
+
+    'admin': function(){
+        return (Meteor.userLevel !== undefined && Meteor.userLevel !== '2')? false : true;
+    }
 });
 
 Template.programs.events({
