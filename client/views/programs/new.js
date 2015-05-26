@@ -24,7 +24,6 @@ Template.programNew.helpers({
 
 Template.programNew.events({
 	'submit #programForm': function(form){
-		console.log(form);
 		form.preventDefault();
 		if(form.target[1].value === '' || form.target[3].value === '' || form.target[4].value === '' || !Session.get('getupFormImgBase64Top') || !Session.get('getupFormImgBase64Avatar')){
 			toastr.warning(
@@ -49,7 +48,9 @@ Template.programNew.events({
 					form.target[3].value, 
 					form.target[4].value, 
 					Session.get('getupFormImgBase64Top'), 
-					Session.get('getupFormImgBase64Avatar')
+					Session.get('getupFormImgBase64Avatar'),
+					form.target[5].value,
+					form.target[6].value
 				]
 			);
 			

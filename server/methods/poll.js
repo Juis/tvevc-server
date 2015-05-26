@@ -33,7 +33,6 @@ Meteor.methods({
           {
             program_id:data[2], 
             description:data[3], 
-            img:data[4], 
             img:data[5], 
             status:data[6], 
             user_change:1, 

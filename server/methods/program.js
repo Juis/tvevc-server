@@ -10,7 +10,9 @@ Meteor.methods({
             hour:data[3], 
             day:data[4], 
             img_topo:data[5], 
-            img_avatar:data[6], 
+            img_avatar:data[6],
+            url_facebook:data[7],
+            url_google:data[8], 
             user_record:1, 
             user_change:1, 
             date_record:Meteor.call('dateNow'), 
@@ -34,7 +36,9 @@ Meteor.methods({
               hour:data[4], 
               day:data[5], 
               img_topo:data[6], 
-              img_avatar:data[7], 
+              img_avatar:data[7],
+              url_facebook:data[8],
+              url_google:data[9], 
               user_change:1, 
               date_change:Meteor.call('dateNow')
             }
@@ -71,6 +75,10 @@ Meteor.methods({
           Poll.remove({_id:polls[p][0]});
         }
       }
+
+      Content.remove({program_id:data[1]});
+
+      Notify.remove({program_id:data[1]});
 
       Program.remove({_id:data[1]});
     }

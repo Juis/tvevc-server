@@ -10,6 +10,9 @@ Template.programUpdate.rendered = function () {
 		document.querySelector("#program_day").value = this.data.collection._docs['_map'][programId]['day'];
 		document.querySelector("#topo_upload").src = this.data.collection._docs['_map'][programId]['img_topo'];
 		document.querySelector("#avatar_upload").src = this.data.collection._docs['_map'][programId]['img_avatar'];
+		document.querySelector("#social_facebook").value = (this.data.collection._docs['_map'][programId]['url_facebook'] !== undefined)? this.data.collection._docs['_map'][programId]['url_facebook'] : '';
+		document.querySelector("#social_google").value = (this.data.collection._docs['_map'][programId]['url_google'] !== undefined)? this.data.collection._docs['_map'][programId]['url_google'] : '';
+		
 		Session.set(
 			'getupFormImgBase64Top', 
 			this.data.collection._docs['_map'][programId]['img_topo']
@@ -59,7 +62,9 @@ Template.programUpdate.events({
 					form.target[3].value,
 					form.target[4].value,
 					Session.get('getupFormImgBase64Top'), 
-					Session.get('getupFormImgBase64Avatar')
+					Session.get('getupFormImgBase64Avatar'),
+					form.target[5].value,
+					form.target[6].value
 				]
 			);
 
