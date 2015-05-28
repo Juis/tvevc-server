@@ -65,6 +65,22 @@ Meteor.methods({
 		}
 	},
 
+	'updateUserNofity': function(data){
+		if(data[0] === 222){
+	   		User.update(
+	   			{_id:data[1]},
+	   			{$set: 
+	   				{
+	   					not_block_notify_all:data[2],
+	   					date_change:Meteor.call('dateNow')
+	   				}
+	   			}
+   			);
+		}else{
+		  //erro aqui
+		}
+	},
+
 	'deleteUser': function(data){
 		if(data[0] === 333){
 		  	User.update(
