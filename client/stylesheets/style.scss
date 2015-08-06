@@ -32,11 +32,8 @@ body {
 
 			// Logo
 			.brand-logo {
-				@media (min-width: 0) and (max-width: 990px) {
-					img {margin:-4px !important;width:75px!important;}
-				}
 				img {
-					margin: 8px;width: 245px;
+					margin: 8px;width: 245px;display:table;
 				}
 			}
 
@@ -68,7 +65,7 @@ body {
 				position:absolute;right:0;top:0;background:none!important;color:#788e95;box-shadow:none!important;-webkit-box-shadow:none!important;-moz-box-shadow:none!important;padding:0!important;
 			}
 			.btn-add {
-				position:absolute;right:0;top:0;background-color:#fff;color:#788e95;
+				position:absolute;right:0;top:0;background-color:#8BC34A;color:#fff;
 			}
 		}
 
@@ -84,7 +81,7 @@ body {
 
 			// Elements
 			.collection-item {
-				height:auto;cursor:pointer;padding-top:25px;padding-bottom:25px;
+				height:auto;cursor:pointer;padding-top:25px;padding-bottom:25px;padding-left:25px!important;
 
 				// Transition
 				-webkit-transition: background .3s linear;
@@ -100,7 +97,7 @@ body {
 				.item-inner {
 					background:none;padding-bottom:0;margin-bottom:0;border-bottom:none;display: block;cursor: pointer;height:auto!important;line-height: 1.5rem!important; padding: 10px 20px;
 					img {
-					  width: 60px!important;height: 60px!important;top: 15px!important;
+					  width: 60px!important;height: 60px!important;top: 15px!important;float:left;margin-right:20px;border-radius:50%;-webkit-border-radius:50%;
 					}
 				}
 				.date {font-size:14px;color:#999;}
@@ -128,9 +125,13 @@ body {
 			}
 		}
 		.btn-more {
-			margin-left: -90px;left: 50%;  background-color: #fff;color: #788e95;
+			margin-left: -90px;left: 50%;  background-color: #788d95!important;color: #fff!important;
 		}
 	}
+
+  .btn-more {
+    background-color: #788d95!important;color: #fff!important;
+  }
 
 
 	// Programas
@@ -191,7 +192,7 @@ body {
 	// Enquetes
 	.poll {
 		.collection-item {
-			height:auto;cursor:pointer;padding-top:25px;padding-bottom:25px;padding-left:25px;
+			height:auto;cursor:pointer;padding-top:25px;padding-bottom:25px;padding-left:25px!important;
 
 			// Transition
 			-webkit-transition: background .3s linear;
@@ -206,7 +207,7 @@ body {
 			.item-inner {
 				background:none;padding-bottom:0;margin-bottom:0;border-bottom:none;display: block;cursor: pointer;height:auto!important;line-height: 1.5rem!important; padding: 10px 20px;
 				img {
-				  width: 60px!important;height: 60px!important;top: 28px!important;
+				  width: 60px!important;height: 60px!important;top: 15px!important;float:left;margin-right:20px;border-radius:50%;-webkit-border-radius:50%;
 				}
 			}
 			.date {font-size:14px;color:#999;}
@@ -553,4 +554,9 @@ body {
 		background:#788e95;
 		color:#fff!important;
 	}
+}
+.toast {
+  .btn, .btn-large {
+    background:#8BC34A!important;
+  }
 }

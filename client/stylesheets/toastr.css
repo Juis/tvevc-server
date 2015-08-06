@@ -17,6 +17,7 @@
 .toast-message {
   -ms-word-wrap: break-word;
   word-wrap: break-word;
+  width:100%;
 }
 .toast-message a,
 .toast-message label {
@@ -99,6 +100,7 @@ button.toast-close-button {
   top:0!important;
   left:0!important;
   text-align:center;
+  width:100%;
 }
 #toast-container {
   position: absolute;
@@ -211,3 +213,4 @@ button.toast-close-button {
     width: 25em;
   }
 }
+
